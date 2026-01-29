@@ -1,0 +1,1354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JEN AI — The AI Coach That Never Sleeps</title>
+<meta name="description" content="JEN AI handles coaching 24/7 on WhatsApp, email, and SMS. You bring the clients, JEN does everything else.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@200;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════════════
+   RESET
+   ═══════════════════════════════════════════════════════ */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0}
+a{background-color:transparent;color:inherit;text-decoration:none}
+img{border:0;max-width:100%;display:block}
+button{font:inherit;cursor:pointer;border:none;background:none}
+body *{color:inherit}
+
+/* ═══════════════════════════════════════════════════════
+   VARIABLES — Matched from Yolkk's :root
+   ═══════════════════════════════════════════════════════ */
+:root{
+  --white:#fffffd;
+  --black:#141414;
+  --container-large:86rem;
+  --grey:#f1f1f1;
+  --check-green:#3c7c43;
+  --review-yellow:#f1d511;
+  --color:#141414;
+  --green:#2e4f5e;
+  --green-dark:#16212a;
+  --grey-dark:#aeaeae;
+  --mint:#00E5A0;
+}
+
+/* ═══════════════════════════════════════════════════════
+   BASE TYPOGRAPHY
+   ═══════════════════════════════════════════════════════ */
+body{
+  background-color:var(--black);
+  color:var(--white);
+  font-family:'Plus Jakarta Sans',sans-serif;
+  font-size:1.25rem;
+  line-height:125%;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  overflow-x:hidden;
+}
+::selection{background:var(--white);color:var(--black)}
+
+.heading-h1{font-family:'Archivo',sans-serif;font-size:6rem;line-height:1.05em;font-weight:600;margin:0}
+.heading-h2{font-family:'Archivo',sans-serif;font-size:4rem;font-weight:500;line-height:1.05em;margin:0}
+.heading-h3{font-size:2rem;font-weight:500;line-height:1.2em;margin:0}
+.heading-h4{font-size:1.5rem;line-height:1.3em;font-weight:600;margin:0}
+.heading-h5{font-size:1.25rem;font-weight:500;line-height:1.4;margin:0}
+.heading-hero{font-family:'Archivo',sans-serif;color:var(--white);font-size:5.75vw;line-height:1;font-weight:600}
+.text-large{font-size:1.75rem;line-height:1.5em}
+.text-regular{font-size:1.25rem;line-height:1.5em}
+.text-small{font-size:1rem;line-height:1.6em}
+.text-x-small{font-size:.75rem;line-height:1em}
+.font-archivo{font-family:'Archivo',sans-serif}
+.opacity-30{opacity:.3}
+.opacity-50{opacity:.5}
+.opacity-70{opacity:.7}
+.text-colour-white{color:var(--white)}
+.text-colour-muted{color:var(--grey-dark)}
+.no-margin{margin:0}
+.text-weight-medium{font-weight:500}
+.text-weight-semibold{font-weight:600}
+.text-weight-bold{font-weight:700}
+
+/* ═══════════════════════════════════════════════════════
+   LAYOUT
+   ═══════════════════════════════════════════════════════ */
+.container-large{max-width:var(--container-large);margin-left:auto;margin-right:auto}
+.container-small{max-width:46rem;margin-left:auto;margin-right:auto}
+.padding-global{padding-left:5%;padding-right:5%}
+.padding-section{padding-top:120px;padding-bottom:120px}
+.padding-section-medium{padding-top:6rem;padding-bottom:6rem}
+.padding-section-small{padding-top:3rem;padding-bottom:3rem}
+.padding-section-large{padding-top:8rem;padding-bottom:8rem}
+
+.flex-vertical{display:flex;flex-direction:column}
+.flex-horizontal{display:flex;flex-direction:row;align-items:center}
+.align-centre{align-items:center}
+.justify-centre{justify-content:center}
+.gap-0-5{gap:.5rem}
+.gap-0-75{gap:.75rem}
+.gap-1{gap:1rem}
+.gap-1-25{gap:1.25rem}
+.gap-1-5{gap:1.5rem}
+.gap-2{gap:2rem}
+.gap-2-5{gap:2.5rem}
+.gap-3{gap:3rem}
+.text-align-centre{text-align:center}
+.relative{position:relative}
+.z-1{z-index:1}
+.z-2{z-index:2}
+.z-10{z-index:10}
+.overflow-hidden{overflow:hidden}
+
+@media(max-width:991px){
+  .heading-h1{font-size:4.5rem}
+  .heading-h2{font-size:2.5rem}
+  .heading-hero{font-size:7vw}
+  .padding-section{padding-top:100px;padding-bottom:100px}
+}
+@media(max-width:767px){
+  .heading-h1{font-size:4rem;line-height:1.1em}
+  .heading-h2{font-size:2rem}
+  .heading-h3{font-size:1.5rem}
+  .heading-hero{font-size:8vw}
+  .text-large{font-size:1.25rem}
+  .text-regular{font-size:1.1rem;line-height:1.3em}
+  .padding-section{padding-top:80px;padding-bottom:80px}
+  .padding-section-large{padding-top:4rem;padding-bottom:4rem}
+  .hide-mobile{display:none!important}
+}
+@media(max-width:479px){
+  .heading-h1{font-size:3rem}
+  .text-small{font-size:.9rem}
+  .padding-section-medium{padding-top:3rem;padding-bottom:3rem}
+}
+
+/* ═══════════════════════════════════════════════════════
+   TRANSITION COVER — Page load animation (Yolkk)
+   ═══════════════════════════════════════════════════════ */
+.transition-cover{
+  position:fixed;inset:0;z-index:9999;
+  background:var(--black);
+  display:flex;align-items:center;justify-content:center;
+  pointer-events:none;
+}
+.transition-cover .page-name{
+  font-family:'Archivo',sans-serif;font-size:1.5rem;font-weight:600;
+  color:var(--white);opacity:0;
+}
+
+/* ═══════════════════════════════════════════════════════
+   NAVBAR
+   ═══════════════════════════════════════════════════════ */
+.navbar{
+  z-index:999;
+  background-color:transparent;
+  height:80px;
+  position:fixed;
+  top:0;left:0;right:0;
+  transition:background-color .4s,backdrop-filter .4s;
+}
+.navbar.scrolled{
+  background-color:rgba(20,20,20,.85);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+}
+.container-navbar{
+  display:flex;justify-content:space-between;align-items:center;
+  width:100%;max-width:1920px;height:100%;
+  margin:0 auto;padding:0 3.5%;
+}
+.nav-logo-text{
+  font-family:'Archivo',sans-serif;
+  font-weight:700;font-size:1.3rem;letter-spacing:-1px;
+  position:relative;
+}
+.nav-logo-text span{color:var(--mint)}
+.nav-menu{display:flex;gap:10px;align-items:center}
+@media(max-width:767px){.nav-menu{display:none}}
+.nav-link{
+  color:var(--white);height:100%;padding:12px 10px;
+  font-size:1rem;font-weight:500;position:relative;
+}
+.nav-link.underline-link{
+  margin-left:10px;margin-right:10px;
+  padding-bottom:.5em;padding-left:0;padding-right:0;
+}
+
+/* Underline hover — exact Yolkk */
+.underline-link::before{
+  content:"";position:absolute;bottom:0;left:0;
+  width:100%;height:0.0625em;
+  background-color:var(--white);
+  transition:transform 1.2s cubic-bezier(.625,.05,0,1);
+  transform-origin:right;
+  transform:scaleX(0) rotate(.001deg);
+}
+.underline-link:hover::before{
+  transform-origin:left;
+  transform:scaleX(1) rotate(.001deg);
+}
+
+/* Stagger link — exact Yolkk */
+a[stagger-link] [stagger-link-text]{
+  text-shadow:0px 1.1em 0px var(--white);
+}
+[stagger-link] [stagger-link-text] span{
+  display:inline-block;position:relative;
+  text-shadow:0px 1.3em currentColor;
+  transform:translateY(0em) rotate(.001deg);
+  transition:transform .6s cubic-bezier(.625,.05,0,1);
+}
+[stagger-link]:hover [stagger-link-text] span{
+  transform:translateY(-1.3em) rotate(.001deg);
+}
+.stagger-link-wrap{display:inline-flex;overflow:hidden;position:relative}
+
+/* ═══════════════════════════════════════════════════════
+   STARFIELD — Exact Yolkk box-shadow star layers
+   ═══════════════════════════════════════════════════════ */
+.stars-v2{z-index:0;position:absolute;inset:0%;overflow:hidden}
+
+.stars,.stars:after{border-radius:50%;background:transparent}
+.stars{
+  z-index:10;width:1px;height:1px;
+  box-shadow:718px 1689px #fff,1405px 2127px #fff,1270px 1148px #fff,620px 641px #fff,1538px 708px #fff,2169px 1632px #fff,523px 1494px #fff,1081px 2018px #fff,1372px 585px #fff,974px 576px #fff,448px 1231px #fff,78px 2055px #fff,1180px 1274px #fff,1752px 2099px #fff,1392px 488px #fff,1836px 2303px #fff,1309px 816px #fff,922px 962px #fff,1165px 2485px #fff,2054px 176px #fff,1425px 747px #fff,2253px 2056px #fff,1602px 114px #fff,433px 1332px #fff,65px 1726px #fff,257px 334px #fff,1512px 1855px #fff,775px 2422px #fff,2512px 2123px #fff,76px 2235px #fff,1979px 501px #fff,352px 1222px #fff,554px 1215px #fff,1200px 2163px #fff,2078px 1983px #fff,2461px 557px #fff,1960px 2055px #fff,1966px 316px #fff,1123px 1402px #fff,1461px 2288px #fff,1625px 2076px #fff,822px 609px #fff,531px 1358px #fff,900px 1938px #fff,1867px 1362px #fff,1049px 372px #fff,319px 980px #fff,2321px 2421px #fff,1701px 1425px #fff,1827px 1324px #fff;
+  animation:animStar 100s linear infinite;
+}
+.stars:after{
+  content:" ";top:-600px;width:1px;height:1px;position:absolute;
+  box-shadow:1229px 1419px #fff,672px 2257px #fff,821px 854px #fff,731px 1239px #fff,1244px 58px #fff,687px 2428px #fff,173px 1549px #fff,1973px 940px #fff,2334px 1057px #fff,792px 882px #fff,1499px 1912px #fff,1892px 9px #fff,172px 1753px #fff,22px 1577px #fff,934px 2059px #fff,1398px 2309px #fff,100px 77px #fff,1545px 22px #fff,595px 1917px #fff,941px 1452px #fff,1226px 1022px #fff,1254px 990px #fff,2507px 352px #fff,111px 887px #fff,1666px 168px #fff,966px 986px #fff,121px 2559px #fff,1424px 792px #fff,1973px 2544px #fff,577px 503px #fff;
+}
+
+.stars1{
+  z-index:10;width:2px;height:2px;border-radius:50%;background:transparent;
+  box-shadow:452px 2369px #fff,2030px 2013px #fff,113px 1775px #fff,426px 2228px #fff,1789px 1456px #fff,234px 890px #fff,1567px 345px #fff,678px 1234px #fff,1345px 567px #fff,890px 1678px #fff,123px 234px #fff,1456px 890px #fff,567px 1345px #fff,1890px 123px #fff,345px 678px #fff,1234px 1567px #fff,789px 456px #fff,1678px 789px #fff,456px 1890px #fff,1123px 1234px #fff,234px 567px #fff,1560px 1678px #fff,678px 345px #fff,1890px 1456px #fff;
+  animation:animStar 125s linear infinite;
+}
+.stars1:after{
+  content:" ";top:-600px;width:2px;height:2px;border-radius:50%;position:absolute;background:transparent;
+  box-shadow:90px 890px #fff,1345px 234px #fff,567px 1123px #fff,1780px 567px #fff,345px 1780px #fff,1200px 345px #fff,800px 1890px #fff,100px 1560px #fff,1400px 100px #fff,700px 1300px #fff,300px 700px #fff,1600px 300px #fff;
+}
+
+.stars2{
+  z-index:10;width:3px;height:3px;border-radius:50%;background:transparent;
+  box-shadow:380px 1043px #fff,10px 1086px #fff,660px 1062px #fff,1371px 842px #fff,1800px 234px #fff,450px 1567px #fff,1234px 890px #fff,678px 345px #fff,1567px 1234px #fff,890px 678px #fff,234px 1456px #fff,1456px 234px #fff,345px 1890px #fff,1678px 567px #fff,567px 1345px #fff,1123px 1678px #fff,789px 123px #fff,1345px 789px #fff,123px 1123px #fff,1890px 890px #fff;
+  animation:animStar 175s linear infinite;
+}
+.stars2:after{
+  content:" ";top:-600px;width:3px;height:3px;border-radius:50%;position:absolute;background:transparent;
+  box-shadow:200px 800px #fff,1500px 400px #fff,600px 1500px #fff,1800px 600px #fff,400px 1200px #fff,1100px 500px #fff;
+}
+
+@keyframes animStar{
+  from{transform:translateY(0px) translateX(0px)}
+  to{transform:translateY(-2560px) translateX(-2560px)}
+}
+
+/* Shooting star */
+.shooting-stars{
+  z-index:10;width:5px;height:85px;
+  border-top-left-radius:50%;border-top-right-radius:50%;
+  position:absolute;bottom:0;right:0;
+  background:linear-gradient(to top,rgba(255,255,255,0),white);
+  animation:animShootingStar 15s linear infinite;
+}
+.shooting-stars:nth-child(2){animation-delay:5s;right:25%}
+.shooting-stars:nth-child(3){animation-delay:9s;right:55%}
+@keyframes animShootingStar{
+  from{transform:translateY(0px) translateX(0px) rotate(-45deg);opacity:.8;height:5px}
+  to{transform:translateY(-2560px) translateX(-2560px) rotate(-45deg);opacity:1;height:800px}
+}
+
+/* ═══════════════════════════════════════════════════════
+   BLUR-BENTO — Yolkk's glassmorphism cards
+   ═══════════════════════════════════════════════════════ */
+.blur-bento{
+  -webkit-backdrop-filter:blur(15px);
+  backdrop-filter:blur(15px);
+  background-color:rgba(255,255,253,.05);
+  border:1px solid rgba(241,241,241,.5);
+  border-radius:.75rem;
+  width:100%;
+  padding:.4rem .75rem;
+}
+.blur-bento.hero-text-bento{padding:.55rem 1rem}
+
+/* ═══════════════════════════════════════════════════════
+   MOUSE HOVER GRID
+   ═══════════════════════════════════════════════════════ */
+.css-mouse-hover{position:absolute;inset:0;z-index:10;pointer-events:none}
+.hover-flex-container{display:flex;flex-wrap:wrap;width:100%;height:100%}
+.box{flex:1 0 10%;min-height:10%;pointer-events:auto;transition:all .4s cubic-bezier(.35,1,.6,1)}
+.box.blur{opacity:0;background:radial-gradient(circle,rgba(46,79,94,.15),transparent 60%)}
+.box:hover{opacity:1;transition:all 0s}
+
+/* ═══════════════════════════════════════════════════════
+   HERO
+   ═══════════════════════════════════════════════════════ */
+.section-hero{
+  position:relative;
+  min-height:100vh;
+  display:flex;align-items:center;
+  overflow:hidden;
+  padding-top:80px;
+}
+.hero-content{position:relative;z-index:2;width:100%}
+.hero-text-main{
+  font-family:'Archivo',sans-serif;
+  font-size:clamp(3rem,15cqw,8rem);
+  font-weight:600;line-height:1.05;
+  color:var(--white);
+}
+.hero-text-main .line{display:block}
+.hero-text-main .line.dim{opacity:.3}
+.hero-text-main .line.mid{opacity:.5}
+.hero-subtext{
+  font-family:'Archivo',sans-serif;
+  font-size:1.25rem;font-weight:500;
+  color:var(--white);opacity:.5;
+}
+.hero-right{max-width:29rem;margin-left:auto}
+@media(max-width:991px){.hero-right{max-width:none;margin-left:0;margin-top:3rem}}
+
+.hero-layout{
+  display:flex;justify-content:space-between;align-items:flex-end;
+  gap:4rem;width:100%;
+}
+@media(max-width:991px){.hero-layout{flex-direction:column;align-items:flex-start}}
+
+.hero-right-stack{display:flex;flex-direction:column;gap:.75rem}
+
+/* Color overlay circles */
+.color-overlays{position:absolute;inset:0;z-index:-1;overflow:hidden}
+.color-overlay{
+  position:absolute;border-radius:50%;
+  filter:blur(120px);opacity:0;
+  animation:fadeOverlay 3s ease forwards;
+}
+.color-overlay.c1{width:600px;height:600px;background:var(--green);top:10%;left:20%;animation-delay:.5s}
+.color-overlay.c2{width:500px;height:500px;background:var(--mint);top:40%;right:10%;animation-delay:1s;opacity:0}
+.color-overlay.c3{width:400px;height:400px;background:#4a8fa8;bottom:10%;left:40%;animation-delay:1.5s}
+@keyframes fadeOverlay{to{opacity:.12}}
+
+/* ═══════════════════════════════════════════════════════
+   SCROLL TEXT REVEAL — initial state set by GSAP, not CSS
+   ═══════════════════════════════════════════════════════ */
+.word-line{overflow:hidden}
+
+/* ═══════════════════════════════════════════════════════
+   MARQUEE — Yolkk exact structure with GSAP
+   ═══════════════════════════════════════════════════════ */
+.section-marquee{overflow:hidden;padding:1rem 0}
+.marquee-scroll{display:flex;width:max-content}
+.marquee-collection{display:flex}
+.marquee-item{
+  margin-right:3rem;white-space:nowrap;
+  display:flex;align-items:center;
+}
+.marquee-heading{
+  font-family:'Archivo',sans-serif;
+  font-weight:400;line-height:1.3em;
+  opacity:.3;white-space:nowrap;
+}
+.marquee-heading.large{font-size:clamp(2.5rem,5vw,4.5rem)}
+.marquee-heading.small{font-size:clamp(1.25rem,2.5vw,2rem);font-weight:500}
+.marquee-dot{width:8px;height:8px;border-radius:50%;background:var(--white);opacity:.15;margin:0 1.5rem;flex-shrink:0}
+
+/* ═══════════════════════════════════════════════════════
+   BENTO GRID
+   ═══════════════════════════════════════════════════════ */
+.bento-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:1em;
+  border-radius:1.5rem;
+  overflow:hidden;
+}
+@media(max-width:767px){.bento-grid{grid-template-columns:1fr}}
+.bento-item{
+  border-radius:1.5rem;
+  min-height:400px;
+  position:relative;
+  overflow:hidden;
+  background:var(--green-dark);
+}
+@media(max-width:767px){.bento-item{min-height:300px;border-radius:1rem}}
+.bento-item.full{grid-column:1/-1}
+
+.bento-container{border-radius:1.5rem;padding:2.5rem}
+@media(max-width:479px){.bento-container{padding:1.5rem}}
+
+/* ═══════════════════════════════════════════════════════
+   YOLKK BUTTON
+   ═══════════════════════════════════════════════════════ */
+.yolkk-button{
+  z-index:11;
+  border:2px solid var(--white);
+  -webkit-backdrop-filter:blur(12px);
+  backdrop-filter:blur(12px);
+  background-color:rgba(120,120,120,.2);
+  border-radius:100rem;
+  justify-content:space-between;align-items:center;
+  width:auto;min-width:200px;height:64px;
+  padding-left:24px;padding-right:20px;
+  font-size:1.1rem;font-weight:500;line-height:1.2em;
+  display:inline-flex;position:relative;overflow:hidden;
+  transition:all .4s cubic-bezier(.35,1,.6,1);
+  gap:12px;
+}
+.yolkk-button:hover{background-color:rgba(120,120,120,.35);transform:translateY(-2px)}
+.yolkk-button .btn-circle{
+  opacity:.86;
+  border-radius:100rem;
+  width:44px;height:44px;
+  display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;flex-shrink:0;
+}
+.btn-circle .button-inner-gradient{
+  position:absolute;
+  width:200px;height:200px;
+  background-image:linear-gradient(180deg,var(--green) 23%,var(--black) 71%);
+  border-radius:50px;
+  animation:rotateGradient 10s linear infinite;
+}
+@keyframes rotateGradient{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+.btn-circle .arrow{position:relative;z-index:1;color:var(--white);font-size:1.2rem}
+
+.button-secondary{
+  color:var(--black);cursor:pointer;
+  background-color:var(--white);border-radius:100rem;
+  justify-content:center;align-items:center;
+  height:64px;padding:0 45px;
+  font-weight:500;display:inline-flex;
+  transition:background-color .2s;
+}
+.button-secondary:hover{background-color:rgba(255,255,253,.8)}
+.button-secondary.small{height:44px;padding:0 20px;white-space:nowrap;font-size:.9rem}
+
+/* ═══════════════════════════════════════════════════════
+   PHONE MOCKUP
+   ═══════════════════════════════════════════════════════ */
+.phone{
+  width:300px;
+  background:linear-gradient(145deg,#1a1a1a,#0e0e0e);
+  border-radius:44px;padding:12px;
+  border:1px solid rgba(255,255,253,.06);
+  box-shadow:0 50px 100px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,253,.03),inset 0 1px 0 rgba(255,255,253,.04);
+}
+@media(max-width:479px){.phone{width:260px}}
+.phone-notch{width:90px;height:22px;background:#000;border-radius:0 0 12px 12px;margin:0 auto 4px}
+.phone-screen{
+  background:#000;border-radius:34px;padding:16px 14px 14px;
+  min-height:400px;display:flex;flex-direction:column;
+}
+.chat-bar{display:flex;align-items:center;gap:10px;padding-bottom:12px;border-bottom:1px solid rgba(255,255,253,.05);margin-bottom:12px}
+.chat-avatar{
+  width:30px;height:30px;border-radius:50%;
+  background:linear-gradient(135deg,var(--mint),var(--green));
+  display:flex;align-items:center;justify-content:center;
+  font-size:.55rem;font-weight:700;color:#000;flex-shrink:0;
+}
+.chat-bar-name{font-size:.75rem;font-weight:600}
+.chat-bar-status{font-size:.6rem;color:var(--mint);font-weight:500}
+.chat-messages{flex:1;display:flex;flex-direction:column;gap:6px;overflow:hidden}
+.msg{
+  max-width:85%;padding:9px 13px;border-radius:16px;
+  font-size:.78rem;line-height:1.4;
+  opacity:0;transform:translateY(10px) scale(.97);
+  transition:all .5s cubic-bezier(.16,1,.3,1);
+}
+.msg.show{opacity:1;transform:translateY(0) scale(1)}
+.msg.client{background:rgba(255,255,253,.07);align-self:flex-end;border-bottom-right-radius:4px}
+.msg.ai{background:var(--mint);color:#0a0a0a;align-self:flex-start;border-bottom-left-radius:4px;font-weight:500}
+.typing-ind{
+  align-self:flex-start;padding:10px 16px;
+  background:rgba(255,255,253,.04);border-radius:16px;
+  display:flex;gap:4px;opacity:0;transition:opacity .3s;
+}
+.typing-ind.show{opacity:1}
+.typing-ind span{width:5px;height:5px;background:var(--mint);border-radius:50%;animation:dotP 1.4s infinite ease-in-out}
+.typing-ind span:nth-child(2){animation-delay:.15s}
+.typing-ind span:nth-child(3){animation-delay:.3s}
+@keyframes dotP{0%,80%,100%{transform:scale(.4);opacity:.3}40%{transform:scale(1);opacity:1}}
+.video-thumb{background:rgba(255,255,253,.04);border-radius:10px;padding:20px 14px;text-align:center;font-size:.7rem;color:var(--grey-dark)}
+.play-icon{width:24px;height:24px;border-radius:50%;background:rgba(0,229,160,.12);display:flex;align-items:center;justify-content:center;margin:0 auto 6px}
+.play-icon svg{width:10px;height:10px;fill:var(--mint)}
+.form-badge{font-size:.65rem;color:var(--mint);font-weight:600;margin-top:6px;padding:3px 8px;background:rgba(0,229,160,.06);border-radius:6px;display:inline-block}
+.chat-input-area{display:flex;gap:6px;margin-top:10px;padding-top:10px;border-top:1px solid rgba(255,255,253,.04)}
+.chat-input-area input{
+  flex:1;background:rgba(255,255,253,.04);border:1px solid rgba(255,255,253,.05);
+  border-radius:20px;padding:9px 14px;color:#fff;font-size:.75rem;font-family:inherit;outline:none;
+}
+.chat-input-area input::placeholder{color:rgba(255,255,253,.15)}
+.chat-input-area button{
+  background:var(--mint);border:none;border-radius:50%;
+  width:32px;height:32px;display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.chat-input-area button svg{width:12px;height:12px;fill:#0a0a0a}
+
+/* ═══════════════════════════════════════════════════════
+   SECTIONS
+   ═══════════════════════════════════════════════════════ */
+.section-black{background-color:var(--black);color:var(--white);position:relative;overflow:hidden}
+.section-dark{background-color:var(--green-dark);color:var(--white);position:relative;overflow:hidden}
+
+/* ═══════════════════════════════════════════════════════
+   STATS / METRICS
+   ═══════════════════════════════════════════════════════ */
+.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1em;border-radius:1.5rem;overflow:hidden}
+@media(max-width:767px){.stat-grid{grid-template-columns:1fr}}
+.stat-card{background:var(--green-dark);padding:2.5rem;position:relative}
+.stat-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(255,255,253,.06),transparent);
+}
+.stat-value{
+  font-family:'Archivo',sans-serif;
+  font-size:clamp(2rem,4vw,3.2rem);font-weight:700;
+  letter-spacing:-2px;line-height:1;
+  color:var(--white);
+}
+.stat-label{font-size:.85rem;color:var(--grey-dark);margin-top:10px;font-weight:500}
+
+/* ═══════════════════════════════════════════════════════
+   BEFORE/AFTER
+   ═══════════════════════════════════════════════════════ */
+.transform-grid{display:grid;grid-template-columns:1fr 1fr;gap:1em;border-radius:1.5rem;overflow:hidden}
+@media(max-width:767px){.transform-grid{grid-template-columns:1fr}}
+.transform-side{padding:3rem;background:var(--green-dark);position:relative}
+.transform-side::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
+.transform-side.before::before{background:linear-gradient(90deg,transparent,rgba(255,70,70,.2),transparent)}
+.transform-side.after::before{background:linear-gradient(90deg,transparent,rgba(0,229,160,.2),transparent)}
+.tf-icon{
+  width:48px;height:48px;border-radius:14px;
+  display:flex;align-items:center;justify-content:center;margin-bottom:20px;
+}
+.before .tf-icon{background:rgba(255,70,70,.06);border:1px solid rgba(255,70,70,.1)}
+.before .tf-icon svg{stroke:#ff5555;stroke-width:1.5;fill:none;width:22px;height:22px}
+.after .tf-icon{background:rgba(0,229,160,.06);border:1px solid rgba(0,229,160,.1)}
+.after .tf-icon svg{stroke:var(--mint);stroke-width:1.5;fill:none;width:22px;height:22px}
+.before .heading-h4{color:rgba(255,100,100,.9)}
+.after .heading-h4{color:var(--mint)}
+
+/* ═══════════════════════════════════════════════════════
+   STEPS
+   ═══════════════════════════════════════════════════════ */
+.steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1em;border-radius:1.5rem;overflow:hidden}
+@media(max-width:767px){.steps-grid{grid-template-columns:1fr}}
+.step-card{
+  background:var(--green-dark);border:1px solid rgba(255,255,253,.05);
+  border-radius:1.5rem;padding:3rem 2rem;
+  text-align:center;position:relative;overflow:hidden;
+  opacity:.15;transform:translateY(30px);
+  transition:all .8s cubic-bezier(.16,1,.3,1);
+}
+.step-card.active{opacity:1;transform:translateY(0)}
+.step-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(255,255,253,.05),transparent);transition:all .6s}
+.step-card.active::before{background:linear-gradient(90deg,transparent,rgba(0,229,160,.2),transparent)}
+.step-icon{
+  width:80px;height:80px;border-radius:50%;
+  background:rgba(255,255,253,.03);border:1px solid rgba(255,255,253,.06);
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 24px;transition:all .6s;
+}
+.step-card.active .step-icon{border-color:rgba(0,229,160,.15);box-shadow:0 0 60px rgba(0,229,160,.06)}
+.step-icon svg{width:28px;height:28px;stroke:var(--grey-dark);fill:none;stroke-width:1.5;transition:stroke .6s}
+.step-card.active .step-icon svg{stroke:var(--mint)}
+
+/* ═══════════════════════════════════════════════════════
+   DATA WALL
+   ═══════════════════════════════════════════════════════ */
+.data-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:2px;border-radius:1.5rem;overflow:hidden}
+@media(max-width:767px){.data-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:479px){.data-grid{grid-template-columns:repeat(2,1fr)}}
+.data-cell{background:var(--green-dark);padding:2.5rem 1.5rem;text-align:center}
+.data-val{font-family:'Archivo',sans-serif;font-size:clamp(1.6rem,3vw,2.4rem);font-weight:700;letter-spacing:-1px;font-variant-numeric:tabular-nums}
+.data-val .strike{text-decoration:line-through;color:var(--grey-dark);font-size:.55em;font-weight:400;display:block;margin-bottom:2px}
+.data-lbl{font-size:.65rem;color:var(--grey-dark);margin-top:10px;text-transform:uppercase;letter-spacing:1.5px;font-weight:600}
+
+/* ═══════════════════════════════════════════════════════
+   VISION
+   ═══════════════════════════════════════════════════════ */
+.vision-text{text-align:center;max-width:900px;margin:0 auto}
+.vision-text p{
+  font-family:'Archivo',sans-serif;font-weight:600;
+  font-size:clamp(1.8rem,5.5vw,4rem);letter-spacing:-2.5px;line-height:1.1;
+  margin-bottom:8px;
+}
+.vision-text p .dim{color:var(--grey-dark)}
+.vision-text p:last-child{color:var(--mint)}
+
+.scale-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;border-radius:1.5rem;overflow:hidden;max-width:700px;margin:0 auto}
+@media(max-width:767px){.scale-grid{grid-template-columns:1fr}}
+.scale-cell{background:var(--green-dark);padding:2.5rem;text-align:center}
+.scale-cell .sc-n{font-family:'Archivo',sans-serif;font-size:1.1rem;font-weight:600}
+.scale-cell .sc-rev{font-family:'Archivo',sans-serif;font-size:1.8rem;font-weight:700;letter-spacing:-1px;margin-top:4px;color:var(--mint)}
+.scale-cell .sc-lbl{font-size:.6rem;color:var(--grey-dark);text-transform:uppercase;letter-spacing:1px;margin-top:8px;font-weight:600}
+
+.divider-gradient{height:1px;background:linear-gradient(90deg,transparent,rgba(0,229,160,.15),transparent);max-width:300px;width:100%;margin:3rem auto}
+
+/* ═══════════════════════════════════════════════════════
+   FOOTER
+   ═══════════════════════════════════════════════════════ */
+.section-footer{position:relative;overflow:hidden}
+.footer-grid{
+  display:grid;
+  grid-template-columns:1.4fr 1fr 1fr 1fr .75fr;
+  gap:16px;max-width:70rem;margin:0 auto;
+}
+@media(max-width:991px){.footer-grid{grid-template-columns:1fr 1fr 1fr 1fr}}
+@media(max-width:767px){.footer-grid{grid-template-columns:1fr 1fr;gap:2rem}}
+@media(max-width:479px){.footer-grid{grid-template-columns:1fr;gap:2.5rem}}
+.footer-col{display:flex;flex-direction:column;gap:.4rem}
+.footer-col-header{font-size:1rem;font-weight:600;margin-bottom:.5rem;opacity:.5}
+.footer-link{
+  opacity:.7;color:var(--white);font-size:.95rem;line-height:1.5em;
+  font-weight:200;transition:opacity .25s;
+  display:inline-flex;overflow:hidden;
+}
+.footer-link:hover{opacity:1}
+.footer-social{display:flex;gap:12px;margin-top:8px}
+.footer-icon{
+  color:var(--grey-dark);width:20px;height:20px;
+  transition:color .2s;display:flex;align-items:center;justify-content:center;
+}
+.footer-icon:hover{color:var(--white)}
+.footer-icon svg{width:18px;height:18px;fill:currentColor}
+.footer-bottom{font-size:.8rem;color:var(--grey-dark);margin-top:3rem;text-align:center}
+.footer-cta{text-align:center;max-width:600px;margin:0 auto 4rem}
+
+/* ═══════════════════════════════════════════════════════
+   SIBLING OPACITY HOVER
+   ═══════════════════════════════════════════════════════ */
+.sibling-fade{transition:opacity .4s cubic-bezier(.35,1,.6,1)}
+.sibling-fade-group:hover .sibling-fade{opacity:.5}
+.sibling-fade-group:hover .sibling-fade:hover{opacity:1}
+
+/* ═══════════════════════════════════════════════════════
+   SCROLLBAR
+   ═══════════════════════════════════════════════════════ */
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:rgba(255,255,253,.08);border-radius:3px}
+::-webkit-scrollbar-thumb:hover{background:rgba(255,255,253,.15)}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════
+     TRANSITION COVER — Page load animation
+     ═══════════════════════════════════════════════════════ -->
+<div class="transition-cover" id="transitionCover">
+  <div class="page-name" id="pageName">JEN AI</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     NAVBAR
+     ═══════════════════════════════════════════════════════ -->
+<div class="navbar" id="navbar">
+  <div class="container-navbar">
+    <a href="#" class="nav-logo-text">JEN <span>AI</span></a>
+    <nav class="nav-menu sibling-fade-group">
+      <div class="sibling-fade">
+        <a href="#demo" class="nav-link underline-link" stagger-link><span stagger-link-text><span>Product</span></span></a>
+      </div>
+      <div class="sibling-fade">
+        <a href="#transform" class="nav-link underline-link" stagger-link><span stagger-link-text><span>Results</span></span></a>
+      </div>
+      <div class="sibling-fade">
+        <a href="#how" class="nav-link underline-link" stagger-link><span stagger-link-text><span>Process</span></span></a>
+      </div>
+      <div class="sibling-fade">
+        <a href="#data" class="nav-link underline-link" stagger-link><span stagger-link-text><span>Traction</span></span></a>
+      </div>
+      <div class="sibling-fade">
+        <a href="#footer" class="button-secondary small">Contact</a>
+      </div>
+    </nav>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     HERO
+     ═══════════════════════════════════════════════════════ -->
+<section class="section-hero">
+  <div class="stars-v2">
+    <div class="stars"></div>
+    <div class="stars1"></div>
+    <div class="stars2"></div>
+    <div class="shooting-stars"></div>
+    <div class="shooting-stars"></div>
+    <div class="shooting-stars"></div>
+  </div>
+  <div class="color-overlays">
+    <div class="color-overlay c1"></div>
+    <div class="color-overlay c2"></div>
+    <div class="color-overlay c3"></div>
+  </div>
+
+  <div class="container-large padding-global hero-content">
+    <div class="hero-layout">
+      <div>
+        <div class="hero-text-main" anm-scroll-text anm-split="words" anm-distance="50%" anm-stagger="0.08">
+          <span class="line dim">What if</span>
+          <span class="line mid">your coach</span>
+          <span class="line">never slept?</span>
+        </div>
+        <h1 class="heading-h5 text-colour-white text-weight-medium" anm-scroll-text anm-delay="0.3" style="opacity:.5;margin-top:1rem">AI-Powered Fitness Coaching</h1>
+      </div>
+      <div class="hero-right">
+        <div class="hero-right-stack">
+          <div class="blur-bento" anm-scroll-text anm-delay="0.4">
+            <div class="flex-horizontal align-centre gap-0-5">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--review-yellow)"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+              <p class="text-regular no-margin text-colour-white" style="white-space:nowrap">5 Stars · 280 Clients</p>
+            </div>
+          </div>
+          <div class="blur-bento hero-text-bento" anm-scroll-text anm-delay="0.5">
+            <p class="text-small text-colour-white no-margin">Visually powerful AI that coaches your clients 24/7 on WhatsApp, email, and SMS.</p>
+          </div>
+          <div class="flex-horizontal gap-1" anm-scroll-text anm-delay="0.6" style="margin-top:.5rem">
+            <a href="#demo" class="yolkk-button">
+              <span>See it in action</span>
+              <div class="btn-circle"><div class="button-inner-gradient"></div><span class="arrow">→</span></div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="css-mouse-hover">
+    <div class="hover-flex-container" id="hoverGrid"></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     MARQUEE 1
+     ═══════════════════════════════════════════════════════ -->
+<div class="section-marquee section-black" data-marquee-scroll-direction-target data-marquee-speed="30" data-marquee-direction="left" data-marquee-duplicate="2" data-marquee-scroll-speed="10">
+  <div data-marquee-scroll-target class="marquee-scroll">
+    <div data-marquee-collection-target class="marquee-collection">
+      <div class="marquee-item"><h2 class="marquee-heading large">Live Demo</h2></div>
+      <div class="marquee-item"><div class="marquee-dot"></div></div>
+      <div class="marquee-item"><h2 class="marquee-heading large">Live Demo</h2></div>
+      <div class="marquee-item"><div class="marquee-dot"></div></div>
+      <div class="marquee-item"><h2 class="marquee-heading large">Live Demo</h2></div>
+      <div class="marquee-item"><div class="marquee-dot"></div></div>
+      <div class="marquee-item"><h2 class="marquee-heading large">Live Demo</h2></div>
+      <div class="marquee-item"><div class="marquee-dot"></div></div>
+    </div>
+  </div>
+  <div data-marquee-scroll-target class="marquee-scroll" style="margin-top:.5rem" data-marquee-scroll-direction-target data-marquee-speed="40" data-marquee-direction="right" data-marquee-duplicate="2" data-marquee-scroll-speed="10">
+    <div data-marquee-collection-target class="marquee-collection">
+      <div class="marquee-item"><h3 class="marquee-heading small">WhatsApp</h3></div>
+      <div class="marquee-item"><div class="marquee-dot"></div></div>
+      <div class="marquee-item"><h3 class="marquee-heading small">Email</h3></div>
+      <div class="marquee-item"><div class="marquee-dot"></div></div>
+      <div class="marquee-item"><h3 class="marquee-heading small">SMS</h3></div>
+      <div class="marquee-item"><div class="marquee-dot"></div></div>
+      <div class="marquee-item"><h3 class="marquee-heading small">Form Analysis</h3></div>
+      <div class="marquee-item"><div class="marquee-dot"></div></div>
+      <div class="marquee-item"><h3 class="marquee-heading small">Nutrition Plans</h3></div>
+      <div class="marquee-item"><div class="marquee-dot"></div></div>
+      <div class="marquee-item"><h3 class="marquee-heading small">Workout Programming</h3></div>
+      <div class="marquee-item"><div class="marquee-dot"></div></div>
+      <div class="marquee-item"><h3 class="marquee-heading small">Client Check-ins</h3></div>
+      <div class="marquee-item"><div class="marquee-dot"></div></div>
+      <div class="marquee-item"><h3 class="marquee-heading small">Progress Tracking</h3></div>
+      <div class="marquee-item"><div class="marquee-dot"></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     CHAT DEMO
+     ═══════════════════════════════════════════════════════ -->
+<section class="section-black padding-section" id="demo">
+  <div class="container-large padding-global">
+        <div class="bento-grid">
+          <div class="bento-item" style="background:var(--black);display:flex;flex-direction:column;padding:2.5rem">
+            <p class="text-x-small text-weight-semibold" style="letter-spacing:2.5px;text-transform:uppercase;color:var(--grey-dark);margin-bottom:1.5rem">Live Demo</p>
+            <h2 class="heading-h2" anm-scroll-text anm-split="words" anm-distance="50%" style="color:var(--white);margin-bottom:1rem">This is how JEN coaches.</h2>
+            <p class="text-regular" anm-scroll-text anm-delay="0.2" style="color:var(--grey-dark);margin-bottom:2rem;max-width:420px">Real conversation. Real-time AI responses. Your clients get expert-level coaching — every message, every time.</p>
+            <div style="display:flex;justify-content:center">
+              <div class="phone">
+                <div class="phone-notch"></div>
+                <div class="phone-screen">
+                  <div class="chat-bar">
+                    <div class="chat-avatar">J</div>
+                    <div><div class="chat-bar-name">JEN AI Coach</div><div class="chat-bar-status">Online</div></div>
+                  </div>
+                  <div class="chat-messages" id="chatMessages">
+                    <div class="typing-ind" id="typingDots"><span></span><span></span><span></span></div>
+                  </div>
+                  <div class="chat-input-area">
+                    <input type="text" placeholder="Ask JEN anything..." id="chatInput">
+                    <button id="chatSend"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="#0a0a0a" stroke-width="2" fill="none"/></svg></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:1em">
+            <div class="bento-item" style="background:var(--black);flex:1;display:flex;flex-direction:column;justify-content:center;padding:2.5rem">
+              <div class="stat-value" anm-scroll-text anm-split="chars" anm-distance="100%" style="font-family:Archivo,sans-serif;font-size:clamp(2.5rem,5vw,4rem);font-weight:700;letter-spacing:-2px;line-height:1;color:var(--mint)">24/7</div>
+              <p class="text-small" anm-scroll-text anm-delay="0.1" style="color:var(--grey-dark);margin-top:.75rem">Always available. Never calls in sick. Never needs a break.</p>
+            </div>
+            <div class="bento-item" style="background:var(--black);flex:1;display:flex;flex-direction:column;justify-content:center;padding:2.5rem">
+              <div class="stat-value" anm-scroll-text anm-split="chars" anm-distance="100%" style="font-family:Archivo,sans-serif;font-size:clamp(2.5rem,5vw,4rem);font-weight:700;letter-spacing:-2px;line-height:1;color:var(--mint)">&lt;3s</div>
+              <p class="text-small" anm-scroll-text anm-delay="0.1" style="color:var(--grey-dark);margin-top:.75rem">Response time. Every message. Every client. Every time.</p>
+            </div>
+            <div class="bento-item" style="background:var(--black);flex:1;display:flex;flex-direction:column;justify-content:center;padding:2.5rem">
+              <div class="stat-value" anm-scroll-text anm-split="chars" anm-distance="100%" style="font-family:Archivo,sans-serif;font-size:clamp(2.5rem,5vw,4rem);font-weight:700;letter-spacing:-2px;line-height:1;color:var(--mint)">$100<span style="font-size:.35em;color:var(--grey-dark)">/mo</span></div>
+              <p class="text-small" anm-scroll-text anm-delay="0.1" style="color:var(--grey-dark);margin-top:.75rem">Not $400. Not a human salary. Unlimited clients.</p>
+            </div>
+          </div>
+        </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     MARQUEE 2
+     ═══════════════════════════════════════════════════════ -->
+<div class="section-marquee section-black" style="border-top:1px solid rgba(255,255,253,.05)" data-marquee-scroll-direction-target data-marquee-speed="25" data-marquee-direction="right" data-marquee-duplicate="2" data-marquee-scroll-speed="8">
+  <div data-marquee-scroll-target class="marquee-scroll">
+    <div data-marquee-collection-target class="marquee-collection">
+      <div class="marquee-item"><h2 class="marquee-heading large">The Transformation</h2></div>
+      <div class="marquee-item"><div class="marquee-dot"></div></div>
+      <div class="marquee-item"><h2 class="marquee-heading large">The Transformation</h2></div>
+      <div class="marquee-item"><div class="marquee-dot"></div></div>
+      <div class="marquee-item"><h2 class="marquee-heading large">The Transformation</h2></div>
+      <div class="marquee-item"><div class="marquee-dot"></div></div>
+      <div class="marquee-item"><h2 class="marquee-heading large">The Transformation</h2></div>
+      <div class="marquee-item"><div class="marquee-dot"></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     BEFORE / AFTER
+     ═══════════════════════════════════════════════════════ -->
+<section class="section-black padding-section" id="transform">
+  <div class="container-large padding-global">
+        <div class="transform-grid">
+          <div class="transform-side before" anm-scroll-text anm-distance="30%">
+            <div class="tf-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+            <h4 class="heading-h4" style="margin-bottom:1rem">Without JEN</h4>
+            <p class="text-small" style="color:var(--grey-dark)">Answering messages at 2AM. Clients churning because you can't respond fast enough. Capped at 30 clients. Burning out. No time to grow your business.</p>
+          </div>
+          <div class="transform-side after" anm-scroll-text anm-delay="0.15" anm-distance="30%">
+            <div class="tf-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg></div>
+            <h4 class="heading-h4" style="margin-bottom:1rem">With JEN</h4>
+            <p class="text-small" style="color:var(--grey-dark)">AI handles every client instantly. You focus on growing your business. Scale past 280 clients without hiring anyone. Higher retention. Higher revenue.</p>
+          </div>
+        </div>
+
+        <div style="text-align:center;padding:5rem 0;max-width:800px;margin:0 auto">
+          <h2 class="heading-h2" anm-scroll-text anm-split="words" anm-distance="50%">You bring the clients. <span style="color:var(--mint)">JEN does everything else.</span></h2>
+        </div>
+
+        <div class="stat-grid">
+          <div class="stat-card" style="text-align:center" anm-scroll-text anm-distance="40%">
+            <div class="stat-value"><span style="text-decoration:line-through;color:var(--grey-dark);font-size:.6em;font-weight:400;margin-right:8px">70%</span><span class="counter" data-to="30" data-suffix="%">0%</span></div>
+            <div class="stat-label" style="text-transform:uppercase;letter-spacing:1.5px;font-size:.7rem">Churn Rate</div>
+          </div>
+          <div class="stat-card" style="text-align:center" anm-scroll-text anm-delay="0.1" anm-distance="40%">
+            <div class="stat-value"><span class="counter" data-to="24" data-suffix="/7">0/7</span></div>
+            <div class="stat-label" style="text-transform:uppercase;letter-spacing:1.5px;font-size:.7rem">Availability</div>
+          </div>
+          <div class="stat-card" style="text-align:center" anm-scroll-text anm-delay="0.2" anm-distance="40%">
+            <div class="stat-value"><span class="counter" data-to="100" data-prefix="$" data-suffix="/mo">$0/mo</span></div>
+            <div class="stat-label" style="text-transform:uppercase;letter-spacing:1.5px;font-size:.7rem">vs <span style="text-decoration:line-through;opacity:.4">$400/mo</span></div>
+          </div>
+        </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     HOW IT WORKS
+     ═══════════════════════════════════════════════════════ -->
+<section class="section-dark padding-section" id="how">
+  <div class="container-large padding-global">
+    <div style="text-align:center;max-width:600px;margin:0 auto 4rem">
+      <p class="text-x-small text-weight-semibold" anm-scroll-text style="letter-spacing:2.5px;text-transform:uppercase;color:var(--grey-dark);margin-bottom:1rem">How It Works</p>
+      <h2 class="heading-h2" anm-scroll-text anm-split="words" anm-distance="50%">Three steps. That's it.</h2>
+      <p class="text-regular" anm-scroll-text anm-delay="0.2" style="color:var(--grey-dark);margin-top:1rem">No onboarding calls. No complex setup. No learning curve.</p>
+    </div>
+    <div class="steps-grid" id="stepsRow">
+      <div class="step-card">
+        <div class="step-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg></div>
+        <h4 class="heading-h4" style="margin-bottom:.75rem">Connect</h4>
+        <p class="text-small" style="color:var(--grey-dark)">Bring your brand, your voice, your clients. We handle the rest.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg></div>
+        <h4 class="heading-h4" style="margin-bottom:.75rem">AI Learns</h4>
+        <p class="text-small" style="color:var(--grey-dark)">JEN studies your coaching style and adapts to every individual client.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4z"/></svg></div>
+        <h4 class="heading-h4" style="margin-bottom:.75rem">Clients Thrive</h4>
+        <p class="text-small" style="color:var(--grey-dark)">WhatsApp, email, SMS — wherever your clients are, JEN is there.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     MARQUEE 3
+     ═══════════════════════════════════════════════════════ -->
+<div class="section-marquee section-black" style="border-top:1px solid rgba(255,255,253,.05)" data-marquee-scroll-direction-target data-marquee-speed="20" data-marquee-direction="left" data-marquee-duplicate="3" data-marquee-scroll-speed="12">
+  <div data-marquee-scroll-target class="marquee-scroll">
+    <div data-marquee-collection-target class="marquee-collection">
+      <div class="marquee-item"><h2 class="marquee-heading large">Traction</h2></div>
+      <div class="marquee-item"><div class="marquee-dot"></div></div>
+      <div class="marquee-item"><h2 class="marquee-heading large">Traction</h2></div>
+      <div class="marquee-item"><div class="marquee-dot"></div></div>
+      <div class="marquee-item"><h2 class="marquee-heading large">Traction</h2></div>
+      <div class="marquee-item"><div class="marquee-dot"></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     DATA WALL
+     ═══════════════════════════════════════════════════════ -->
+<section class="section-black padding-section" id="data">
+  <div class="container-large padding-global">
+    <div class="data-grid" id="dataGrid">
+      <div class="data-cell" anm-scroll-text anm-distance="40%">
+        <div class="data-val"><span class="counter" data-prefix="$" data-to="35" data-suffix="K">$0K</span></div>
+        <div class="data-lbl">Monthly Revenue</div>
+      </div>
+      <div class="data-cell" anm-scroll-text anm-delay="0.05" anm-distance="40%">
+        <div class="data-val"><span class="counter" data-to="280">0</span></div>
+        <div class="data-lbl">Active Clients</div>
+      </div>
+      <div class="data-cell" anm-scroll-text anm-delay="0.1" anm-distance="40%">
+        <div class="data-val"><span class="counter" data-to="87" data-suffix="%">0%</span></div>
+        <div class="data-lbl">Margins</div>
+      </div>
+      <div class="data-cell" anm-scroll-text anm-delay="0.15" anm-distance="40%">
+        <div class="data-val"><span class="counter" data-prefix="$" data-to="0">$0</span></div>
+        <div class="data-lbl">CAC</div>
+      </div>
+      <div class="data-cell" anm-scroll-text anm-delay="0.2" anm-distance="40%">
+        <div class="data-val"><span class="strike">70%</span><span class="counter" data-to="30" data-suffix="%">0%</span></div>
+        <div class="data-lbl">Churn</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     VISION
+     ═══════════════════════════════════════════════════════ -->
+<section class="section-dark padding-section" id="vision">
+  <div class="container-large padding-global">
+    <p class="text-x-small text-weight-semibold" anm-scroll-text style="letter-spacing:2.5px;text-transform:uppercase;color:var(--grey-dark);text-align:center;margin-bottom:3rem">The Vision</p>
+    <div class="vision-text" id="visionText">
+      <p anm-scroll-text anm-split="words" anm-distance="50%"><span class="dim">Shopify</span> had stores.</p>
+      <p anm-scroll-text anm-split="words" anm-distance="50%" anm-delay="0.15"><span class="dim">Uber</span> had drivers.</p>
+      <p anm-scroll-text anm-split="words" anm-distance="50%" anm-delay="0.3">JEN AI has coaches.</p>
+    </div>
+    <div class="divider-gradient"></div>
+    <div class="scale-grid" id="scaleGrid">
+      <div class="scale-cell" anm-scroll-text anm-distance="30%"><div class="sc-n">10 coaches</div><div class="sc-rev">$840K</div><div class="sc-lbl">Annual Revenue</div></div>
+      <div class="scale-cell" anm-scroll-text anm-delay="0.1" anm-distance="30%"><div class="sc-n">40 coaches</div><div class="sc-rev">$3.36M</div><div class="sc-lbl">Annual Revenue</div></div>
+      <div class="scale-cell" anm-scroll-text anm-delay="0.2" anm-distance="30%"><div class="sc-n">100 coaches</div><div class="sc-rev">$8.4M</div><div class="sc-lbl">Annual Revenue</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════════════════════════ -->
+<section class="section-footer section-black padding-section-large" id="footer">
+  <div class="stars-v2">
+    <div class="stars"></div>
+    <div class="stars1"></div>
+    <div class="stars2"></div>
+    <div class="shooting-stars"></div>
+  </div>
+
+  <div class="container-large padding-global" style="position:relative;z-index:2">
+    <div class="footer-cta">
+      <h2 class="heading-h2" anm-scroll-text anm-split="words" anm-distance="50%" style="margin-bottom:2rem">Ready to scale?</h2>
+      <div class="flex-horizontal justify-centre gap-1" anm-scroll-text anm-delay="0.2" style="flex-wrap:wrap">
+        <a href="mailto:coach@lyrox.ai" class="yolkk-button">
+          <span>I'm a coach</span>
+          <div class="btn-circle"><div class="button-inner-gradient"></div><span class="arrow">→</span></div>
+        </a>
+        <a href="mailto:invest@lyrox.ai" class="button-secondary">I'm an investor</a>
+      </div>
+    </div>
+
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="nav-logo-text" style="font-size:1.5rem;margin-bottom:1rem">JEN <span>AI</span></div>
+        <a href="mailto:hello@lyrox.ai" class="footer-link">hello@lyrox.ai</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-header">Product</div>
+        <a href="#demo" class="footer-link">Live Demo</a>
+        <a href="#transform" class="footer-link">Results</a>
+        <a href="#how" class="footer-link">Process</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-header">Company</div>
+        <a href="#data" class="footer-link">Traction</a>
+        <a href="#vision" class="footer-link">Vision</a>
+        <a href="#footer" class="footer-link">Contact</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-header">Platform</div>
+        <span class="footer-link">WhatsApp</span>
+        <span class="footer-link">Email</span>
+        <span class="footer-link">SMS</span>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-header">Social</div>
+        <div class="footer-social">
+          <a href="#" class="footer-icon"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zM4 6a2 2 0 100-4 2 2 0 000 4z"/></svg></a>
+          <a href="#" class="footer-icon"><svg viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">© <span id="year"></span> JEN AI · lyrox.ai · All rights reserved</div>
+  </div>
+
+  <div class="css-mouse-hover"><div class="hover-flex-container" id="hoverGridFooter"></div></div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     SCRIPTS — GSAP + ScrollTrigger + SplitType + Lenis
+     ═══════════════════════════════════════════════════════ -->
+<script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.23/bundled/lenis.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/split-type"></script>
+<script>
+gsap.registerPlugin(ScrollTrigger);
+
+/* ═══════════════════════════════════════
+   LENIS SMOOTH SCROLL — Yolkk exact
+   ═══════════════════════════════════════ */
+const lenis = new Lenis({
+  lerp: 0.1,
+  wheelMultiplier: 0.7,
+  gestureOrientation: 'vertical',
+  normalizeWheel: false,
+  smoothTouch: false,
+});
+// Connect Lenis to GSAP ScrollTrigger
+lenis.on('scroll', ScrollTrigger.update);
+gsap.ticker.add((time) => { lenis.raf(time * 1000); });
+gsap.ticker.lagSmoothing(0);
+
+/* ═══════════════════════════════════════
+   TRANSITION COVER — Page load animation
+   ═══════════════════════════════════════ */
+(function() {
+  const cover = document.getElementById('transitionCover');
+  const pageName = document.getElementById('pageName');
+  gsap.to(pageName, { opacity: 1, duration: 0.5, delay: 0.2 });
+  gsap.to(cover, {
+    yPercent: -100,
+    duration: 1,
+    ease: 'power3.inOut',
+    delay: 1,
+    onComplete: () => { cover.style.display = 'none'; }
+  });
+})();
+
+/* ═══════════════════════════════════════
+   NAV SCROLL
+   ═══════════════════════════════════════ */
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 60);
+}, {passive:true});
+
+/* ═══════════════════════════════════════
+   MOUSE HOVER GRID
+   ═══════════════════════════════════════ */
+function buildHoverGrid(id) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  for (let i = 0; i < 100; i++) {
+    const box = document.createElement('div');
+    box.className = 'box blur';
+    el.appendChild(box);
+  }
+}
+buildHoverGrid('hoverGrid');
+buildHoverGrid('hoverGridFooter');
+
+/* ═══════════════════════════════════════
+   anm-scroll-text — Yolkk's text reveal system
+   Uses GSAP + ScrollTrigger + SplitType
+   ═══════════════════════════════════════ */
+(function textReveal() {
+  const elements = document.querySelectorAll('[anm-scroll-text]');
+  const topClipPath = 'polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)';
+  const fullClipPath = 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)';
+
+  elements.forEach(element => {
+    const distanceAttribute = element.getAttribute('anm-distance') || '40px';
+    const splitAttribute = element.getAttribute('anm-split');
+    const charsStaggerAttribute = element.getAttribute('anm-chars-stagger');
+    const wordsStaggerAttribute = element.getAttribute('anm-words-stagger');
+    const durationAttribute = element.getAttribute('anm-duration') || 1.2;
+    const delayAttribute = element.getAttribute('anm-delay');
+    const easeAttribute = element.getAttribute('anm-ease');
+
+    // Check if element is already in viewport (hero)
+    const rect = element.getBoundingClientRect();
+    const isInView = rect.top < window.innerHeight && rect.bottom > 0;
+
+    const tl = gsap.timeline({
+      defaults: { duration: parseFloat(durationAttribute), ease: easeAttribute || 'power3.out' },
+    });
+
+    if (isInView) {
+      // Hero elements: play after page transition (1.2s delay)
+      tl.delay(1.2 + (delayAttribute ? parseFloat(delayAttribute) : 0));
+    } else {
+      // Scroll-triggered elements
+      const startTrigger = window.innerWidth < 992 ? '15% bottom' : '25% bottom';
+      ScrollTrigger.create({
+        animation: tl,
+        trigger: element,
+        start: startTrigger,
+        toggleActions: 'play none none none',
+      });
+    }
+
+    if (splitAttribute) {
+      const splitTypes = splitAttribute.split(',').map(type => type.trim());
+      const splitText = new SplitType(element, { types: splitTypes });
+
+      splitTypes.forEach(type => {
+        const splitElements = splitText[type] || [];
+        let stagger = type === 'chars' ? 0.02 : 0.06;
+        if (type === 'chars' && charsStaggerAttribute) stagger = parseFloat(charsStaggerAttribute);
+        else if (type === 'words' && wordsStaggerAttribute) stagger = parseFloat(wordsStaggerAttribute);
+
+        let yPosition = /[a-z%]+$/i.test(distanceAttribute) ? distanceAttribute : parseFloat(distanceAttribute);
+
+        tl.fromTo(
+          splitElements.length ? splitElements : [element],
+          { clipPath: topClipPath, y: yPosition, opacity: 0 },
+          { clipPath: fullClipPath, y: 0, opacity: 1, stagger, delay: isInView ? 0 : (delayAttribute ? parseFloat(delayAttribute) : 0) },
+          0
+        );
+      });
+    } else {
+      let yVal = /[a-z%]+$/i.test(distanceAttribute) ? distanceAttribute : parseFloat(distanceAttribute);
+      tl.fromTo(
+        element,
+        { y: yVal, clipPath: topClipPath, opacity: 0 },
+        { y: 0, clipPath: fullClipPath, opacity: 1, delay: isInView ? 0 : (delayAttribute ? parseFloat(delayAttribute) : 0) },
+        0
+      );
+    }
+  });
+})();
+
+/* ═══════════════════════════════════════
+   MARQUEE — GSAP powered with scroll direction reversal
+   ═══════════════════════════════════════ */
+document.querySelectorAll('[data-marquee-scroll-direction-target]').forEach(marquee => {
+  const marqueeContent = marquee.querySelector('[data-marquee-collection-target]');
+  const marqueeScroll = marquee.querySelector('[data-marquee-scroll-target]');
+  if (!marqueeContent || !marqueeScroll) return;
+
+  const speed = parseFloat(marquee.dataset.marqueeSpeed || 30);
+  const direction = marquee.dataset.marqueeDirection === 'right' ? 1 : -1;
+  const duplicate = parseInt(marquee.dataset.marqueeDuplicate || 2);
+  const scrollSpeed = parseFloat(marquee.dataset.marqueeScrollSpeed || 10);
+  const speedMultiplier = window.innerWidth < 479 ? 0.25 : window.innerWidth < 991 ? 0.5 : 1;
+
+  let marqueeSpeed = speed * (marqueeContent.offsetWidth / window.innerWidth) * speedMultiplier;
+
+  marqueeScroll.style.marginLeft = `${scrollSpeed * -1}%`;
+  marqueeScroll.style.width = `${(scrollSpeed * 2) + 100}%`;
+
+  // Duplicate content
+  const fragment = document.createDocumentFragment();
+  for (let i = 0; i < duplicate; i++) {
+    fragment.appendChild(marqueeContent.cloneNode(true));
+  }
+  marqueeScroll.appendChild(fragment);
+
+  const marqueeItems = marquee.querySelectorAll('[data-marquee-collection-target]');
+  const animation = gsap.to(marqueeItems, {
+    xPercent: -100,
+    repeat: -1,
+    duration: marqueeSpeed,
+    ease: 'linear'
+  }).totalProgress(0.5);
+
+  gsap.set(marqueeItems, { xPercent: direction === 1 ? 100 : -100 });
+  animation.timeScale(direction);
+  animation.play();
+
+  // Reverse direction on scroll direction change
+  ScrollTrigger.create({
+    trigger: marquee,
+    start: 'top bottom',
+    end: 'bottom top',
+    onUpdate: (self) => {
+      const isInverted = self.direction === 1;
+      const currentDirection = isInverted ? -direction : direction;
+      animation.timeScale(currentDirection);
+    }
+  });
+
+  // Parallax scrub on scroll
+  gsap.timeline({
+    scrollTrigger: {
+      trigger: marquee,
+      start: '0% 100%',
+      end: '100% 0%',
+      scrub: 0
+    }
+  }).fromTo(marqueeScroll,
+    { x: `${direction === -1 ? scrollSpeed : -scrollSpeed}vw` },
+    { x: `${direction === -1 ? -scrollSpeed : scrollSpeed}vw`, ease: 'none' }
+  );
+});
+
+/* ═══════════════════════════════════════
+   STEPS — Staggered activation on scroll
+   ═══════════════════════════════════════ */
+const stepsRow = document.getElementById('stepsRow');
+if (stepsRow) {
+  ScrollTrigger.create({
+    trigger: stepsRow,
+    start: '20% bottom',
+    onEnter: () => {
+      document.querySelectorAll('.step-card').forEach((s, i) => {
+        setTimeout(() => s.classList.add('active'), 200 + i * 300);
+      });
+    }
+  });
+}
+
+/* ═══════════════════════════════════════
+   COUNTERS — Animate on scroll
+   ═══════════════════════════════════════ */
+const counted = new WeakSet();
+document.querySelectorAll('.stat-grid, #dataGrid').forEach(el => {
+  ScrollTrigger.create({
+    trigger: el,
+    start: '25% bottom',
+    onEnter: () => {
+      if (counted.has(el)) return;
+      counted.add(el);
+      el.querySelectorAll('.counter').forEach(c => {
+        const to = parseInt(c.dataset.to);
+        const prefix = c.dataset.prefix || '';
+        const suffix = c.dataset.suffix || '';
+        if (to === 0) { c.textContent = prefix + '0' + suffix; return; }
+        const frames = 50;
+        let frame = 0;
+        function tick() {
+          frame++;
+          const ease = 1 - Math.pow(1 - frame / frames, 3);
+          c.textContent = prefix + Math.round(to * ease) + suffix;
+          if (frame < frames) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+      });
+    }
+  });
+});
+
+/* ═══════════════════════════════════════
+   CHAT DEMO
+   ═══════════════════════════════════════ */
+const chatBox = document.getElementById('chatMessages');
+const typingDots = document.getElementById('typingDots');
+const chatScript = [
+  { who:'client', text:'Just finished leg day but my knees hurt' },
+  { who:'ai', text:'Was it during squats or lunges? Sharp pain or dull ache?' },
+  { who:'client', text:'Squats. Dull ache on the inside of both knees' },
+  { who:'ai', text:"Sounds like VMO strain from knee caving.\n\n→ Ice 15 min tonight\n→ Swap to goblet squats tomorrow\n→ Add banded clamshells to warm-up\n\nSend me a video next session." },
+  { who:'client', html:'<div class="video-thumb"><div class="play-icon"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>Squat form check · 0:12</div>' },
+  { who:'ai', text:'Form score: 7/10', extra:'<div class="form-badge">↳ Knees caving reps 4–6. Widen stance 2 inches.</div>' }
+];
+let si = 0, chatActive = false;
+
+function runChat() {
+  if (si >= chatScript.length) return;
+  const m = chatScript[si];
+  if (m.who === 'ai') {
+    typingDots.classList.add('show');
+    setTimeout(() => {
+      typingDots.classList.remove('show');
+      pushMsg(m); si++;
+      setTimeout(runChat, 700 + Math.random() * 500);
+    }, 800 + Math.random() * 600);
+  } else {
+    pushMsg(m); si++;
+    setTimeout(runChat, 600 + Math.random() * 400);
+  }
+}
+function pushMsg(m) {
+  const d = document.createElement('div');
+  d.className = 'msg ' + m.who;
+  d.innerHTML = m.html || (m.text.replace(/\n/g, '<br>') + (m.extra || ''));
+  chatBox.insertBefore(d, typingDots);
+  requestAnimationFrame(() => { d.classList.add('show'); chatBox.scrollTop = chatBox.scrollHeight; });
+}
+
+ScrollTrigger.create({
+  trigger: '#demo',
+  start: '20% bottom',
+  onEnter: () => {
+    if (!chatActive) { chatActive = true; setTimeout(runChat, 500); }
+  }
+});
+
+/* User input */
+document.getElementById('chatSend').addEventListener('click', userSend);
+document.getElementById('chatInput').addEventListener('keydown', e => { if (e.key === 'Enter') userSend(); });
+function userSend() {
+  const input = document.getElementById('chatInput');
+  const t = input.value.trim(); if (!t) return;
+  input.value = '';
+  pushMsg({ who:'client', text:t });
+  typingDots.classList.add('show');
+  setTimeout(() => {
+    typingDots.classList.remove('show');
+    pushMsg({ who:'ai', text:"I'd analyze your routine and build a personalized plan. This is a demo — the real JEN goes much deeper." });
+  }, 1000);
+}
+
+/* ═══════════════════════════════════════
+   STAGGER LINK INIT
+   ═══════════════════════════════════════ */
+document.querySelectorAll('[stagger-link-text]').forEach(el => {
+  const text = el.textContent;
+  el.innerHTML = '';
+  [...text].forEach((char, i) => {
+    const span = document.createElement('span');
+    span.textContent = char === ' ' ? '\u00A0' : char;
+    span.style.transitionDelay = `${i * 0.01}s`;
+    el.appendChild(span);
+  });
+});
+
+/* Footer year */
+document.getElementById('year').textContent = new Date().getFullYear();
+
+/* Refresh ScrollTrigger on resize */
+window.addEventListener('resize', () => ScrollTrigger.refresh());
+</script>
+</body>
+</html>
