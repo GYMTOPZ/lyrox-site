@@ -2184,32 +2184,31 @@ document.querySelectorAll('.stat-grid, #dataGrid').forEach(el => {
 const chatBox = document.getElementById('chatMessages');
 const typingDots = document.getElementById('typingDots');
 const chatScript = [
-  /* 1. JEN initiates — proactive nudge */
-  { who:'ai', text:'yo, you haven\'t moved in 2 days. not judging but your body is. get up today, even 20 min counts.' },
+  /* JEN knows this person. 3 months in. Knows their knee, their schedule, their taste, their goal. */
 
-  /* 2. Asks before sending workout */
-  { who:'ai', text:'upper body push today. keep it or switch something?', extra:'<div style="margin-top:6px"><span class="quick-reply">keep it</span><span class="quick-reply">swap something</span><span class="quick-reply">rest day</span></div>' },
-  { who:'client', text:'keep it' },
+  /* 1. Morning — JEN initiates with context */
+  { who:'ai', text:'morning. you slept 5 hours last night so i made today\'s workout lighter. your knee has been feeling better so i added goblet squats back in.' },
+  { who:'ai', html:'tap when you\'re ready.<div class="link-preview"><div class="link-preview-img"><div class="lp-icon"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div></div><div class="link-preview-body"><div class="link-preview-title">Lower Body (Light)</div><div class="link-preview-desc">4 exercises · video demos · 40 min · adjusted for recovery</div><div class="link-preview-domain">jen.coach/workout</div></div></div>' },
 
-  /* 3. WORKOUT — WhatsApp link preview style */
-  { who:'ai', html:'done. tap to open.<div class="link-preview"><div class="link-preview-img"><div class="lp-icon"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div></div><div class="link-preview-body"><div class="link-preview-title">Upper Body Push</div><div class="link-preview-desc">5 exercises · video demos · 55 min</div><div class="link-preview-domain">jen.coach/workout</div></div></div>' },
+  /* 2. Client asks about dinner — real life situation */
+  { who:'client', text:'going out to dinner tonight at nobu. what should i order' },
+  { who:'ai', text:'get the black cod miso. 38P, 12C, 22F. skip the rice, get the edamame side instead. that keeps you under your macros and you still enjoy it.' },
 
-  /* 4. Done, hungry */
-  { who:'client', text:'done. starving' },
+  /* 3. Client feeling off */
+  { who:'client', text:'honestly i feel like crap today' },
+  { who:'ai', text:'yeah 5 hours of sleep will do that. skip the gym, go for a 20 min walk instead. i adjusted your meals for today too, a little more carbs to keep your energy up.', extra:'<div class="link-preview" style="margin-top:6px"><div class="link-preview-body"><div class="link-preview-title">Today\'s Adjusted Meals</div><div class="link-preview-desc">3 meals · higher carbs · comfort food that still works</div><div class="link-preview-domain">jen.coach/meals</div></div></div>' },
 
-  /* 5. MEAL — link preview to recipe interface */
-  { who:'ai', html:'got you. tap for the full recipe with video.<div class="link-preview"><div class="link-preview-img"><div class="lp-icon"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div></div><div class="link-preview-body"><div class="link-preview-title">Grilled Chicken + Rice Bowl</div><div class="link-preview-desc">52P · 74C · 18F · 650 cal · video recipe</div><div class="link-preview-domain">jen.coach/meal</div></div></div>' },
+  /* 4. Fridge situation */
+  { who:'client', text:'only have eggs and some leftover chicken' },
+  { who:'ai', html:'that\'s enough. made you something quick.<div class="link-preview"><div class="link-preview-img"><div class="lp-icon"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div></div><div class="link-preview-body"><div class="link-preview-title">Chicken Egg Scramble</div><div class="link-preview-desc">41P · 3C · 18F · 340 cal · video recipe 1:20</div><div class="link-preview-domain">jen.coach/meal</div></div></div>' },
 
-  /* 6. Groceries */
-  { who:'client', text:'send me the grocery list' },
-  { who:'ai', html:'here\'s this week. you can order straight from there too.<div class="link-preview"><div class="link-preview-img" style="font-size:.55rem;letter-spacing:.5px">8 ITEMS</div><div class="link-preview-body"><div class="link-preview-title">Weekly Groceries</div><div class="link-preview-desc">chicken, rice, broccoli + 5 more · order on amazon</div><div class="link-preview-domain">jen.coach/groceries</div></div></div>' },
+  /* 5. Groceries with ordering */
+  { who:'ai', text:'by the way you\'re running low on groceries. here\'s this week\'s list, you can order straight from there.', extra:'<div class="link-preview" style="margin-top:6px"><div class="link-preview-body"><div class="link-preview-title">Weekly Groceries</div><div class="link-preview-desc">9 items · order on amazon · estimated $47</div><div class="link-preview-domain">jen.coach/groceries</div></div></div>' },
 
-  /* 7. Fridge-based meal */
-  { who:'client', text:'i only have eggs and spinach rn' },
-  { who:'ai', html:'say less. made something with what you got.<div class="link-preview"><div class="link-preview-img"><div class="lp-icon"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div></div><div class="link-preview-body"><div class="link-preview-title">Spinach Omelette</div><div class="link-preview-desc">22P · 2C · 15F · 240 cal · video recipe 1:45</div><div class="link-preview-domain">jen.coach/meal</div></div></div>' },
-
-  /* 8. Progress — proactive monthly */
-  { who:'ai', text:'hey it\'s the 1st. you know the drill. send me your progress pic.', extra:'<div class="link-preview" style="margin-top:6px;background:rgba(0,0,0,.06)"><div class="link-preview-body"><div class="link-preview-title">Your Progress</div><div class="link-preview-desc">down 11 lbs · halfway to your goal</div><div class="progress-bar-mini"><div class="progress-bar-fill" style="width:50%"></div></div><div class="link-preview-domain" style="margin-top:4px">jen.coach/progress</div></div></div>' },
+  /* 6. Progress — JEN brings it up because it's time */
+  { who:'ai', text:'hey it\'s been 3 months. look at this.', extra:'<div class="link-preview" style="margin-top:6px"><div class="link-preview-body"><div class="link-preview-title">Your 3-Month Progress</div><div class="link-preview-desc">down 11 lbs · squat 95 to 155 · waist down 2 inches</div><div class="progress-bar-mini"><div class="progress-bar-fill" style="width:50%"></div></div><div class="link-preview-domain" style="margin-top:4px">jen.coach/progress</div></div></div>' },
+  { who:'client', text:'wow i didn\'t even realize' },
+  { who:'ai', text:'that\'s the point. you just showed up and it happened. keep going, you\'re halfway there.' },
 ];
 let si = 0, chatActive = false;
 

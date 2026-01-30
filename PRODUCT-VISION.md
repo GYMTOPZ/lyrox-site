@@ -157,6 +157,38 @@ JEN is not a fitness app. JEN is infrastructure for the coaching economy. Every 
 
 ---
 
+## What People Dream Of — The Roadmap
+
+These are the things every person wishes their coach could do. Some JEN already does. The rest is the roadmap.
+
+### Already Built
+- **"Just tell me what to do"** — Wake up, everything is ready. Workout, food, grocery list. No decisions.
+- **"Know me without me explaining"** — JEN remembers everything. Bad knee, hated exercises, stressful days, travel schedule. Never forgets.
+- **"Catch me before I fall off"** — JEN notices when you stop engaging. Reaches out proactively, not with guilt but with an easy alternative.
+- **"Be available when I need you"** — 2 AM food anxiety. Sunday night meal prep. Right after a bad workout. JEN is there at that exact moment.
+- **"Don't make me feel stupid"** — Explains things like a friend, not a textbook. Never condescending.
+- **"Show me I'm making progress"** — Visual proof. Weight, measurements, photos, performance tracking. Monthly comparisons.
+- **"Create meals from what I have"** — Tell JEN what's in your fridge, get a meal with macros and a video recipe.
+
+### Building Next
+- **"What can I eat at this restaurant?"** — Send JEN the menu (or just the restaurant name), JEN picks the best option for your macros.
+- **"I feel like garbage today"** — JEN adjusts the entire day automatically. Lighter workout. Comfort food that still hits macros. Check-in later.
+- **"My wedding is in 8 weeks"** — JEN builds an 8-week plan backward from any target date. Reverse-engineers the timeline.
+- **"I want to look like this"** — Send a reference photo. JEN estimates the body fat difference and builds a realistic timeline with milestones.
+- **Sleep tracking integration** — JEN reads your sleep data. Slept 4 hours? Workout intensity drops automatically. No questions asked.
+- **Wearable data (Apple Watch, Garmin, Whoop)** — Heart rate, steps, recovery score, stress levels. JEN adapts everything in real time based on your body's actual state.
+- **Location-aware coaching** — Traveling? JEN detects your location, sends hotel room workouts and nearby restaurant options that fit your macros.
+- **Period/cycle tracking** — JEN adjusts workout intensity and nutrition around hormonal cycles. No awkwardness, just smart adaptation.
+- **Sick day / kids sick / life happens** — JEN detects schedule disruption and automatically pivots. No-equipment home workout. Simpler meals. Zero guilt.
+
+### The Dream (Future)
+- **Voice coaching** — JEN talks to you during workouts through your earbuds. Counts reps, cues form, adjusts rest periods in real time.
+- **Smart scale integration** — Step on the scale, data goes straight to JEN. Trends, not daily fluctuations.
+- **Social accountability** — Optional: JEN connects you with others on similar journeys. Not a social network. Just knowing someone else is grinding too.
+- **Coach dashboard** — The coach sees everything. Every client's progress, engagement, risk of churning. JEN flags who needs human attention.
+
+---
+
 ## Technical Architecture
 
 - **Messaging:** WhatsApp Business API, Telegram Bot API, Twilio (SMS), SendGrid/custom (Email)
