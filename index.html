@@ -1157,12 +1157,195 @@ body::before{animation:grainShift .5s steps(10) infinite}
   border-top:1px solid rgba(255,255,253,.03);
   border-bottom:1px solid rgba(255,255,253,.02);
 }
+
+/* ══════════════════════════════════════════════════════════
+   HYPER-REALISM II — Volumetric, particle, holographic
+   ══════════════════════════════════════════════════════════ */
+
+/* ── VOLUMETRIC GOD RAYS — light pouring from above ── */
+.god-rays{
+  position:fixed;top:0;left:0;right:0;height:100vh;
+  pointer-events:none;z-index:9995;
+  background:
+    linear-gradient(195deg,rgba(200,240,0,.015) 0%,transparent 30%),
+    linear-gradient(165deg,rgba(255,255,253,.008) 0%,transparent 25%),
+    linear-gradient(180deg,rgba(200,240,0,.01) 0%,transparent 40%);
+  mix-blend-mode:screen;
+  opacity:0;transition:opacity 1s;
+}
+body:hover .god-rays{opacity:1}
+
+/* ── HOLOGRAPHIC IRIDESCENCE — shifting prismatic edge on glass ── */
+@keyframes holoPrism{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+.blur-bento::before{
+  content:'';position:absolute;inset:-1px;border-radius:inherit;z-index:-1;
+  background:linear-gradient(135deg,
+    rgba(200,240,0,.1),rgba(70,115,210,.08),rgba(249,170,239,.06),
+    rgba(200,240,0,.08),rgba(70,115,210,.1));
+  background-size:300% 300%;
+  animation:holoPrism 8s ease infinite;
+  opacity:.4;
+  mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+  -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+  mask-composite:exclude;-webkit-mask-composite:xor;
+  padding:1px;
+}
+.blur-bento{position:relative;overflow:hidden}
+
+/* ── FLOATING DUST PARTICLES — canvas overlay ── */
+.particle-canvas{
+  position:fixed;inset:0;pointer-events:none;z-index:9994;
+  opacity:.6;
+}
+
+/* ── SUBSURFACE SCATTERING — light bleeding through edges ── */
+.step-card.active::after{
+  content:'';position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+  box-shadow:inset 0 0 60px rgba(200,240,0,.04),inset 0 0 120px rgba(200,240,0,.02);
+}
+
+/* ── PARALLAX MICRO LAYERS — depth through motion ── */
+.dali-blob{will-change:transform}
+.perspective-grid{will-change:transform}
+
+/* ── LIQUID GLASS — hover distortion on bento cards ── */
+.bento-item{
+  backdrop-filter:blur(0px);
+  transition:transform .6s cubic-bezier(.16,1,.3,1),box-shadow .6s cubic-bezier(.16,1,.3,1),backdrop-filter .6s;
+}
+.bento-item:hover{
+  backdrop-filter:blur(2px);
+}
+
+/* ── SCROLL-RESPONSIVE SHADOWS — shadows deepen as you scroll ── */
+.section-hero .color-overlay{
+  transition:filter 2s ease;
+}
+
+/* ── CINEMATIC LENS BLOOM — bright elements bleed light ── */
+.stat-value,.data-val,.sc-rev{
+  position:relative;
+}
+.stat-value::after,.data-val::after{
+  content:attr(data-bloom);
+  position:absolute;inset:0;
+  color:inherit;
+  filter:blur(12px);
+  opacity:.15;
+  pointer-events:none;
+  z-index:-1;
+}
+
+/* ── EDGE LIGHT CATCHING — surfaces catch directional light ── */
+.transform-side::after{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(170deg,rgba(255,255,253,.06) 0%,transparent 20%,transparent 80%,rgba(0,0,0,.15) 100%);
+}
+.data-cell::before{
+  content:'';position:absolute;inset:0;pointer-events:none;z-index:1;
+  background:linear-gradient(165deg,rgba(255,255,253,.04) 0%,transparent 30%,transparent 80%,rgba(0,0,0,.1) 100%);
+}
+.data-cell{position:relative;overflow:hidden}
+
+/* ── GLASS EDGE REFRACTION — rainbow line on card borders ── */
+.bento-item{
+  border-image:linear-gradient(165deg,
+    rgba(255,255,253,.12),rgba(200,240,0,.06),rgba(70,115,210,.04),rgba(255,255,253,.06)) 1;
+  border-style:solid;border-width:1px;
+}
+
+/* ── SECTION ATMOSPHERE — each section has its own light temperature ── */
+#demo{background:linear-gradient(180deg,var(--black),rgba(8,12,16,1),var(--black))}
+#transform{background:linear-gradient(180deg,var(--black),rgba(16,10,10,1) 50%,var(--black))}
+#data{background:linear-gradient(180deg,var(--black),rgba(10,14,18,1) 50%,var(--black))}
+
+/* ── REALISTIC MOTION BLUR — fast scroll adds cinema feel ── */
+.scroll-blur body{filter:blur(0.5px)}
+
+/* ── AMBIENT OCCLUSION — darkened creases between elements ── */
+.bento-grid{
+  background:rgba(0,0,0,.6);
+  box-shadow:inset 0 2px 4px rgba(0,0,0,.3);
+}
+.stat-grid,.transform-grid,.steps-grid,.data-grid,.scale-grid{
+  background:rgba(0,0,0,.4);
+}
+
+/* ── LIGHT POOLING — accent light gathers at the bottom of sections ── */
+#demo::after{
+  content:'';position:absolute;bottom:0;left:20%;right:20%;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(200,240,0,.1),transparent);
+  box-shadow:0 0 60px 30px rgba(200,240,0,.03);
+  pointer-events:none;z-index:2;
+}
+#how::after{
+  content:'';position:absolute;bottom:0;left:15%;right:15%;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(249,170,239,.06),rgba(200,240,0,.06),transparent);
+  box-shadow:0 0 80px 40px rgba(200,240,0,.02);
+  pointer-events:none;z-index:2;
+}
+
+/* ── PHONE SCREEN INNER GLOW — the display radiates ── */
+.phone-screen::before{
+  content:'';position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:10;
+  box-shadow:inset 0 0 40px rgba(200,240,0,.03),inset 0 0 80px rgba(200,240,0,.015);
+}
+.phone-screen{position:relative}
+
+/* ── NAVBAR GLASS QUALITY — higher end glass feel ── */
+.navbar.scrolled{
+  background:linear-gradient(180deg,rgba(20,20,20,.9),rgba(20,20,20,.8));
+  box-shadow:0 1px 0 rgba(255,255,253,.04),0 4px 16px rgba(0,0,0,.3),0 16px 48px rgba(0,0,0,.15);
+}
+
+/* ── FOOTER ATMOSPHERE — deep space feel ── */
+.section-footer{
+  background:linear-gradient(180deg,var(--black),rgba(6,8,10,1) 30%,rgba(4,6,8,1));
+}
+.section-footer::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent 10%,rgba(200,240,0,.08) 50%,transparent 90%);
+  z-index:3;
+}
+
+/* ── VISION SECTION — ethereal depth ── */
+#vision{
+  background:linear-gradient(180deg,var(--green-dark),rgba(18,28,36,1) 40%,rgba(14,22,28,1) 80%,var(--green-dark));
+}
+#vision::before{
+  content:'';position:absolute;top:20%;left:30%;width:40%;height:60%;
+  background:radial-gradient(ellipse,rgba(200,240,0,.03),transparent 70%);
+  pointer-events:none;filter:blur(60px);
+}
+
+/* ── ACCENT ELEMENTS BLOOM — bright things radiate ── */
+.msg.ai{
+  box-shadow:0 2px 8px rgba(200,240,0,.2),0 0 30px rgba(200,240,0,.08),0 0 60px rgba(200,240,0,.03);
+}
+.form-badge{
+  box-shadow:0 0 20px rgba(200,240,0,.1),0 0 40px rgba(200,240,0,.04);
+}
+
+/* ── DEPTH PARALLAX on blobs — different layers move at different speeds ── */
+.dali-blob.b1{transform:translateZ(0)}
+.dali-blob.b2{transform:translateZ(0)}
+.dali-blob.b3{transform:translateZ(0)}
 </style>
 </head>
 <body>
 
 <!-- Mouse-following spotlight -->
 <div class="mouse-light" id="mouseLight"></div>
+
+<!-- Volumetric god rays -->
+<div class="god-rays"></div>
+
+<!-- Floating dust particles -->
+<canvas class="particle-canvas" id="particleCanvas"></canvas>
 
 <!-- ═══════════════════════════════════════════════════════
      TRANSITION COVER — Page load animation
@@ -2055,6 +2238,81 @@ document.querySelectorAll('.transform-side.after').forEach(el => {
     { rotateY: 0, x: 0, scrollTrigger: { trigger: el, start: 'top 85%', end: 'top 40%', scrub: true } }
   );
 });
+
+/* ═══════════════════════════════════════
+   FLOATING DUST PARTICLES — cinematic atmosphere
+   ═══════════════════════════════════════ */
+(function particles() {
+  const canvas = document.getElementById('particleCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let W, H;
+  function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+  resize();
+  window.addEventListener('resize', resize);
+
+  const pts = [];
+  const count = 60;
+  for (let i = 0; i < count; i++) {
+    pts.push({
+      x: Math.random() * W,
+      y: Math.random() * H,
+      r: Math.random() * 1.5 + 0.3,
+      dx: (Math.random() - 0.5) * 0.15,
+      dy: (Math.random() - 0.5) * 0.1 - 0.05,
+      o: Math.random() * 0.3 + 0.05,
+      phase: Math.random() * Math.PI * 2
+    });
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    const t = Date.now() * 0.001;
+    for (const p of pts) {
+      p.x += p.dx + Math.sin(t + p.phase) * 0.05;
+      p.y += p.dy;
+      const flicker = 0.7 + 0.3 * Math.sin(t * 2 + p.phase);
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(255,255,253,${p.o * flicker})`;
+      ctx.fill();
+      // Wrap around
+      if (p.x < -5) p.x = W + 5;
+      if (p.x > W + 5) p.x = -5;
+      if (p.y < -5) p.y = H + 5;
+      if (p.y > H + 5) p.y = -5;
+    }
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+/* ═══════════════════════════════════════
+   PARALLAX DEPTH — blobs and grids move at different scroll speeds
+   ═══════════════════════════════════════ */
+document.querySelectorAll('.dali-blob.b1').forEach(el => {
+  gsap.to(el, { y: -120, scrollTrigger: { trigger: el.parentElement, start: 'top bottom', end: 'bottom top', scrub: true } });
+});
+document.querySelectorAll('.dali-blob.b2').forEach(el => {
+  gsap.to(el, { y: 80, scrollTrigger: { trigger: el.parentElement, start: 'top bottom', end: 'bottom top', scrub: true } });
+});
+document.querySelectorAll('.dali-blob.b3').forEach(el => {
+  gsap.to(el, { y: -60, scrollTrigger: { trigger: el.parentElement, start: 'top bottom', end: 'bottom top', scrub: true } });
+});
+
+/* Perspective grids parallax — slower scroll creates infinite depth */
+document.querySelectorAll('.perspective-grid').forEach(el => {
+  gsap.to(el, { y: -40, scrollTrigger: { trigger: el.parentElement, start: 'top bottom', end: 'bottom top', scrub: true } });
+});
+
+/* Phone parallax — floats against the scroll */
+const phone = document.querySelector('.phone');
+if (phone) {
+  gsap.to(phone, {
+    y: -30,
+    scrollTrigger: { trigger: '#demo', start: 'top bottom', end: 'bottom top', scrub: true }
+  });
+}
 
 /* Refresh ScrollTrigger on resize */
 window.addEventListener('resize', () => ScrollTrigger.refresh());
