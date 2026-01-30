@@ -955,9 +955,214 @@ body::after{
 }
 .chat-bar-status{animation:accentPulse 3s ease-in-out infinite}
 .chat-avatar{animation:accentPulse 4s ease-in-out infinite}
+
+/* ══════════════════════════════════════════════════════════
+   HYPER-REALISM LAYER — Photorealistic lighting & materials
+   ══════════════════════════════════════════════════════════ */
+
+/* ── MOUSE SPOTLIGHT — real-time illumination follows cursor ── */
+.mouse-light{
+  position:fixed;pointer-events:none;z-index:9996;
+  width:800px;height:800px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(200,240,0,.04) 0%,rgba(255,255,253,.02) 20%,transparent 55%);
+  transform:translate(-50%,-50%);
+  transition:opacity .4s;
+  opacity:0;
+  mix-blend-mode:screen;
+}
+body:hover .mouse-light{opacity:1}
+
+/* ── ANIMATED GRAIN — shifts every frame like real film stock ── */
+@keyframes grainShift{
+  0%{transform:translate(0,0)}
+  10%{transform:translate(-5%,-10%)}
+  20%{transform:translate(-15%,5%)}
+  30%{transform:translate(7%,-25%)}
+  40%{transform:translate(-5%,25%)}
+  50%{transform:translate(-15%,10%)}
+  60%{transform:translate(15%,0%)}
+  70%{transform:translate(0%,15%)}
+  80%{transform:translate(3%,35%)}
+  90%{transform:translate(-10%,10%)}
+  100%{transform:translate(0,0)}
+}
+body::before{animation:grainShift .5s steps(10) infinite}
+
+/* ── RIM LIGHTING — light catching the physical edges of surfaces ── */
+.bento-item{position:relative}
+.bento-item::after{
+  content:'';position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:2;
+  background:linear-gradient(165deg,rgba(255,255,253,.07) 0%,transparent 25%,transparent 75%,rgba(0,0,0,.2) 100%);
+}
+.step-icon{position:relative}
+.step-card .step-icon::after{
+  content:'';position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+  background:linear-gradient(165deg,rgba(255,255,253,.08) 0%,transparent 40%,transparent 70%,rgba(0,0,0,.15) 100%);
+}
+
+/* ── GLASS REFRACTION — phone screen feels like real glass ── */
+.phone{position:relative}
+.phone::after{
+  content:'';position:absolute;top:12px;left:20%;right:55%;height:35%;
+  border-radius:0 0 30px 0;pointer-events:none;z-index:3;
+  background:linear-gradient(160deg,rgba(255,255,253,.06),transparent 70%);
+}
+
+/* ── CHROMATIC ABERRATION — subtle color fringing like a real lens ── */
+.heading-hero,.hero-text-main{
+  text-shadow:
+    -1px 0 0 rgba(200,240,0,.04),
+    1px 0 0 rgba(70,115,210,.04),
+    0 0 0 rgba(249,170,239,.02),
+    0 2px 6px rgba(0,0,0,.5),
+    0 0 80px rgba(200,240,0,.05);
+}
+
+/* ── SPECULAR HIGHLIGHTS — light hotspots on glossy surfaces ── */
+.yolkk-button::after{
+  content:'';position:absolute;top:0;left:0;right:0;height:50%;
+  border-radius:100rem 100rem 50% 50%;pointer-events:none;
+  background:linear-gradient(180deg,rgba(255,255,253,.08),transparent);
+}
+
+/* ── CAUSTIC LIGHT — refracted light patterns on dark sections ── */
+@keyframes caustic{
+  0%{background-position:0% 0%}
+  50%{background-position:100% 100%}
+  100%{background-position:0% 0%}
+}
+.section-dark::before{
+  content:'';position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(ellipse at 20% 30%,rgba(200,240,0,.02),transparent 40%),
+    radial-gradient(ellipse at 70% 60%,rgba(46,79,94,.025),transparent 35%),
+    radial-gradient(ellipse at 40% 80%,rgba(200,240,0,.015),transparent 30%);
+  background-size:200% 200%;
+  animation:caustic 25s ease-in-out infinite;
+}
+
+/* ── SURFACE MATERIAL — grids and containers feel like real objects ── */
+.data-grid,.stat-grid,.transform-grid{
+  box-shadow:0 4px 8px rgba(0,0,0,.25),0 20px 60px rgba(0,0,0,.3),0 0 0 1px rgba(255,255,253,.02);
+}
+.scale-grid,.steps-grid{
+  box-shadow:0 4px 8px rgba(0,0,0,.2),0 16px 48px rgba(0,0,0,.25);
+}
+
+/* ── ENVIRONMENTAL REFLECTIONS — subtle colored light bounce ── */
+.section-black .stat-card:nth-child(2){
+  background:linear-gradient(165deg,rgba(22,33,42,.95),rgba(22,33,42,.7),rgba(200,240,0,.02));
+}
+.section-dark .step-card.active[data-color="yellow"]{
+  background:linear-gradient(165deg,rgba(22,33,42,.95),rgba(22,33,42,.7),rgba(200,240,0,.03));
+}
+.section-dark .step-card.active[data-color="pink"]{
+  background:linear-gradient(165deg,rgba(22,33,42,.95),rgba(22,33,42,.7),rgba(249,170,239,.03));
+}
+.section-dark .step-card.active[data-color="blue"]{
+  background:linear-gradient(165deg,rgba(22,33,42,.95),rgba(22,33,42,.7),rgba(70,115,210,.03));
+}
+
+/* ── MICRO CONTRAST — photographic tonal richness ── */
+.section-hero{filter:contrast(1.03) saturate(1.08)}
+.section-dark{filter:contrast(1.02) saturate(1.05)}
+.vision-text p:last-child{filter:brightness(1.1) saturate(1.2)}
+
+/* ── DEPTH-OF-FIELD BLUR on footer — distance effect ── */
+.footer-link{filter:blur(0px);transition:filter .3s,opacity .25s}
+.footer-col:hover .footer-link{filter:blur(0px)}
+.footer-grid:hover .footer-col:not(:hover) .footer-link{filter:blur(.4px)}
+
+/* ── HEAT SHIMMER — rising distortion above glowing elements ── */
+@keyframes heatShimmer{
+  0%{transform:translateY(0) scaleX(1)}
+  25%{transform:translateY(-2px) scaleX(1.01)}
+  50%{transform:translateY(-1px) scaleX(.99)}
+  75%{transform:translateY(-3px) scaleX(1.005)}
+  100%{transform:translateY(0) scaleX(1)}
+}
+.data-val .counter,.stat-value .counter{
+  display:inline-block;
+  animation:heatShimmer 8s ease-in-out infinite;
+}
+.stat-card:nth-child(2) .counter{animation-delay:-2.5s}
+.stat-card:nth-child(3) .counter{animation-delay:-5s}
+
+/* ── AURORA SWEEP — moving light band across sections ── */
+@keyframes auroraSweep{
+  0%{transform:translateX(-100%) skewX(-15deg)}
+  100%{transform:translateX(200%) skewX(-15deg)}
+}
+.section-black::before{
+  content:'';position:absolute;top:0;left:0;width:30%;height:100%;
+  background:linear-gradient(90deg,transparent,rgba(200,240,0,.008),rgba(200,240,0,.015),rgba(200,240,0,.008),transparent);
+  pointer-events:none;z-index:1;
+  animation:auroraSweep 20s ease-in-out infinite;
+}
+
+/* ── LIVING BORDERS — accent color flows along card edges ── */
+@keyframes borderFlow{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+.step-card.active{
+  border-image:linear-gradient(var(--angle,165deg),rgba(255,255,253,.08),rgba(200,240,0,.12),rgba(255,255,253,.04)) 1;
+  border-style:solid;border-width:1px;
+}
+
+/* ── GLOW INTENSIFICATION on hover — surfaces react to attention ── */
+.bento-item:hover::after{
+  background:linear-gradient(165deg,rgba(255,255,253,.1) 0%,transparent 30%,transparent 70%,rgba(0,0,0,.15) 100%);
+}
+
+/* ── ENHANCED FLOATING — different rhythms create organic feel ── */
+.bento-item:nth-child(1){animation:floatSlow 10s ease-in-out infinite}
+.bento-item:nth-child(2){animation:floatSlow 12s ease-in-out infinite;animation-delay:-3s}
+.bento-item:nth-child(3){animation:floatSlow 11s ease-in-out infinite;animation-delay:-6s}
+
+/* ── VISION TEXT — words feel carved in light ── */
+.vision-text p{
+  text-shadow:0 4px 8px rgba(0,0,0,.6),0 0 2px rgba(255,255,253,.1);
+}
+.vision-text p:last-child{
+  text-shadow:0 4px 8px rgba(0,0,0,.4),0 0 40px rgba(200,240,0,.15),0 0 80px rgba(200,240,0,.08);
+}
+
+/* ── ACCENT GLOW INTENSIFIER — the green radiates energy ── */
+.yolkk-button{
+  box-shadow:0 0 0 1px rgba(255,255,253,.1),0 2px 4px rgba(0,0,0,.2),0 8px 24px rgba(0,0,0,.2);
+}
+.yolkk-button:hover{
+  box-shadow:0 0 0 1px rgba(255,255,253,.15),0 4px 8px rgba(0,0,0,.2),0 16px 40px rgba(0,0,0,.3),0 0 40px rgba(200,240,0,.08);
+}
+
+/* ── PHONE SCREEN GLOW — OLED light bleeding into the room ── */
+.phone{
+  box-shadow:
+    0 1px 2px rgba(0,0,0,.4),
+    0 4px 8px rgba(0,0,0,.3),
+    0 16px 32px rgba(0,0,0,.4),
+    0 48px 80px rgba(0,0,0,.5),
+    0 0 60px rgba(200,240,0,.04),
+    0 0 120px rgba(200,240,0,.02),
+    inset 0 1px 0 rgba(255,255,253,.06),
+    inset 0 -1px 0 rgba(0,0,0,.5);
+}
+
+/* ── MARQUEE DEPTH — text recedes into the background ── */
+.section-marquee{
+  background:linear-gradient(180deg,rgba(20,20,20,.3),var(--black),rgba(20,20,20,.3));
+  border-top:1px solid rgba(255,255,253,.03);
+  border-bottom:1px solid rgba(255,255,253,.02);
+}
 </style>
 </head>
 <body>
+
+<!-- Mouse-following spotlight -->
+<div class="mouse-light" id="mouseLight"></div>
 
 <!-- ═══════════════════════════════════════════════════════
      TRANSITION COVER — Page load animation
@@ -1733,6 +1938,23 @@ document.querySelectorAll('[stagger-link-text]').forEach(el => {
     );
   });
 })();
+
+/* ═══════════════════════════════════════
+   MOUSE SPOTLIGHT — follows cursor for real-time illumination
+   ═══════════════════════════════════════ */
+const mouseLight = document.getElementById('mouseLight');
+if (mouseLight) {
+  let mx = 0, my = 0, cx = 0, cy = 0;
+  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; }, { passive: true });
+  function animateLight() {
+    cx += (mx - cx) * 0.08;
+    cy += (my - cy) * 0.08;
+    mouseLight.style.left = cx + 'px';
+    mouseLight.style.top = cy + 'px';
+    requestAnimationFrame(animateLight);
+  }
+  animateLight();
+}
 
 /* Footer year */
 document.getElementById('year').textContent = new Date().getFullYear();
