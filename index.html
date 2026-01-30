@@ -385,7 +385,7 @@ a[stagger-link] [stagger-link-text]{
   grid-template-columns:1fr 1fr;
   gap:1em;
   border-radius:1.5rem;
-  overflow:hidden;
+  overflow:visible;
 }
 @media(max-width:767px){.bento-grid{grid-template-columns:1fr}}
 .bento-item{
@@ -394,14 +394,14 @@ a[stagger-link] [stagger-link-text]{
   position:relative;
   overflow:hidden;
   background:linear-gradient(165deg,rgba(22,33,42,.95),rgba(22,33,42,.7));
-  border:1px solid rgba(255,255,253,.04);
-  border-top-color:rgba(255,255,253,.08);
-  box-shadow:0 2px 4px rgba(0,0,0,.2),0 8px 32px rgba(0,0,0,.3),0 24px 60px rgba(0,0,0,.15),inset 0 1px 0 rgba(255,255,253,.04);
+  border:none;outline:none;
+  box-shadow:0 2px 4px rgba(0,0,0,.2),0 8px 32px rgba(0,0,0,.3),0 24px 60px rgba(0,0,0,.15);
+  -webkit-mask-image:-webkit-radial-gradient(white,black);
   transition:transform .6s cubic-bezier(.16,1,.3,1),box-shadow .6s cubic-bezier(.16,1,.3,1);
 }
 .bento-item:hover{
   transform:translateY(-4px) scale(1.005);
-  box-shadow:0 4px 8px rgba(0,0,0,.25),0 16px 48px rgba(0,0,0,.35),0 32px 80px rgba(0,0,0,.2),inset 0 1px 0 rgba(255,255,253,.06);
+  box-shadow:0 4px 8px rgba(0,0,0,.25),0 16px 48px rgba(0,0,0,.35),0 32px 80px rgba(0,0,0,.2);
 }
 @media(max-width:767px){.bento-item{min-height:300px;border-radius:1rem}}
 .bento-item.full{grid-column:1/-1}
@@ -528,6 +528,28 @@ a[stagger-link] [stagger-link-text]{
 .msg.show{opacity:1;transform:translateY(0) scale(1)}
 .msg.client{background:rgba(255,255,253,.07);align-self:flex-end;border-bottom-right-radius:4px;box-shadow:0 1px 4px rgba(0,0,0,.2)}
 .msg.ai{background:var(--accent);color:#0a0a0a;align-self:flex-start;border-bottom-left-radius:4px;font-weight:500;max-width:92%;box-shadow:0 2px 8px rgba(200,240,0,.15),0 0 20px rgba(200,240,0,.06)}
+.chat-date-sep{
+  align-self:center;padding:4px 12px;margin:10px 0 4px;
+  opacity:0;transform:translateY(8px) scale(.95);
+  transition:opacity .4s cubic-bezier(.16,1,.3,1),transform .4s cubic-bezier(.16,1,.3,1);
+}
+.chat-date-sep span{
+  background:linear-gradient(135deg,rgba(200,240,0,.08),rgba(255,255,253,.05));
+  color:rgba(255,255,253,.6);font-size:10px;font-weight:600;letter-spacing:.8px;
+  padding:4px 14px;border-radius:10px;
+  border:1px solid rgba(255,255,253,.04);
+  box-shadow:0 2px 8px rgba(0,0,0,.2);
+  text-transform:uppercase;
+}
+.chat-date-sep.show{opacity:1;transform:translateY(0) scale(1)}
+.chat-time-stamp{
+  align-self:center;color:rgba(255,255,253,.25);
+  font-size:9px;letter-spacing:.5px;margin:4px 0 2px;
+  opacity:0;transform:translateY(4px);
+  transition:opacity .3s,transform .3s;
+  font-variant-numeric:tabular-nums;
+}
+.chat-time-stamp.show{opacity:1;transform:translateY(0)}
 .typing-ind{
   align-self:flex-start;padding:10px 16px;
   background:rgba(255,255,253,.04);border-radius:16px;
@@ -598,12 +620,12 @@ a[stagger-link] [stagger-link-text]{
 /* ═══════════════════════════════════════════════════════
    STATS / METRICS
    ═══════════════════════════════════════════════════════ */
-.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1em;border-radius:1.5rem;overflow:hidden}
+.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1em;border-radius:1.5rem;overflow:visible}
 @media(max-width:767px){.stat-grid{grid-template-columns:1fr}}
 .stat-card{
   background:linear-gradient(165deg,rgba(22,33,42,.95),rgba(22,33,42,.7));
-  padding:2.5rem;position:relative;
-  border:1px solid rgba(255,255,253,.03);border-top-color:rgba(255,255,253,.07);
+  padding:2.5rem;position:relative;border-radius:1.5rem;
+  border:none;
   box-shadow:0 2px 4px rgba(0,0,0,.15),0 8px 24px rgba(0,0,0,.2),inset 0 1px 0 rgba(255,255,253,.03);
   transition:transform .5s cubic-bezier(.16,1,.3,1),box-shadow .5s cubic-bezier(.16,1,.3,1),background .4s;
 }
@@ -627,12 +649,12 @@ a[stagger-link] [stagger-link-text]{
 /* ═══════════════════════════════════════════════════════
    BEFORE/AFTER
    ═══════════════════════════════════════════════════════ */
-.transform-grid{display:grid;grid-template-columns:1fr 1fr;gap:1em;border-radius:1.5rem;overflow:hidden}
+.transform-grid{display:grid;grid-template-columns:1fr 1fr;gap:1em;border-radius:1.5rem;overflow:visible}
 @media(max-width:767px){.transform-grid{grid-template-columns:1fr}}
 .transform-side{
   padding:3rem;background:linear-gradient(165deg,rgba(22,33,42,.95),rgba(22,33,42,.7));
-  position:relative;
-  border:1px solid rgba(255,255,253,.03);border-top-color:rgba(255,255,253,.07);
+  position:relative;border-radius:1.5rem;overflow:hidden;
+  border:none;
   box-shadow:0 2px 4px rgba(0,0,0,.15),0 8px 24px rgba(0,0,0,.2),inset 0 1px 0 rgba(255,255,253,.03);
   transition:transform .5s cubic-bezier(.16,1,.3,1),box-shadow .5s cubic-bezier(.16,1,.3,1);
 }
@@ -640,7 +662,7 @@ a[stagger-link] [stagger-link-text]{
   transform:translateY(-3px);
   box-shadow:0 4px 8px rgba(0,0,0,.2),0 16px 40px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,253,.05);
 }
-.transform-side::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
+.transform-side::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;border-radius:1.5rem 1.5rem 0 0}
 .transform-side.before::before{background:linear-gradient(90deg,transparent,rgba(255,70,70,.2),transparent)}
 .transform-side.after::before{background:linear-gradient(90deg,transparent,rgba(200,240,0,.2),transparent)}
 .tf-icon{
@@ -658,7 +680,7 @@ a[stagger-link] [stagger-link-text]{
 /* ═══════════════════════════════════════════════════════
    STEPS
    ═══════════════════════════════════════════════════════ */
-.steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1em;border-radius:1.5rem;overflow:hidden}
+.steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1em;border-radius:1.5rem;overflow:visible}
 @media(max-width:767px){.steps-grid{grid-template-columns:1fr}}
 .step-card{
   background:linear-gradient(165deg,rgba(22,33,42,.95),rgba(22,33,42,.7));
@@ -708,15 +730,38 @@ a[stagger-link] [stagger-link-text]{
   border:1px solid rgba(255,255,253,.02);border-top-color:rgba(255,255,253,.06);
   box-shadow:inset 0 1px 0 rgba(255,255,253,.03);
   transition:transform .5s cubic-bezier(.16,1,.3,1),box-shadow .5s cubic-bezier(.16,1,.3,1),background .4s;
+  position:relative;overflow:hidden;
 }
+.data-cell::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,rgba(200,240,0,.15),transparent);
+  opacity:0;transition:opacity .5s;
+}
+.data-cell:hover::before{opacity:1}
 .data-cell:hover{
   background:linear-gradient(165deg,rgba(30,44,56,.95),rgba(26,38,48,.8));
-  transform:translateY(-2px);
-  box-shadow:0 4px 16px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,253,.05);
+  transform:translateY(-4px) scale(1.02);
+  box-shadow:0 4px 16px rgba(0,0,0,.3),0 0 40px rgba(200,240,0,.04),inset 0 1px 0 rgba(255,255,253,.05);
+}
+.data-cell:first-child{background:linear-gradient(165deg,rgba(22,40,30,.95),rgba(22,33,42,.7))}
+.data-cell:first-child .data-val{color:var(--accent);font-size:clamp(1.8rem,3.5vw,2.8rem)}
+.data-cell:first-child::after{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(circle at 50% 0%,rgba(200,240,0,.06),transparent 60%);
 }
 .data-val{font-family:'Archivo',sans-serif;font-size:clamp(1.6rem,3vw,2.4rem);font-weight:700;letter-spacing:-1px;font-variant-numeric:tabular-nums}
 .data-val .strike{text-decoration:line-through;color:var(--grey-dark);font-size:.55em;font-weight:400;display:block;margin-bottom:2px}
 .data-lbl{font-size:.65rem;color:var(--grey-dark);margin-top:10px;text-transform:uppercase;letter-spacing:1.5px;font-weight:600}
+.data-projection-tag{
+  text-align:center;margin-top:1.5rem;
+  font-size:.7rem;letter-spacing:2px;text-transform:uppercase;
+  color:var(--accent);font-weight:600;
+  opacity:.6;
+  animation:accentPulse 4s ease-in-out infinite;
+}
+.data-cell:first-child .data-lbl{color:var(--accent);opacity:.7}
+/* Monthly revenue sub-line */
+.data-sub{font-size:.55rem;color:var(--grey-dark);margin-top:4px;letter-spacing:1px;text-transform:uppercase;font-weight:500;opacity:.5}
 
 /* ═══════════════════════════════════════════════════════
    VISION
@@ -730,23 +775,46 @@ a[stagger-link] [stagger-link-text]{
 .vision-text p .dim{color:var(--grey-dark)}
 .vision-text p:last-child{color:var(--accent)}
 
-.scale-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;border-radius:1.5rem;overflow:hidden;max-width:700px;margin:0 auto}
-@media(max-width:767px){.scale-grid{grid-template-columns:1fr}}
+.scale-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;border-radius:1.5rem;overflow:hidden;max-width:800px;margin:0 auto}
+@media(max-width:767px){.scale-grid{grid-template-columns:1fr !important}.scale-arrow{transform:rotate(90deg);padding:.3rem;font-size:.9rem}}
 .scale-cell{
   background:linear-gradient(165deg,rgba(22,33,42,.95),rgba(22,33,42,.7));
-  padding:2.5rem;text-align:center;
+  padding:2.5rem;text-align:center;position:relative;overflow:hidden;
   border:1px solid rgba(255,255,253,.02);border-top-color:rgba(255,255,253,.06);
   box-shadow:inset 0 1px 0 rgba(255,255,253,.03);
-  transition:transform .5s cubic-bezier(.16,1,.3,1),box-shadow .5s cubic-bezier(.16,1,.3,1),background .4s;
+  transition:transform .6s cubic-bezier(.16,1,.3,1),box-shadow .6s cubic-bezier(.16,1,.3,1),background .4s;
 }
 .scale-cell:hover{
   background:linear-gradient(165deg,rgba(30,44,56,.95),rgba(26,38,48,.8));
-  transform:translateY(-2px);
-  box-shadow:0 4px 16px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,253,.05);
+  transform:translateY(-4px) scale(1.03);
+  box-shadow:0 8px 32px rgba(0,0,0,.4),0 0 40px rgba(200,240,0,.04),inset 0 1px 0 rgba(255,255,253,.05);
 }
 .scale-cell .sc-n{font-family:'Archivo',sans-serif;font-size:1.1rem;font-weight:600}
 .scale-cell .sc-rev{font-family:'Archivo',sans-serif;font-size:1.8rem;font-weight:700;letter-spacing:-1px;margin-top:4px;color:var(--accent)}
 .scale-cell .sc-lbl{font-size:.6rem;color:var(--grey-dark);text-transform:uppercase;letter-spacing:1px;margin-top:8px;font-weight:600}
+/* Hero scale cell — the $37M target */
+.scale-cell.scale-hero{
+  background:linear-gradient(165deg,rgba(22,40,30,.95),rgba(14,28,20,.85));
+  border:1px solid rgba(200,240,0,.1);border-top-color:rgba(200,240,0,.2);
+}
+.scale-cell.scale-hero::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,rgba(200,240,0,.4),transparent);
+}
+.scale-cell.scale-hero::after{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(circle at 50% 0%,rgba(200,240,0,.08),transparent 60%);
+}
+.scale-cell.scale-hero .sc-rev{font-size:2.4rem;text-shadow:0 0 40px rgba(200,240,0,.2),0 0 80px rgba(200,240,0,.08);animation:heroGlow 3s ease-in-out infinite}
+.scale-cell.scale-hero .sc-n{color:var(--accent);opacity:.9}
+@keyframes heroGlow{0%,100%{text-shadow:0 0 40px rgba(200,240,0,.2),0 0 80px rgba(200,240,0,.08)}50%{text-shadow:0 0 60px rgba(200,240,0,.3),0 0 120px rgba(200,240,0,.12)}}
+/* Arrow connector between cells */
+.scale-arrow{
+  display:flex;align-items:center;justify-content:center;
+  color:var(--accent);opacity:.3;font-size:1.2rem;
+  background:linear-gradient(165deg,rgba(22,33,42,.5),rgba(22,33,42,.3));
+  border:none;
+}
 
 .divider-gradient{height:1px;background:linear-gradient(90deg,transparent,rgba(200,240,0,.15),transparent);max-width:300px;width:100%;margin:3rem auto;box-shadow:0 0 20px rgba(200,240,0,.05),0 0 40px rgba(200,240,0,.02)}
 
@@ -1137,8 +1205,7 @@ body::before{animation:grainShift .5s steps(10) infinite}
   100%{background-position:0% 50%}
 }
 .step-card.active{
-  border-image:linear-gradient(var(--angle,165deg),rgba(255,255,253,.08),rgba(200,240,0,.12),rgba(255,255,253,.04)) 1;
-  border-style:solid;border-width:1px;
+  background:linear-gradient(165deg,rgba(22,33,42,.95),rgba(22,33,42,.7));
 }
 
 /* ── GLOW INTENSIFICATION on hover — surfaces react to attention ── */
@@ -1271,7 +1338,7 @@ body:hover .god-rays{opacity:1}
 
 /* ── EDGE LIGHT CATCHING — surfaces catch directional light ── */
 .transform-side::after{
-  content:'';position:absolute;inset:0;pointer-events:none;
+  content:'';position:absolute;inset:0;pointer-events:none;border-radius:inherit;
   background:linear-gradient(170deg,rgba(255,255,253,.06) 0%,transparent 20%,transparent 80%,rgba(0,0,0,.15) 100%);
 }
 .data-cell::before{
@@ -1280,12 +1347,7 @@ body:hover .god-rays{opacity:1}
 }
 .data-cell{position:relative;overflow:hidden}
 
-/* ── GLASS EDGE REFRACTION — rainbow line on card borders ── */
-.bento-item{
-  border-image:linear-gradient(165deg,
-    rgba(255,255,253,.12),rgba(200,240,0,.06),rgba(70,115,210,.04),rgba(255,255,253,.06)) 1;
-  border-style:solid;border-width:1px;
-}
+/* ── GLASS EDGE REFRACTION — removed, border-image breaks border-radius ── */
 
 /* ── SECTION ATMOSPHERE — each section has its own light temperature ── */
 #demo{background:linear-gradient(180deg,var(--black),rgba(8,12,16,1),var(--black))}
@@ -1594,18 +1656,18 @@ html{
           <span class="line mid">your coach</span>
           <span class="line">never slept?</span>
         </div>
-        <h1 class="heading-h5 text-colour-white text-weight-medium" anm-scroll-text anm-delay="0.3" style="opacity:.5;margin-top:1rem">AI-Powered Fitness Coaching</h1>
+        <h1 class="heading-h5 text-colour-white text-weight-medium" anm-scroll-text anm-delay="0.3" style="opacity:.5;margin-top:1rem">AI-Powered Coaching Platform</h1>
       </div>
       <div class="hero-right">
         <div class="hero-right-stack">
           <div class="blur-bento" anm-scroll-text anm-delay="0.4">
             <div class="flex-horizontal align-centre gap-0-5">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--review-yellow)"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
-              <p class="text-regular no-margin text-colour-white" style="white-space:nowrap">5 Stars · 280 Clients</p>
+              <p class="text-regular no-margin text-colour-white" style="white-space:nowrap">5 Stars · 150,000+ Users</p>
             </div>
           </div>
           <div class="blur-bento hero-text-bento" anm-scroll-text anm-delay="0.5">
-            <p class="text-small text-colour-white no-margin">Visually powerful AI that coaches your clients 24/7 on WhatsApp, email, and SMS.</p>
+            <p class="text-small text-colour-white no-margin">AI that coaches your clients 24/7 on WhatsApp, email, and SMS. <span style="color:var(--accent);font-weight:600">Dramatically reduce churn.</span></p>
           </div>
           <div class="flex-horizontal gap-1" anm-scroll-text anm-delay="0.6" style="margin-top:.5rem">
             <a href="#demo" class="yolkk-button">
@@ -1670,7 +1732,8 @@ html{
           <div class="bento-item" style="background:var(--black);display:flex;flex-direction:column;padding:2.5rem">
             <p class="text-x-small text-weight-semibold" style="letter-spacing:2.5px;text-transform:uppercase;color:var(--grey-dark);margin-bottom:1.5rem">Live Demo</p>
             <h2 class="heading-h2" anm-scroll-text anm-split="words" anm-distance="50%" style="color:var(--white);margin-bottom:1rem">This is how Lyrox coaches.</h2>
-            <p class="text-regular" anm-scroll-text anm-delay="0.2" style="color:var(--grey-dark);margin-bottom:2rem;max-width:420px">Real conversation. Real-time AI responses. Your clients get expert-level coaching — every message, every time.</p>
+            <p class="text-regular" anm-scroll-text anm-delay="0.2" style="color:var(--grey-dark);margin-bottom:1rem;max-width:420px">Human coaches forget. They're slow. They burn out. Lyrox delivers expert-level coaching — every message, every time.</p>
+            <p class="text-small" anm-scroll-text anm-delay="0.3" style="color:var(--accent);margin-bottom:2rem;max-width:420px;opacity:.6;font-weight:500">Watch a real 4-day coaching relationship unfold →</p>
             <div style="display:flex;justify-content:center" class="reflection-surface">
               <div class="phone">
                 <div class="phone-notch"></div>
@@ -1693,11 +1756,11 @@ html{
           <div style="display:flex;flex-direction:column;gap:1em">
             <div class="bento-item" style="background:var(--black);flex:1;display:flex;flex-direction:column;justify-content:center;padding:2.5rem">
               <div class="stat-value" anm-scroll-text anm-split="chars" anm-distance="100%" style="font-family:Archivo,sans-serif;font-size:clamp(2.5rem,5vw,4rem);font-weight:700;letter-spacing:-2px;line-height:1;color:var(--accent)">24/7</div>
-              <p class="text-small" anm-scroll-text anm-delay="0.1" style="color:var(--grey-dark);margin-top:.75rem">Always available. Never calls in sick. Never needs a break.</p>
+              <p class="text-small" anm-scroll-text anm-delay="0.1" style="color:var(--grey-dark);margin-top:.75rem">Your staff sleeps. Your clients don't. Lyrox never misses a message.</p>
             </div>
             <div class="bento-item" style="background:var(--black);flex:1;display:flex;flex-direction:column;justify-content:center;padding:2.5rem">
-              <div class="stat-value" anm-scroll-text anm-split="chars" anm-distance="100%" style="font-family:Archivo,sans-serif;font-size:clamp(2.5rem,5vw,4rem);font-weight:700;letter-spacing:-2px;line-height:1;color:var(--accent)">&lt;3s</div>
-              <p class="text-small" anm-scroll-text anm-delay="0.1" style="color:var(--grey-dark);margin-top:.75rem">Response time. Every message. Every client. Every time.</p>
+              <div class="stat-value" anm-scroll-text anm-split="chars" anm-distance="100%" style="font-family:Archivo,sans-serif;font-size:clamp(2.5rem,5vw,4rem);font-weight:700;letter-spacing:-2px;line-height:1;color:var(--accent)">Seconds</div>
+              <p class="text-small" anm-scroll-text anm-delay="0.1" style="color:var(--grey-dark);margin-top:.75rem">Clients wait hours for a human reply. Lyrox responds instantly.</p>
             </div>
             <div class="bento-item" style="background:var(--black);flex:1;display:flex;flex-direction:column;justify-content:center;padding:2.5rem">
               <div class="stat-value" anm-scroll-text anm-split="chars" anm-distance="100%" style="font-family:Archivo,sans-serif;font-size:clamp(2.5rem,5vw,4rem);font-weight:700;letter-spacing:-2px;line-height:1;color:var(--accent)">$100<span style="font-size:.35em;color:var(--grey-dark)">/mo</span></div>
@@ -1735,12 +1798,18 @@ html{
           <div class="transform-side before" anm-scroll-text anm-distance="30%">
             <div class="tf-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
             <h4 class="heading-h4" style="margin-bottom:1rem">Without Lyrox</h4>
-            <p class="text-small" style="color:var(--grey-dark)">Answering messages at 2AM. Clients churning because you can't respond fast enough. Capped at 30 clients. Burning out. No time to grow your business.</p>
+            <p class="text-small" style="color:var(--grey-dark)">Answering messages at 2AM. Clients churning because you can't respond fast enough. Capped at 30 clients. Burning out.</p>
+            <div style="margin-top:1.2rem;padding:.6rem .8rem;background:rgba(255,70,70,.06);border:1px solid rgba(255,70,70,.1);border-radius:8px">
+              <p class="text-small" style="color:rgba(255,100,100,.7);font-weight:600;font-size:.7rem;margin:0">70% CHURN · 30 CLIENT CAP · NO SCALE</p>
+            </div>
           </div>
           <div class="transform-side after" anm-scroll-text anm-delay="0.15" anm-distance="30%">
             <div class="tf-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg></div>
             <h4 class="heading-h4" style="margin-bottom:1rem">With Lyrox</h4>
-            <p class="text-small" style="color:var(--grey-dark)">AI handles every client instantly. You focus on growing your business. Scale past 280 clients without hiring anyone. Higher retention. Higher revenue.</p>
+            <p class="text-small" style="color:var(--grey-dark)">AI handles every client instantly. You focus on growing your business. Scale past 150,000 users without hiring anyone.</p>
+            <div style="margin-top:1.2rem;padding:.6rem .8rem;background:rgba(200,240,0,.06);border:1px solid rgba(200,240,0,.1);border-radius:8px">
+              <p class="text-small" style="color:var(--accent);font-weight:600;font-size:.7rem;margin:0;opacity:.8">&lt;10% CHURN · UNLIMITED SCALE · 92% MARGINS</p>
+            </div>
           </div>
         </div>
 
@@ -1773,23 +1842,23 @@ html{
     <div style="text-align:center;max-width:600px;margin:0 auto 4rem">
       <p class="text-x-small text-weight-semibold" anm-scroll-text style="letter-spacing:2.5px;text-transform:uppercase;color:var(--grey-dark);margin-bottom:1rem">How It Works</p>
       <h2 class="heading-h2" anm-scroll-text anm-split="words" anm-distance="50%">Three steps. That's it.</h2>
-      <p class="text-regular" anm-scroll-text anm-delay="0.2" style="color:var(--grey-dark);margin-top:1rem">No onboarding calls. No complex setup. No learning curve.</p>
+      <p class="text-regular" anm-scroll-text anm-delay="0.2" style="color:var(--grey-dark);margin-top:1rem">Other platforms take weeks to set up. Lyrox takes three steps.</p>
     </div>
     <div class="steps-grid" id="stepsRow">
       <div class="step-card" data-color="yellow">
         <div class="step-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg></div>
         <h4 class="heading-h4" style="margin-bottom:.75rem">Connect</h4>
-        <p class="text-small" style="color:var(--grey-dark)">Bring your brand, your voice, your clients. We handle the rest.</p>
+        <p class="text-small" style="color:var(--grey-dark)">Building from scratch takes months. Lyrox plugs into your brand, your voice, your clients in minutes.</p>
       </div>
       <div class="step-card" data-color="pink">
         <div class="step-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg></div>
         <h4 class="heading-h4" style="margin-bottom:.75rem">AI Learns</h4>
-        <p class="text-small" style="color:var(--grey-dark)">Lyrox studies your coaching style and adapts to every individual client.</p>
+        <p class="text-small" style="color:var(--grey-dark)">Generic advice doesn't work. Lyrox studies your coaching style and adapts to every individual client.</p>
       </div>
       <div class="step-card" data-color="blue">
         <div class="step-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4z"/></svg></div>
         <h4 class="heading-h4" style="margin-bottom:.75rem">Clients Thrive</h4>
-        <p class="text-small" style="color:var(--grey-dark)">WhatsApp, email, SMS — wherever your clients are, Lyrox is there.</p>
+        <p class="text-small" style="color:var(--grey-dark)">Clients fall through the cracks when coaches can't keep up. Lyrox powers every relationship — built into the transaction, invisible to the client.</p>
       </div>
     </div>
   </div>
@@ -1815,21 +1884,27 @@ html{
      DATA WALL
      ═══════════════════════════════════════════════════════ -->
 <section class="section-black padding-section" id="data">
-  <div class="dali-blob b1" style="width:400px;height:400px;top:-20%;left:20%"></div>
-  <div class="dali-blob b2" style="width:350px;height:350px;bottom:-15%;right:15%"></div>
+  <div class="dali-blob b1" style="width:500px;height:500px;top:-20%;left:10%"></div>
+  <div class="dali-blob b2" style="width:400px;height:400px;bottom:-15%;right:10%"></div>
+  <div class="dali-blob b3" style="width:300px;height:300px;top:30%;right:30%"></div>
   <div class="perspective-grid"><div class="perspective-grid-inner"></div></div>
   <div class="container-large padding-global" style="position:relative;z-index:2">
+    <div style="text-align:center;margin-bottom:3rem">
+      <p class="text-x-small text-weight-semibold" anm-scroll-text style="letter-spacing:2.5px;text-transform:uppercase;color:var(--grey-dark);margin-bottom:1rem">Traction</p>
+      <h2 class="heading-h2" anm-scroll-text anm-split="words" anm-distance="50%" style="color:var(--white)">The numbers <span style="color:var(--accent)">speak.</span></h2>
+    </div>
     <div class="data-grid" id="dataGrid">
       <div class="data-cell" anm-scroll-text anm-distance="40%">
-        <div class="data-val"><span class="counter" data-prefix="$" data-to="35" data-suffix="K">$0K</span></div>
-        <div class="data-lbl">Monthly Revenue</div>
+        <div class="data-val"><span class="counter-decimal" data-to="3.1" data-prefix="$" data-suffix="M">$0M</span></div>
+        <div class="data-lbl">Platform Income /mo</div>
+        <div class="data-sub">$37M / year</div>
       </div>
       <div class="data-cell" anm-scroll-text anm-delay="0.05" anm-distance="40%">
-        <div class="data-val"><span class="counter" data-to="280">0</span></div>
-        <div class="data-lbl">Active Clients</div>
+        <div class="data-val"><span class="counter" data-to="150" data-suffix="K">0K</span></div>
+        <div class="data-lbl">Users Coached</div>
       </div>
       <div class="data-cell" anm-scroll-text anm-delay="0.1" anm-distance="40%">
-        <div class="data-val"><span class="counter" data-to="87" data-suffix="%">0%</span></div>
+        <div class="data-val"><span class="counter" data-to="92" data-suffix="%">0%</span></div>
         <div class="data-lbl">Margins</div>
       </div>
       <div class="data-cell" anm-scroll-text anm-delay="0.15" anm-distance="40%">
@@ -1837,12 +1912,31 @@ html{
         <div class="data-lbl">CAC</div>
       </div>
       <div class="data-cell" anm-scroll-text anm-delay="0.2" anm-distance="40%">
-        <div class="data-val"><span class="strike">70%</span><span class="counter" data-to="30" data-suffix="%">0%</span></div>
+        <div class="data-val"><span class="strike">70%</span><span class="counter" data-to="10" data-suffix="%">0%</span></div>
         <div class="data-lbl">Churn</div>
       </div>
     </div>
+    <div class="data-projection-tag" anm-scroll-text anm-delay="0.3" anm-distance="20%">Year 3 Projection · 1,000 Coaches</div>
   </div>
 </section>
+
+<!-- ═══════════════════════════════════════════════════════
+     MARQUEE — VISION TRANSITION
+     ═══════════════════════════════════════════════════════ -->
+<div class="section-marquee section-black" style="border-top:1px solid rgba(255,255,253,.03);border-bottom:1px solid rgba(255,255,253,.03)" data-marquee-scroll-direction-target data-marquee-speed="25" data-marquee-direction="right" data-marquee-duplicate="3" data-marquee-scroll-speed="8">
+  <div data-marquee-scroll-target class="marquee-scroll">
+    <div data-marquee-collection-target class="marquee-collection">
+      <div class="marquee-item"><h2 class="marquee-heading large" style="color:var(--accent)">$37M</h2></div>
+      <div class="marquee-item"><div class="marquee-dot"></div></div>
+      <div class="marquee-item"><h2 class="marquee-heading large">1,000 Coaches</h2></div>
+      <div class="marquee-item"><div class="marquee-dot"></div></div>
+      <div class="marquee-item"><h2 class="marquee-heading large" style="color:var(--accent)">150K Users</h2></div>
+      <div class="marquee-item"><div class="marquee-dot"></div></div>
+      <div class="marquee-item"><h2 class="marquee-heading large">92% Margins</h2></div>
+      <div class="marquee-item"><div class="marquee-dot"></div></div>
+    </div>
+  </div>
+</div>
 
 <!-- ═══════════════════════════════════════════════════════
      VISION
@@ -1856,10 +1950,13 @@ html{
       <p anm-scroll-text anm-split="words" anm-distance="50%" anm-delay="0.3">Lyrox has coaches.</p>
     </div>
     <div class="divider-gradient"></div>
-    <div class="scale-grid" id="scaleGrid">
-      <div class="scale-cell" anm-scroll-text anm-distance="30%"><div class="sc-n">10 coaches</div><div class="sc-rev">$840K</div><div class="sc-lbl">Annual Revenue</div></div>
-      <div class="scale-cell" anm-scroll-text anm-delay="0.1" anm-distance="30%"><div class="sc-n">40 coaches</div><div class="sc-rev">$3.36M</div><div class="sc-lbl">Annual Revenue</div></div>
-      <div class="scale-cell" anm-scroll-text anm-delay="0.2" anm-distance="30%"><div class="sc-n">100 coaches</div><div class="sc-rev">$8.4M</div><div class="sc-lbl">Annual Revenue</div></div>
+    <p style="text-align:center;color:var(--grey-dark);font-size:.85rem;max-width:500px;margin:0 auto 2.5rem;line-height:1.6" anm-scroll-text anm-delay="0.4">Every coach on the platform pays a platform fee. The AI does the work. The coach brings the clients. <span style="color:var(--accent);font-weight:600">Lyrox powers every transaction.</span></p>
+    <div class="scale-grid" id="scaleGrid" style="grid-template-columns:1fr auto 1fr auto 1fr">
+      <div class="scale-cell" anm-scroll-text anm-distance="30%"><div class="sc-n">100 coaches</div><div class="sc-rev">$3.7M</div><div class="sc-lbl">Projected Annual Income</div></div>
+      <div class="scale-arrow" anm-scroll-text anm-delay="0.05" anm-distance="30%">→</div>
+      <div class="scale-cell" anm-scroll-text anm-delay="0.1" anm-distance="30%"><div class="sc-n">500 coaches</div><div class="sc-rev">$18.6M</div><div class="sc-lbl">Projected Annual Income</div></div>
+      <div class="scale-arrow" anm-scroll-text anm-delay="0.15" anm-distance="30%">→</div>
+      <div class="scale-cell scale-hero" anm-scroll-text anm-delay="0.2" anm-distance="30%"><div class="sc-n">1,000 coaches</div><div class="sc-rev">$37M</div><div class="sc-lbl">Projected Annual Income</div></div>
     </div>
   </div>
 </section>
@@ -1877,7 +1974,9 @@ html{
 
   <div class="container-large padding-global" style="position:relative;z-index:2">
     <div class="footer-cta">
-      <h2 class="heading-h2" anm-scroll-text anm-split="words" anm-distance="50%" style="margin-bottom:2rem">Ready to scale?</h2>
+      <p class="text-x-small text-weight-semibold" anm-scroll-text style="letter-spacing:2.5px;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;opacity:.6">$11B Market · AI-First · Zero CAC</p>
+      <h2 class="heading-h2" anm-scroll-text anm-split="words" anm-distance="50%" style="margin-bottom:.8rem">Ready to scale?</h2>
+      <p class="text-regular" anm-scroll-text anm-delay="0.1" style="color:var(--grey-dark);margin-bottom:2rem">Join the platform that's replacing human coaches.</p>
       <div class="flex-horizontal justify-centre gap-1" anm-scroll-text anm-delay="0.2" style="flex-wrap:wrap">
         <a href="mailto:coach@lyrox.ai" class="yolkk-button">
           <span>I'm a coach</span>
@@ -2169,7 +2268,21 @@ document.querySelectorAll('.stat-grid, #dataGrid').forEach(el => {
         function tick() {
           frame++;
           const ease = 1 - Math.pow(1 - frame / frames, 3);
-          c.textContent = prefix + Math.round(to * ease) + suffix;
+          c.textContent = prefix + Math.round(to * ease).toLocaleString() + suffix;
+          if (frame < frames) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+      });
+      el.querySelectorAll('.counter-decimal').forEach(c => {
+        const to = parseFloat(c.dataset.to);
+        const prefix = c.dataset.prefix || '';
+        const suffix = c.dataset.suffix || '';
+        const frames = 60;
+        let frame = 0;
+        function tick() {
+          frame++;
+          const ease = 1 - Math.pow(1 - frame / frames, 3);
+          c.textContent = prefix + (to * ease).toFixed(1) + suffix;
           if (frame < frames) requestAnimationFrame(tick);
         }
         requestAnimationFrame(tick);
@@ -2186,26 +2299,36 @@ const typingDots = document.getElementById('typingDots');
 const chatScript = [
   /* Lyrox knows this person. 3 months in. Knows their knee, their schedule, their taste, their goal. */
 
-  /* 1. Morning — Lyrox initiates with context */
+  /* Day 1 — Monday morning */
+  { who:'date', text:'Monday, Jan 27' },
+  { who:'time', text:'7:12 AM' },
   { who:'ai', text:'morning. you slept 5 hours last night so i made today\'s workout lighter. your knee has been feeling better so i added goblet squats back in.' },
   { who:'ai', html:'tap when you\'re ready.<div class="link-preview"><div class="link-preview-img"><div class="lp-icon"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div></div><div class="link-preview-body"><div class="link-preview-title">Lower Body (Light)</div><div class="link-preview-desc">4 exercises · video demos · 40 min · adjusted for recovery</div><div class="link-preview-domain">lyrox.ai/workout</div></div></div>' },
 
-  /* 2. Client asks about dinner — real life situation */
+  /* Same day — evening */
+  { who:'time', text:'6:48 PM' },
   { who:'client', text:'going out to dinner tonight at nobu. what should i order' },
   { who:'ai', text:'get the black cod miso. 38P, 12C, 22F. skip the rice, get the edamame side instead. that keeps you under your macros and you still enjoy it.' },
 
-  /* 3. Client feeling off */
+  /* Day 2 — Tuesday */
+  { who:'date', text:'Tuesday, Jan 28' },
+  { who:'time', text:'10:23 AM' },
   { who:'client', text:'honestly i feel like crap today' },
   { who:'ai', text:'yeah 5 hours of sleep will do that. skip the gym, go for a 20 min walk instead. i adjusted your meals for today too, a little more carbs to keep your energy up.', extra:'<div class="link-preview" style="margin-top:6px"><div class="link-preview-body"><div class="link-preview-title">Today\'s Adjusted Meals</div><div class="link-preview-desc">3 meals · higher carbs · comfort food that still works</div><div class="link-preview-domain">lyrox.ai/meals</div></div></div>' },
 
-  /* 4. Fridge situation */
+  /* Same day — evening */
+  { who:'time', text:'7:35 PM' },
   { who:'client', text:'only have eggs and some leftover chicken' },
   { who:'ai', html:'that\'s enough. made you something quick.<div class="link-preview"><div class="link-preview-img"><div class="lp-icon"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div></div><div class="link-preview-body"><div class="link-preview-title">Chicken Egg Scramble</div><div class="link-preview-desc">41P · 3C · 18F · 340 cal · video recipe 1:20</div><div class="link-preview-domain">lyrox.ai/meal</div></div></div>' },
 
-  /* 5. Groceries with ordering */
+  /* Day 3 — Wednesday */
+  { who:'date', text:'Wednesday, Jan 29' },
+  { who:'time', text:'9:00 AM' },
   { who:'ai', text:'by the way you\'re running low on groceries. here\'s this week\'s list, you can order straight from there.', extra:'<div class="link-preview" style="margin-top:6px"><div class="link-preview-body"><div class="link-preview-title">Weekly Groceries</div><div class="link-preview-desc">9 items · order on amazon · estimated $47</div><div class="link-preview-domain">lyrox.ai/groceries</div></div></div>' },
 
-  /* 6. Progress — Lyrox brings it up because it's time */
+  /* Day 4 — Thursday (3-month milestone) */
+  { who:'date', text:'Thursday, Jan 30' },
+  { who:'time', text:'8:15 AM' },
   { who:'ai', text:'hey it\'s been 3 months. look at this.', extra:'<div class="link-preview" style="margin-top:6px"><div class="link-preview-body"><div class="link-preview-title">Your 3-Month Progress</div><div class="link-preview-desc">down 11 lbs · squat 95 to 155 · waist down 2 inches</div><div class="progress-bar-mini"><div class="progress-bar-fill" style="width:50%"></div></div><div class="link-preview-domain" style="margin-top:4px">lyrox.ai/progress</div></div></div>' },
   { who:'client', text:'wow i didn\'t even realize' },
   { who:'ai', text:'that\'s the point. you just showed up and it happened. keep going, you\'re halfway there.' },
@@ -2215,7 +2338,10 @@ let si = 0, chatActive = false;
 function runChat() {
   if (si >= chatScript.length) return;
   const m = chatScript[si];
-  if (m.who === 'ai') {
+  if (m.who === 'date' || m.who === 'time') {
+    pushMsg(m); si++;
+    setTimeout(runChat, m.who === 'date' ? 600 : 300);
+  } else if (m.who === 'ai') {
     typingDots.classList.add('show');
     setTimeout(() => {
       typingDots.classList.remove('show');
@@ -2230,8 +2356,16 @@ function runChat() {
 }
 function pushMsg(m) {
   const d = document.createElement('div');
-  d.className = 'msg ' + m.who;
-  d.innerHTML = m.html || (m.text.replace(/\n/g, '<br>') + (m.extra || ''));
+  if (m.who === 'date') {
+    d.className = 'chat-date-sep';
+    d.innerHTML = '<span>' + m.text + '</span>';
+  } else if (m.who === 'time') {
+    d.className = 'chat-time-stamp';
+    d.textContent = m.text;
+  } else {
+    d.className = 'msg ' + m.who;
+    d.innerHTML = m.html || (m.text.replace(/\n/g, '<br>') + (m.extra || ''));
+  }
   chatBox.insertBefore(d, typingDots);
   requestAnimationFrame(() => { d.classList.add('show'); chatBox.scrollTop = chatBox.scrollHeight; });
 }
