@@ -30,11 +30,16 @@ body *{color:inherit}
   --grey:#f1f1f1;
   --check-green:#3c7c43;
   --review-yellow:#f1d511;
+  --dull-yellow:#f7dc68;
   --color:#141414;
   --green:#2e4f5e;
   --green-dark:#16212a;
   --grey-dark:#aeaeae;
   --mint:#00E5A0;
+  --accent:#c8f000;
+  --pink:#f9aaef;
+  --blue:#4673d2;
+  --red:#ea5c5c;
 }
 
 /* ═══════════════════════════════════════════════════════
@@ -131,7 +136,7 @@ body{
    ═══════════════════════════════════════════════════════ */
 .transition-cover{
   position:fixed;inset:0;z-index:9999;
-  background:var(--black);
+  background:linear-gradient(155deg,#090d11,var(--green-dark));
   display:flex;align-items:center;justify-content:center;
   pointer-events:none;
 }
@@ -154,6 +159,8 @@ body{
 .navbar.scrolled{
   background-color:rgba(20,20,20,.85);
   backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(255,255,253,.04);
+  box-shadow:0 1px 2px rgba(0,0,0,.2),0 4px 16px rgba(0,0,0,.15);
 }
 .container-navbar{
   display:flex;justify-content:space-between;align-items:center;
@@ -165,7 +172,7 @@ body{
   font-weight:700;font-size:1.3rem;letter-spacing:-1px;
   position:relative;
 }
-.nav-logo-text span{color:var(--mint)}
+.nav-logo-text span{color:var(--accent)}
 .nav-menu{display:flex;gap:10px;align-items:center}
 @media(max-width:767px){.nav-menu{display:none}}
 .nav-link{
@@ -269,10 +276,12 @@ a[stagger-link] [stagger-link-text]{
   -webkit-backdrop-filter:blur(15px);
   backdrop-filter:blur(15px);
   background-color:rgba(255,255,253,.05);
-  border:1px solid rgba(241,241,241,.5);
+  border:1px solid rgba(255,255,253,.08);
+  border-top-color:rgba(255,255,253,.15);
   border-radius:.75rem;
   width:100%;
   padding:.4rem .75rem;
+  box-shadow:0 1px 2px rgba(0,0,0,.3),0 4px 16px rgba(0,0,0,.2),inset 0 1px 0 rgba(255,255,253,.06);
 }
 .blur-bento.hero-text-bento{padding:.55rem 1rem}
 
@@ -301,6 +310,7 @@ a[stagger-link] [stagger-link-text]{
   font-size:clamp(3rem,15cqw,8rem);
   font-weight:600;line-height:1.05;
   color:var(--white);
+  text-shadow:0 0 80px rgba(200,240,0,.06),0 2px 4px rgba(0,0,0,.3);
 }
 .hero-text-main .line{display:block}
 .hero-text-main .line.dim{opacity:.3}
@@ -321,17 +331,21 @@ a[stagger-link] [stagger-link-text]{
 
 .hero-right-stack{display:flex;flex-direction:column;gap:.75rem}
 
-/* Color overlay circles */
+/* Color overlay circles — rotating orbs like Yolkk */
 .color-overlays{position:absolute;inset:0;z-index:-1;overflow:hidden}
 .color-overlay{
   position:absolute;border-radius:50%;
   filter:blur(120px);opacity:0;
   animation:fadeOverlay 3s ease forwards;
 }
-.color-overlay.c1{width:600px;height:600px;background:var(--green);top:10%;left:20%;animation-delay:.5s}
-.color-overlay.c2{width:500px;height:500px;background:var(--mint);top:40%;right:10%;animation-delay:1s;opacity:0}
-.color-overlay.c3{width:400px;height:400px;background:#4a8fa8;bottom:10%;left:40%;animation-delay:1.5s}
+.color-overlay.c1{width:600px;height:600px;background:var(--green);top:10%;left:20%;animation-delay:.5s;animation:fadeOverlay 3s ease forwards, orbitSlow 30s linear infinite}
+.color-overlay.c2{width:500px;height:500px;background:var(--accent);top:40%;right:10%;animation-delay:1s;animation:fadeOverlay 3s ease 1s forwards, orbitMed 25s linear infinite reverse}
+.color-overlay.c3{width:400px;height:400px;background:#4a8fa8;bottom:10%;left:40%;animation-delay:1.5s;animation:fadeOverlay 3s ease 1.5s forwards, orbitFast 20s linear infinite}
 @keyframes fadeOverlay{to{opacity:.12}}
+@keyframes orbitSlow{from{transform:translate(0,0)}25%{transform:translate(80px,-60px)}50%{transform:translate(-40px,80px)}75%{transform:translate(60px,40px)}to{transform:translate(0,0)}}
+@keyframes orbitMed{from{transform:translate(0,0)}25%{transform:translate(-60px,50px)}50%{transform:translate(70px,-70px)}75%{transform:translate(-50px,-30px)}to{transform:translate(0,0)}}
+@keyframes orbitFast{from{transform:translate(0,0)}25%{transform:translate(50px,60px)}50%{transform:translate(-80px,-40px)}75%{transform:translate(40px,-60px)}to{transform:translate(0,0)}}
+
 
 /* ═══════════════════════════════════════════════════════
    SCROLL TEXT REVEAL — initial state set by GSAP, not CSS
@@ -373,7 +387,15 @@ a[stagger-link] [stagger-link-text]{
   min-height:400px;
   position:relative;
   overflow:hidden;
-  background:var(--green-dark);
+  background:linear-gradient(165deg,rgba(22,33,42,.95),rgba(22,33,42,.7));
+  border:1px solid rgba(255,255,253,.04);
+  border-top-color:rgba(255,255,253,.08);
+  box-shadow:0 2px 4px rgba(0,0,0,.2),0 8px 32px rgba(0,0,0,.3),0 24px 60px rgba(0,0,0,.15),inset 0 1px 0 rgba(255,255,253,.04);
+  transition:transform .6s cubic-bezier(.16,1,.3,1),box-shadow .6s cubic-bezier(.16,1,.3,1);
+}
+.bento-item:hover{
+  transform:translateY(-4px) scale(1.005);
+  box-shadow:0 4px 8px rgba(0,0,0,.25),0 16px 48px rgba(0,0,0,.35),0 32px 80px rgba(0,0,0,.2),inset 0 1px 0 rgba(255,255,253,.06);
 }
 @media(max-width:767px){.bento-item{min-height:300px;border-radius:1rem}}
 .bento-item.full{grid-column:1/-1}
@@ -399,7 +421,12 @@ a[stagger-link] [stagger-link-text]{
   transition:all .4s cubic-bezier(.35,1,.6,1);
   gap:12px;
 }
-.yolkk-button:hover{background-color:rgba(120,120,120,.35);transform:translateY(-2px)}
+.yolkk-button:hover{
+  background-color:rgba(120,120,120,.35);
+  transform:translateY(-3px) scale(1.02);
+  box-shadow:0 4px 8px rgba(0,0,0,.2),0 16px 40px rgba(0,0,0,.3),0 0 60px rgba(200,240,0,.06);
+  border-color:rgba(255,255,253,.9);
+}
 .yolkk-button .btn-circle{
   opacity:.86;
   border-radius:100rem;
@@ -408,24 +435,31 @@ a[stagger-link] [stagger-link-text]{
   position:relative;overflow:hidden;flex-shrink:0;
 }
 .btn-circle .button-inner-gradient{
-  position:absolute;
-  width:200px;height:200px;
-  background-image:linear-gradient(180deg,var(--green) 23%,var(--black) 71%);
+  position:absolute;top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  width:300px;height:300px;
+  background-image:linear-gradient(to bottom,var(--black) 20%,var(--green),var(--white) 80%);
   border-radius:50px;
   animation:rotateGradient 10s linear infinite;
 }
-@keyframes rotateGradient{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+@keyframes rotateGradient{0%{transform:translate(-50%,-50%) rotate(0deg)}100%{transform:translate(-50%,-50%) rotate(360deg)}}
 .btn-circle .arrow{position:relative;z-index:1;color:var(--white);font-size:1.2rem}
 
 .button-secondary{
   color:var(--black);cursor:pointer;
-  background-color:var(--white);border-radius:100rem;
+  background:linear-gradient(180deg,#fffffd,#e8e8e6);
+  border-radius:100rem;
   justify-content:center;align-items:center;
   height:64px;padding:0 45px;
   font-weight:500;display:inline-flex;
-  transition:background-color .2s;
+  box-shadow:0 1px 2px rgba(0,0,0,.15),0 4px 12px rgba(0,0,0,.2),inset 0 1px 0 rgba(255,255,255,.9);
+  transition:all .4s cubic-bezier(.16,1,.3,1);
 }
-.button-secondary:hover{background-color:rgba(255,255,253,.8)}
+.button-secondary:hover{
+  background:linear-gradient(180deg,#fffffd,#f0f0ee);
+  transform:translateY(-2px);
+  box-shadow:0 2px 4px rgba(0,0,0,.15),0 8px 24px rgba(0,0,0,.25),inset 0 1px 0 rgba(255,255,255,.95);
+}
 .button-secondary.small{height:44px;padding:0 20px;white-space:nowrap;font-size:.9rem}
 
 /* ═══════════════════════════════════════════════════════
@@ -433,26 +467,48 @@ a[stagger-link] [stagger-link-text]{
    ═══════════════════════════════════════════════════════ */
 .phone{
   width:300px;
-  background:linear-gradient(145deg,#1a1a1a,#0e0e0e);
+  background:linear-gradient(145deg,#222,#0a0a0a);
   border-radius:44px;padding:12px;
-  border:1px solid rgba(255,255,253,.06);
-  box-shadow:0 50px 100px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,253,.03),inset 0 1px 0 rgba(255,255,253,.04);
+  border:1px solid rgba(255,255,253,.08);
+  border-top-color:rgba(255,255,253,.12);
+  box-shadow:
+    0 1px 2px rgba(0,0,0,.4),
+    0 4px 8px rgba(0,0,0,.3),
+    0 16px 32px rgba(0,0,0,.4),
+    0 48px 80px rgba(0,0,0,.5),
+    0 0 0 1px rgba(255,255,253,.03),
+    inset 0 1px 0 rgba(255,255,253,.06),
+    inset 0 -1px 0 rgba(0,0,0,.5);
+  transform:perspective(1200px) rotateX(2deg) rotateY(-1deg);
+  transition:transform .8s cubic-bezier(.16,1,.3,1),box-shadow .8s cubic-bezier(.16,1,.3,1);
+}
+.phone:hover{
+  transform:perspective(1200px) rotateX(0deg) rotateY(0deg) translateY(-8px);
+  box-shadow:
+    0 2px 4px rgba(0,0,0,.3),
+    0 8px 16px rgba(0,0,0,.3),
+    0 24px 48px rgba(0,0,0,.4),
+    0 64px 100px rgba(0,0,0,.5),
+    0 0 0 1px rgba(255,255,253,.04),
+    inset 0 1px 0 rgba(255,255,253,.08),
+    inset 0 -1px 0 rgba(0,0,0,.5);
 }
 @media(max-width:479px){.phone{width:260px}}
 .phone-notch{width:90px;height:22px;background:#000;border-radius:0 0 12px 12px;margin:0 auto 4px}
 .phone-screen{
   background:#000;border-radius:34px;padding:16px 14px 14px;
-  min-height:400px;display:flex;flex-direction:column;
+  min-height:480px;display:flex;flex-direction:column;
 }
 .chat-bar{display:flex;align-items:center;gap:10px;padding-bottom:12px;border-bottom:1px solid rgba(255,255,253,.05);margin-bottom:12px}
 .chat-avatar{
   width:30px;height:30px;border-radius:50%;
-  background:linear-gradient(135deg,var(--mint),var(--green));
+  background:linear-gradient(135deg,var(--accent),var(--green));
   display:flex;align-items:center;justify-content:center;
   font-size:.55rem;font-weight:700;color:#000;flex-shrink:0;
+  box-shadow:0 0 12px rgba(200,240,0,.2),0 2px 4px rgba(0,0,0,.3);
 }
 .chat-bar-name{font-size:.75rem;font-weight:600}
-.chat-bar-status{font-size:.6rem;color:var(--mint);font-weight:500}
+.chat-bar-status{font-size:.6rem;color:var(--accent);font-weight:500}
 .chat-messages{flex:1;display:flex;flex-direction:column;gap:6px;overflow:hidden}
 .msg{
   max-width:85%;padding:9px 13px;border-radius:16px;
@@ -461,22 +517,22 @@ a[stagger-link] [stagger-link-text]{
   transition:all .5s cubic-bezier(.16,1,.3,1);
 }
 .msg.show{opacity:1;transform:translateY(0) scale(1)}
-.msg.client{background:rgba(255,255,253,.07);align-self:flex-end;border-bottom-right-radius:4px}
-.msg.ai{background:var(--mint);color:#0a0a0a;align-self:flex-start;border-bottom-left-radius:4px;font-weight:500}
+.msg.client{background:rgba(255,255,253,.07);align-self:flex-end;border-bottom-right-radius:4px;box-shadow:0 1px 4px rgba(0,0,0,.2)}
+.msg.ai{background:var(--accent);color:#0a0a0a;align-self:flex-start;border-bottom-left-radius:4px;font-weight:500;box-shadow:0 2px 8px rgba(200,240,0,.15),0 0 20px rgba(200,240,0,.06)}
 .typing-ind{
   align-self:flex-start;padding:10px 16px;
   background:rgba(255,255,253,.04);border-radius:16px;
   display:flex;gap:4px;opacity:0;transition:opacity .3s;
 }
 .typing-ind.show{opacity:1}
-.typing-ind span{width:5px;height:5px;background:var(--mint);border-radius:50%;animation:dotP 1.4s infinite ease-in-out}
+.typing-ind span{width:5px;height:5px;background:var(--accent);border-radius:50%;animation:dotP 1.4s infinite ease-in-out}
 .typing-ind span:nth-child(2){animation-delay:.15s}
 .typing-ind span:nth-child(3){animation-delay:.3s}
 @keyframes dotP{0%,80%,100%{transform:scale(.4);opacity:.3}40%{transform:scale(1);opacity:1}}
 .video-thumb{background:rgba(255,255,253,.04);border-radius:10px;padding:20px 14px;text-align:center;font-size:.7rem;color:var(--grey-dark)}
-.play-icon{width:24px;height:24px;border-radius:50%;background:rgba(0,229,160,.12);display:flex;align-items:center;justify-content:center;margin:0 auto 6px}
-.play-icon svg{width:10px;height:10px;fill:var(--mint)}
-.form-badge{font-size:.65rem;color:var(--mint);font-weight:600;margin-top:6px;padding:3px 8px;background:rgba(0,229,160,.06);border-radius:6px;display:inline-block}
+.play-icon{width:24px;height:24px;border-radius:50%;background:rgba(200,240,0,.15);display:flex;align-items:center;justify-content:center;margin:0 auto 6px}
+.play-icon svg{width:10px;height:10px;fill:var(--accent)}
+.form-badge{font-size:.65rem;color:var(--accent);font-weight:600;margin-top:6px;padding:3px 8px;background:rgba(200,240,0,.1);border-radius:6px;display:inline-block}
 .chat-input-area{display:flex;gap:6px;margin-top:10px;padding-top:10px;border-top:1px solid rgba(255,255,253,.04)}
 .chat-input-area input{
   flex:1;background:rgba(255,255,253,.04);border:1px solid rgba(255,255,253,.05);
@@ -484,7 +540,7 @@ a[stagger-link] [stagger-link-text]{
 }
 .chat-input-area input::placeholder{color:rgba(255,255,253,.15)}
 .chat-input-area button{
-  background:var(--mint);border:none;border-radius:50%;
+  background:var(--accent);border:none;border-radius:50%;
   width:32px;height:32px;display:flex;align-items:center;justify-content:center;flex-shrink:0;
 }
 .chat-input-area button svg{width:12px;height:12px;fill:#0a0a0a}
@@ -500,7 +556,18 @@ a[stagger-link] [stagger-link-text]{
    ═══════════════════════════════════════════════════════ */
 .stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1em;border-radius:1.5rem;overflow:hidden}
 @media(max-width:767px){.stat-grid{grid-template-columns:1fr}}
-.stat-card{background:var(--green-dark);padding:2.5rem;position:relative}
+.stat-card{
+  background:linear-gradient(165deg,rgba(22,33,42,.95),rgba(22,33,42,.7));
+  padding:2.5rem;position:relative;
+  border:1px solid rgba(255,255,253,.03);border-top-color:rgba(255,255,253,.07);
+  box-shadow:0 2px 4px rgba(0,0,0,.15),0 8px 24px rgba(0,0,0,.2),inset 0 1px 0 rgba(255,255,253,.03);
+  transition:transform .5s cubic-bezier(.16,1,.3,1),box-shadow .5s cubic-bezier(.16,1,.3,1),background .4s;
+}
+.stat-card:hover{
+  background:linear-gradient(165deg,rgba(30,44,56,.95),rgba(26,38,48,.8));
+  transform:translateY(-3px);
+  box-shadow:0 4px 8px rgba(0,0,0,.2),0 16px 40px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,253,.05);
+}
 .stat-card::before{
   content:'';position:absolute;top:0;left:0;right:0;height:1px;
   background:linear-gradient(90deg,transparent,rgba(255,255,253,.06),transparent);
@@ -518,20 +585,31 @@ a[stagger-link] [stagger-link-text]{
    ═══════════════════════════════════════════════════════ */
 .transform-grid{display:grid;grid-template-columns:1fr 1fr;gap:1em;border-radius:1.5rem;overflow:hidden}
 @media(max-width:767px){.transform-grid{grid-template-columns:1fr}}
-.transform-side{padding:3rem;background:var(--green-dark);position:relative}
+.transform-side{
+  padding:3rem;background:linear-gradient(165deg,rgba(22,33,42,.95),rgba(22,33,42,.7));
+  position:relative;
+  border:1px solid rgba(255,255,253,.03);border-top-color:rgba(255,255,253,.07);
+  box-shadow:0 2px 4px rgba(0,0,0,.15),0 8px 24px rgba(0,0,0,.2),inset 0 1px 0 rgba(255,255,253,.03);
+  transition:transform .5s cubic-bezier(.16,1,.3,1),box-shadow .5s cubic-bezier(.16,1,.3,1);
+}
+.transform-side:hover{
+  transform:translateY(-3px);
+  box-shadow:0 4px 8px rgba(0,0,0,.2),0 16px 40px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,253,.05);
+}
 .transform-side::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
 .transform-side.before::before{background:linear-gradient(90deg,transparent,rgba(255,70,70,.2),transparent)}
-.transform-side.after::before{background:linear-gradient(90deg,transparent,rgba(0,229,160,.2),transparent)}
+.transform-side.after::before{background:linear-gradient(90deg,transparent,rgba(200,240,0,.2),transparent)}
 .tf-icon{
   width:48px;height:48px;border-radius:14px;
   display:flex;align-items:center;justify-content:center;margin-bottom:20px;
+  box-shadow:0 2px 8px rgba(0,0,0,.2),inset 0 1px 0 rgba(255,255,253,.04);
 }
-.before .tf-icon{background:rgba(255,70,70,.06);border:1px solid rgba(255,70,70,.1)}
+.before .tf-icon{background:linear-gradient(165deg,rgba(255,70,70,.08),rgba(255,70,70,.03));border:1px solid rgba(255,70,70,.12);border-top-color:rgba(255,70,70,.18);box-shadow:0 2px 8px rgba(0,0,0,.2),0 0 20px rgba(255,70,70,.04),inset 0 1px 0 rgba(255,70,70,.06)}
 .before .tf-icon svg{stroke:#ff5555;stroke-width:1.5;fill:none;width:22px;height:22px}
-.after .tf-icon{background:rgba(0,229,160,.06);border:1px solid rgba(0,229,160,.1)}
-.after .tf-icon svg{stroke:var(--mint);stroke-width:1.5;fill:none;width:22px;height:22px}
+.after .tf-icon{background:linear-gradient(165deg,rgba(200,240,0,.12),rgba(200,240,0,.04));border:1px solid rgba(200,240,0,.15);border-top-color:rgba(200,240,0,.22);box-shadow:0 2px 8px rgba(0,0,0,.2),0 0 20px rgba(200,240,0,.04),inset 0 1px 0 rgba(200,240,0,.06)}
+.after .tf-icon svg{stroke:var(--accent);stroke-width:1.5;fill:none;width:22px;height:22px}
 .before .heading-h4{color:rgba(255,100,100,.9)}
-.after .heading-h4{color:var(--mint)}
+.after .heading-h4{color:var(--accent)}
 
 /* ═══════════════════════════════════════════════════════
    STEPS
@@ -539,24 +617,40 @@ a[stagger-link] [stagger-link-text]{
 .steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1em;border-radius:1.5rem;overflow:hidden}
 @media(max-width:767px){.steps-grid{grid-template-columns:1fr}}
 .step-card{
-  background:var(--green-dark);border:1px solid rgba(255,255,253,.05);
+  background:linear-gradient(165deg,rgba(22,33,42,.95),rgba(22,33,42,.7));
+  border:1px solid rgba(255,255,253,.04);border-top-color:rgba(255,255,253,.08);
   border-radius:1.5rem;padding:3rem 2rem;
   text-align:center;position:relative;overflow:hidden;
   opacity:.15;transform:translateY(30px);
+  box-shadow:0 2px 4px rgba(0,0,0,.15),0 8px 24px rgba(0,0,0,.2),inset 0 1px 0 rgba(255,255,253,.03);
   transition:all .8s cubic-bezier(.16,1,.3,1);
 }
-.step-card.active{opacity:1;transform:translateY(0)}
+.step-card.active{
+  opacity:1;transform:translateY(0);
+  box-shadow:0 4px 8px rgba(0,0,0,.2),0 16px 48px rgba(0,0,0,.3),0 32px 80px rgba(0,0,0,.15),inset 0 1px 0 rgba(255,255,253,.05);
+}
 .step-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(255,255,253,.05),transparent);transition:all .6s}
-.step-card.active::before{background:linear-gradient(90deg,transparent,rgba(0,229,160,.2),transparent)}
+.step-card.active::before{background:linear-gradient(90deg,transparent,rgba(200,240,0,.2),transparent)}
 .step-icon{
   width:80px;height:80px;border-radius:50%;
-  background:rgba(255,255,253,.03);border:1px solid rgba(255,255,253,.06);
+  background:linear-gradient(165deg,rgba(255,255,253,.05),rgba(255,255,253,.01));
+  border:1px solid rgba(255,255,253,.06);border-top-color:rgba(255,255,253,.1);
   display:flex;align-items:center;justify-content:center;
   margin:0 auto 24px;transition:all .6s;
+  box-shadow:0 2px 8px rgba(0,0,0,.2),inset 0 1px 0 rgba(255,255,253,.05);
 }
-.step-card.active .step-icon{border-color:rgba(0,229,160,.15);box-shadow:0 0 60px rgba(0,229,160,.06)}
+.step-card.active .step-icon{border-color:rgba(200,240,0,.15);box-shadow:0 0 60px rgba(200,240,0,.1)}
+.step-card[data-color="yellow"].active .step-icon{border-color:rgba(200,240,0,.2);box-shadow:0 0 60px rgba(200,240,0,.1)}
+.step-card[data-color="pink"].active .step-icon{border-color:rgba(249,170,239,.2);box-shadow:0 0 60px rgba(249,170,239,.1)}
+.step-card[data-color="blue"].active .step-icon{border-color:rgba(70,115,210,.2);box-shadow:0 0 60px rgba(70,115,210,.1)}
+.step-card[data-color="yellow"].active::before{background:linear-gradient(90deg,transparent,rgba(200,240,0,.2),transparent)}
+.step-card[data-color="pink"].active::before{background:linear-gradient(90deg,transparent,rgba(249,170,239,.2),transparent)}
+.step-card[data-color="blue"].active::before{background:linear-gradient(90deg,transparent,rgba(70,115,210,.2),transparent)}
 .step-icon svg{width:28px;height:28px;stroke:var(--grey-dark);fill:none;stroke-width:1.5;transition:stroke .6s}
-.step-card.active .step-icon svg{stroke:var(--mint)}
+.step-card.active .step-icon svg{stroke:var(--accent)}
+.step-card[data-color="yellow"].active .step-icon svg{stroke:var(--dull-yellow)}
+.step-card[data-color="pink"].active .step-icon svg{stroke:var(--pink)}
+.step-card[data-color="blue"].active .step-icon svg{stroke:var(--blue)}
 
 /* ═══════════════════════════════════════════════════════
    DATA WALL
@@ -564,7 +658,18 @@ a[stagger-link] [stagger-link-text]{
 .data-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:2px;border-radius:1.5rem;overflow:hidden}
 @media(max-width:767px){.data-grid{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:479px){.data-grid{grid-template-columns:repeat(2,1fr)}}
-.data-cell{background:var(--green-dark);padding:2.5rem 1.5rem;text-align:center}
+.data-cell{
+  background:linear-gradient(165deg,rgba(22,33,42,.95),rgba(22,33,42,.7));
+  padding:2.5rem 1.5rem;text-align:center;
+  border:1px solid rgba(255,255,253,.02);border-top-color:rgba(255,255,253,.06);
+  box-shadow:inset 0 1px 0 rgba(255,255,253,.03);
+  transition:transform .5s cubic-bezier(.16,1,.3,1),box-shadow .5s cubic-bezier(.16,1,.3,1),background .4s;
+}
+.data-cell:hover{
+  background:linear-gradient(165deg,rgba(30,44,56,.95),rgba(26,38,48,.8));
+  transform:translateY(-2px);
+  box-shadow:0 4px 16px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,253,.05);
+}
 .data-val{font-family:'Archivo',sans-serif;font-size:clamp(1.6rem,3vw,2.4rem);font-weight:700;letter-spacing:-1px;font-variant-numeric:tabular-nums}
 .data-val .strike{text-decoration:line-through;color:var(--grey-dark);font-size:.55em;font-weight:400;display:block;margin-bottom:2px}
 .data-lbl{font-size:.65rem;color:var(--grey-dark);margin-top:10px;text-transform:uppercase;letter-spacing:1.5px;font-weight:600}
@@ -579,16 +684,27 @@ a[stagger-link] [stagger-link-text]{
   margin-bottom:8px;
 }
 .vision-text p .dim{color:var(--grey-dark)}
-.vision-text p:last-child{color:var(--mint)}
+.vision-text p:last-child{color:var(--accent)}
 
 .scale-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;border-radius:1.5rem;overflow:hidden;max-width:700px;margin:0 auto}
 @media(max-width:767px){.scale-grid{grid-template-columns:1fr}}
-.scale-cell{background:var(--green-dark);padding:2.5rem;text-align:center}
+.scale-cell{
+  background:linear-gradient(165deg,rgba(22,33,42,.95),rgba(22,33,42,.7));
+  padding:2.5rem;text-align:center;
+  border:1px solid rgba(255,255,253,.02);border-top-color:rgba(255,255,253,.06);
+  box-shadow:inset 0 1px 0 rgba(255,255,253,.03);
+  transition:transform .5s cubic-bezier(.16,1,.3,1),box-shadow .5s cubic-bezier(.16,1,.3,1),background .4s;
+}
+.scale-cell:hover{
+  background:linear-gradient(165deg,rgba(30,44,56,.95),rgba(26,38,48,.8));
+  transform:translateY(-2px);
+  box-shadow:0 4px 16px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,253,.05);
+}
 .scale-cell .sc-n{font-family:'Archivo',sans-serif;font-size:1.1rem;font-weight:600}
-.scale-cell .sc-rev{font-family:'Archivo',sans-serif;font-size:1.8rem;font-weight:700;letter-spacing:-1px;margin-top:4px;color:var(--mint)}
+.scale-cell .sc-rev{font-family:'Archivo',sans-serif;font-size:1.8rem;font-weight:700;letter-spacing:-1px;margin-top:4px;color:var(--accent)}
 .scale-cell .sc-lbl{font-size:.6rem;color:var(--grey-dark);text-transform:uppercase;letter-spacing:1px;margin-top:8px;font-weight:600}
 
-.divider-gradient{height:1px;background:linear-gradient(90deg,transparent,rgba(0,229,160,.15),transparent);max-width:300px;width:100%;margin:3rem auto}
+.divider-gradient{height:1px;background:linear-gradient(90deg,transparent,rgba(200,240,0,.15),transparent);max-width:300px;width:100%;margin:3rem auto;box-shadow:0 0 20px rgba(200,240,0,.05),0 0 40px rgba(200,240,0,.02)}
 
 /* ═══════════════════════════════════════════════════════
    FOOTER
@@ -795,15 +911,15 @@ a[stagger-link] [stagger-link-text]{
           </div>
           <div style="display:flex;flex-direction:column;gap:1em">
             <div class="bento-item" style="background:var(--black);flex:1;display:flex;flex-direction:column;justify-content:center;padding:2.5rem">
-              <div class="stat-value" anm-scroll-text anm-split="chars" anm-distance="100%" style="font-family:Archivo,sans-serif;font-size:clamp(2.5rem,5vw,4rem);font-weight:700;letter-spacing:-2px;line-height:1;color:var(--mint)">24/7</div>
+              <div class="stat-value" anm-scroll-text anm-split="chars" anm-distance="100%" style="font-family:Archivo,sans-serif;font-size:clamp(2.5rem,5vw,4rem);font-weight:700;letter-spacing:-2px;line-height:1;color:var(--accent)">24/7</div>
               <p class="text-small" anm-scroll-text anm-delay="0.1" style="color:var(--grey-dark);margin-top:.75rem">Always available. Never calls in sick. Never needs a break.</p>
             </div>
             <div class="bento-item" style="background:var(--black);flex:1;display:flex;flex-direction:column;justify-content:center;padding:2.5rem">
-              <div class="stat-value" anm-scroll-text anm-split="chars" anm-distance="100%" style="font-family:Archivo,sans-serif;font-size:clamp(2.5rem,5vw,4rem);font-weight:700;letter-spacing:-2px;line-height:1;color:var(--mint)">&lt;3s</div>
+              <div class="stat-value" anm-scroll-text anm-split="chars" anm-distance="100%" style="font-family:Archivo,sans-serif;font-size:clamp(2.5rem,5vw,4rem);font-weight:700;letter-spacing:-2px;line-height:1;color:var(--accent)">&lt;3s</div>
               <p class="text-small" anm-scroll-text anm-delay="0.1" style="color:var(--grey-dark);margin-top:.75rem">Response time. Every message. Every client. Every time.</p>
             </div>
             <div class="bento-item" style="background:var(--black);flex:1;display:flex;flex-direction:column;justify-content:center;padding:2.5rem">
-              <div class="stat-value" anm-scroll-text anm-split="chars" anm-distance="100%" style="font-family:Archivo,sans-serif;font-size:clamp(2.5rem,5vw,4rem);font-weight:700;letter-spacing:-2px;line-height:1;color:var(--mint)">$100<span style="font-size:.35em;color:var(--grey-dark)">/mo</span></div>
+              <div class="stat-value" anm-scroll-text anm-split="chars" anm-distance="100%" style="font-family:Archivo,sans-serif;font-size:clamp(2.5rem,5vw,4rem);font-weight:700;letter-spacing:-2px;line-height:1;color:var(--accent)">$100<span style="font-size:.35em;color:var(--grey-dark)">/mo</span></div>
               <p class="text-small" anm-scroll-text anm-delay="0.1" style="color:var(--grey-dark);margin-top:.75rem">Not $400. Not a human salary. Unlimited clients.</p>
             </div>
           </div>
@@ -848,7 +964,7 @@ a[stagger-link] [stagger-link-text]{
         </div>
 
         <div style="text-align:center;padding:5rem 0;max-width:800px;margin:0 auto">
-          <h2 class="heading-h2" anm-scroll-text anm-split="words" anm-distance="50%">You bring the clients. <span style="color:var(--mint)">JEN does everything else.</span></h2>
+          <h2 class="heading-h2" anm-scroll-text anm-split="words" anm-distance="50%">You bring the clients. <span style="color:var(--accent)">JEN does everything else.</span></h2>
         </div>
 
         <div class="stat-grid">
@@ -879,17 +995,17 @@ a[stagger-link] [stagger-link-text]{
       <p class="text-regular" anm-scroll-text anm-delay="0.2" style="color:var(--grey-dark);margin-top:1rem">No onboarding calls. No complex setup. No learning curve.</p>
     </div>
     <div class="steps-grid" id="stepsRow">
-      <div class="step-card">
+      <div class="step-card" data-color="yellow">
         <div class="step-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg></div>
         <h4 class="heading-h4" style="margin-bottom:.75rem">Connect</h4>
         <p class="text-small" style="color:var(--grey-dark)">Bring your brand, your voice, your clients. We handle the rest.</p>
       </div>
-      <div class="step-card">
+      <div class="step-card" data-color="pink">
         <div class="step-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg></div>
         <h4 class="heading-h4" style="margin-bottom:.75rem">AI Learns</h4>
         <p class="text-small" style="color:var(--grey-dark)">JEN studies your coaching style and adapts to every individual client.</p>
       </div>
-      <div class="step-card">
+      <div class="step-card" data-color="blue">
         <div class="step-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4z"/></svg></div>
         <h4 class="heading-h4" style="margin-bottom:.75rem">Clients Thrive</h4>
         <p class="text-small" style="color:var(--grey-dark)">WhatsApp, email, SMS — wherever your clients are, JEN is there.</p>
@@ -953,7 +1069,7 @@ a[stagger-link] [stagger-link-text]{
     <div class="vision-text" id="visionText">
       <p anm-scroll-text anm-split="words" anm-distance="50%"><span class="dim">Shopify</span> had stores.</p>
       <p anm-scroll-text anm-split="words" anm-distance="50%" anm-delay="0.15"><span class="dim">Uber</span> had drivers.</p>
-      <p anm-scroll-text anm-split="words" anm-distance="50%" anm-delay="0.3">JEN AI has coaches.</p>
+      <p anm-scroll-text anm-split="words" anm-distance="50%" anm-delay="0.3">Jen has coaches.</p>
     </div>
     <div class="divider-gradient"></div>
     <div class="scale-grid" id="scaleGrid">
@@ -1073,6 +1189,14 @@ window.addEventListener('scroll', () => {
   navbar.classList.toggle('scrolled', window.scrollY > 60);
 }, {passive:true});
 
+/* Smooth anchor scroll via Lenis */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) { e.preventDefault(); lenis.scrollTo(target, { offset: -80 }); }
+  });
+});
+
 /* ═══════════════════════════════════════
    MOUSE HOVER GRID
    ═══════════════════════════════════════ */
@@ -1098,11 +1222,11 @@ buildHoverGrid('hoverGridFooter');
   const fullClipPath = 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)';
 
   elements.forEach(element => {
-    const distanceAttribute = element.getAttribute('anm-distance') || '40px';
+    const distanceAttribute = element.getAttribute('anm-distance') || '50%';
     const splitAttribute = element.getAttribute('anm-split');
     const charsStaggerAttribute = element.getAttribute('anm-chars-stagger');
     const wordsStaggerAttribute = element.getAttribute('anm-words-stagger');
-    const durationAttribute = element.getAttribute('anm-duration') || 1.2;
+    const durationAttribute = element.getAttribute('anm-duration') || 1;
     const delayAttribute = element.getAttribute('anm-delay');
     const easeAttribute = element.getAttribute('anm-ease');
 
@@ -1111,7 +1235,7 @@ buildHoverGrid('hoverGridFooter');
     const isInView = rect.top < window.innerHeight && rect.bottom > 0;
 
     const tl = gsap.timeline({
-      defaults: { duration: parseFloat(durationAttribute), ease: easeAttribute || 'power3.out' },
+      defaults: { duration: parseFloat(durationAttribute), ease: easeAttribute || 'expo.out' },
     });
 
     if (isInView) {
@@ -1119,12 +1243,12 @@ buildHoverGrid('hoverGridFooter');
       tl.delay(1.2 + (delayAttribute ? parseFloat(delayAttribute) : 0));
     } else {
       // Scroll-triggered elements
-      const startTrigger = window.innerWidth < 992 ? '15% bottom' : '25% bottom';
+      const startTrigger = window.innerWidth < 992 ? '15% bottom' : '35% bottom';
       ScrollTrigger.create({
         animation: tl,
         trigger: element,
         start: startTrigger,
-        toggleActions: 'play none none none',
+        toggleActions: 'play none none reset',
       });
     }
 
@@ -1134,7 +1258,7 @@ buildHoverGrid('hoverGridFooter');
 
       splitTypes.forEach(type => {
         const splitElements = splitText[type] || [];
-        let stagger = type === 'chars' ? 0.02 : 0.06;
+        let stagger = type === 'chars' ? 0.01 : 0.1;
         if (type === 'chars' && charsStaggerAttribute) stagger = parseFloat(charsStaggerAttribute);
         else if (type === 'words' && wordsStaggerAttribute) stagger = parseFloat(wordsStaggerAttribute);
 
@@ -1142,8 +1266,8 @@ buildHoverGrid('hoverGridFooter');
 
         tl.fromTo(
           splitElements.length ? splitElements : [element],
-          { clipPath: topClipPath, y: yPosition, opacity: 0 },
-          { clipPath: fullClipPath, y: 0, opacity: 1, stagger, delay: isInView ? 0 : (delayAttribute ? parseFloat(delayAttribute) : 0) },
+          { clipPath: topClipPath, y: yPosition, opacity: 0, rotate: 0.001 },
+          { clipPath: fullClipPath, y: 0, opacity: 1, rotate: 0, stagger, delay: isInView ? 0 : (delayAttribute ? parseFloat(delayAttribute) : 0) },
           0
         );
       });
@@ -1151,8 +1275,8 @@ buildHoverGrid('hoverGridFooter');
       let yVal = /[a-z%]+$/i.test(distanceAttribute) ? distanceAttribute : parseFloat(distanceAttribute);
       tl.fromTo(
         element,
-        { y: yVal, clipPath: topClipPath, opacity: 0 },
-        { y: 0, clipPath: fullClipPath, opacity: 1, delay: isInView ? 0 : (delayAttribute ? parseFloat(delayAttribute) : 0) },
+        { y: yVal, clipPath: topClipPath, opacity: 0, rotate: 0.001 },
+        { y: 0, clipPath: fullClipPath, opacity: 1, rotate: 0, delay: isInView ? 0 : (delayAttribute ? parseFloat(delayAttribute) : 0) },
         0
       );
     }
@@ -1222,6 +1346,7 @@ document.querySelectorAll('[data-marquee-scroll-direction-target]').forEach(marq
     { x: `${direction === -1 ? -scrollSpeed : scrollSpeed}vw`, ease: 'none' }
   );
 });
+
 
 /* ═══════════════════════════════════════
    STEPS — Staggered activation on scroll
@@ -1344,8 +1469,73 @@ document.querySelectorAll('[stagger-link-text]').forEach(el => {
   });
 });
 
+/* ═══════════════════════════════════════
+   LOGO TICKER — Yolkk slot-machine effect
+   ═══════════════════════════════════════ */
+(function logoTicker() {
+  const logo = document.querySelector('.nav-logo-text');
+  if (!logo) return;
+  const originalText = logo.textContent.trim();
+  logo.innerHTML = '';
+  logo.style.display = 'inline-flex';
+  logo.style.overflow = 'hidden';
+  logo.style.height = '1.3em';
+
+  [...originalText].forEach((char, i) => {
+    const col = document.createElement('span');
+    col.style.display = 'inline-block';
+    col.style.overflow = 'hidden';
+    col.style.height = '1.3em';
+    col.style.lineHeight = '1.3em';
+    col.style.position = 'relative';
+
+    const inner = document.createElement('span');
+    inner.style.display = 'block';
+    inner.style.whiteSpace = 'pre';
+
+    // Stack 12 copies + the real char at bottom
+    let content = '';
+    for (let j = 0; j < 12; j++) content += char + '\n';
+    content += char;
+    inner.textContent = content;
+    inner.style.whiteSpace = 'pre-wrap';
+
+    col.appendChild(inner);
+    logo.appendChild(col);
+
+    // Color the "AI" part
+    if (i >= originalText.indexOf('AI') && i < originalText.indexOf('AI') + 2 && originalText.indexOf('AI') !== -1) {
+      col.style.color = 'var(--accent)';
+    }
+
+    gsap.fromTo(inner,
+      { y: 0 },
+      { y: -(12 * 1.3) + 'em', duration: 2 + i * 0.15, ease: 'power2.out', delay: 0.8 }
+    );
+  });
+})();
+
 /* Footer year */
 document.getElementById('year').textContent = new Date().getFullYear();
+
+/* ═══════════════════════════════════════
+   SECTION CLIP-PATH WIPES — Yolkk style
+   ═══════════════════════════════════════ */
+document.querySelectorAll('.section-dark').forEach(section => {
+  gsap.fromTo(section,
+    { clipPath: 'polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)' },
+    {
+      clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
+      scrollTrigger: {
+        trigger: section,
+        start: 'top bottom',
+        end: 'top 40%',
+        scrub: true,
+      }
+    }
+  );
+});
+
 
 /* Refresh ScrollTrigger on resize */
 window.addEventListener('resize', () => ScrollTrigger.refresh());
