@@ -503,7 +503,7 @@ a[stagger-link] [stagger-link-text]{
 .phone-notch{width:90px;height:22px;background:#000;border-radius:0 0 12px 12px;margin:0 auto 4px}
 .phone-screen{
   background:#000;border-radius:34px;padding:16px 14px 14px;
-  min-height:480px;display:flex;flex-direction:column;
+  min-height:520px;max-height:520px;display:flex;flex-direction:column;
   box-shadow:inset 0 0 30px rgba(0,0,0,.5),inset 0 0 80px rgba(200,240,0,.02);
 }
 .chat-bar{display:flex;align-items:center;gap:10px;padding-bottom:12px;border-bottom:1px solid rgba(255,255,253,.05);margin-bottom:12px}
@@ -516,7 +516,9 @@ a[stagger-link] [stagger-link-text]{
 }
 .chat-bar-name{font-size:.75rem;font-weight:600}
 .chat-bar-status{font-size:.6rem;color:var(--accent);font-weight:500}
-.chat-messages{flex:1;display:flex;flex-direction:column;gap:6px;overflow:hidden}
+.chat-messages{flex:1;display:flex;flex-direction:column;gap:6px;overflow-y:auto;overflow-x:hidden;scroll-behavior:smooth}
+.chat-messages::-webkit-scrollbar{width:2px}
+.chat-messages::-webkit-scrollbar-thumb{background:rgba(200,240,0,.2);border-radius:2px}
 .msg{
   max-width:85%;padding:9px 13px;border-radius:16px;
   font-size:.78rem;line-height:1.4;
@@ -525,7 +527,7 @@ a[stagger-link] [stagger-link-text]{
 }
 .msg.show{opacity:1;transform:translateY(0) scale(1)}
 .msg.client{background:rgba(255,255,253,.07);align-self:flex-end;border-bottom-right-radius:4px;box-shadow:0 1px 4px rgba(0,0,0,.2)}
-.msg.ai{background:var(--accent);color:#0a0a0a;align-self:flex-start;border-bottom-left-radius:4px;font-weight:500;box-shadow:0 2px 8px rgba(200,240,0,.15),0 0 20px rgba(200,240,0,.06)}
+.msg.ai{background:var(--accent);color:#0a0a0a;align-self:flex-start;border-bottom-left-radius:4px;font-weight:500;max-width:92%;box-shadow:0 2px 8px rgba(200,240,0,.15),0 0 20px rgba(200,240,0,.06)}
 .typing-ind{
   align-self:flex-start;padding:10px 16px;
   background:rgba(255,255,253,.04);border-radius:16px;
@@ -540,6 +542,29 @@ a[stagger-link] [stagger-link-text]{
 .play-icon{width:24px;height:24px;border-radius:50%;background:rgba(200,240,0,.15);display:flex;align-items:center;justify-content:center;margin:0 auto 6px}
 .play-icon svg{width:10px;height:10px;fill:var(--accent)}
 .form-badge{font-size:.65rem;color:var(--accent);font-weight:600;margin-top:6px;padding:3px 8px;background:rgba(200,240,0,.1);border-radius:6px;display:inline-block}
+
+/* ── RICH CHAT CARDS — structured UI inside chat ── */
+.chat-card{background:rgba(200,240,0,.08);border:1px solid rgba(200,240,0,.15);border-radius:12px;padding:10px;margin-top:6px;font-size:.7rem}
+.chat-card-header{font-weight:700;font-size:.65rem;text-transform:uppercase;letter-spacing:1px;color:rgba(200,240,0,.8);margin-bottom:6px;display:flex;align-items:center;gap:4px}
+.chat-card-header svg{width:10px;height:10px;fill:rgba(200,240,0,.8)}
+.chat-card-row{display:flex;justify-content:space-between;align-items:center;padding:3px 0;border-bottom:1px solid rgba(200,240,0,.06);font-size:.68rem}
+.chat-card-row:last-child{border-bottom:none}
+.chat-card-row .label{color:rgba(0,0,0,.5)}
+.chat-card-row .value{font-weight:600}
+.chat-card-btn{display:inline-block;background:rgba(0,0,0,.15);border-radius:8px;padding:5px 10px;font-size:.6rem;font-weight:600;margin-top:6px;cursor:pointer;text-align:center}
+.chat-card-btn+.chat-card-btn{margin-left:4px}
+.workout-item{display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid rgba(200,240,0,.06);font-size:.68rem}
+.workout-item:last-child{border-bottom:none}
+.workout-item .ex-name{font-weight:500}
+.workout-item .ex-detail{color:rgba(0,0,0,.5);font-size:.6rem}
+.grocery-item{display:flex;align-items:center;gap:4px;padding:2px 0;font-size:.65rem}
+.grocery-check{width:10px;height:10px;border:1.5px solid rgba(200,240,0,.6);border-radius:3px;flex-shrink:0}
+.recipe-thumb{border-radius:8px;background:linear-gradient(135deg,rgba(0,0,0,.2),rgba(0,0,0,.1));padding:14px 10px;text-align:center;margin-top:6px;font-size:.65rem;color:rgba(0,0,0,.6)}
+.recipe-thumb .recipe-emoji{font-size:1.2rem;margin-bottom:4px}
+.progress-bar-mini{height:4px;background:rgba(0,0,0,.1);border-radius:4px;margin-top:4px;overflow:hidden}
+.progress-bar-fill{height:100%;background:rgba(0,0,0,.3);border-radius:4px;transition:width 1s ease}
+.reminder-badge{display:inline-flex;align-items:center;gap:3px;background:rgba(0,0,0,.1);border-radius:6px;padding:3px 8px;font-size:.6rem;font-weight:600;margin-top:4px}
+.reminder-badge svg{width:8px;height:8px;fill:currentColor}
 .chat-input-area{display:flex;gap:6px;margin-top:10px;padding-top:10px;border-top:1px solid rgba(255,255,253,.04)}
 .chat-input-area input{
   flex:1;background:rgba(255,255,253,.04);border:1px solid rgba(255,255,253,.05);
@@ -2007,16 +2032,30 @@ document.querySelectorAll('.stat-grid, #dataGrid').forEach(el => {
 const chatBox = document.getElementById('chatMessages');
 const typingDots = document.getElementById('typingDots');
 const chatScript = [
-  { who:'client', text:'Hey Jen, what\'s my workout today?' },
-  { who:'ai', text:'Upper Body Push day 💪\n\n1. Bench Press — 4×8 @ 155lb\n2. OHP — 3×10 @ 85lb\n3. Incline DB Press — 3×12\n4. Lateral Raises — 4×15\n5. Tricep Pushdowns — 3×12\n\nRest 90s between sets. Let\'s go.' },
-  { who:'client', text:'Done! Also I\'m starving, what should I eat?' },
-  { who:'ai', text:'Post-workout meal (~650 cal):\n\n→ 8oz grilled chicken\n→ 1 cup white rice\n→ Steamed broccoli\n→ 1 tbsp olive oil\n\nHits your macros: 52P / 74C / 18F ✓' },
-  { who:'client', text:'My knees been hurting on squats btw' },
-  { who:'ai', text:'Sounds like VMO strain from knee caving.\n\n→ Ice 15 min tonight\n→ Swap to goblet squats tomorrow\n→ Add banded clamshells to warm-up\n\nSend me a video next session.' },
-  { who:'client', html:'<div class="video-thumb"><div class="play-icon"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>Squat form check · 0:12</div>' },
-  { who:'ai', text:'Form score: 7/10', extra:'<div class="form-badge">↳ Knees caving reps 4–6. Widen stance 2 inches.</div>' },
-  { who:'client', text:'Quick check-in: down 3 lbs this week 🎉' },
-  { who:'ai', text:'3 lbs in one week — solid progress 🔥\n\nYou\'re 11 lbs from your goal.\nAt this rate → ~4 weeks out.\n\nKeep protein at 180g, sleep 7+ hrs.\nSee you tomorrow.' }
+  /* 1. PROACTIVE REMINDER — JEN initiates */
+  { who:'ai', text:'Good morning! 🌅 Remember to move today — you\'ve been inactive for 2 days.', extra:'<div class="reminder-badge"><svg viewBox="0 0 24 24"><path d="M12 22c1.1 0 2-.9 2-2h-4a2 2 0 002 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg>Activity reminder</div>' },
+
+  /* 2. PROACTIVE WORKOUT — asks before sending */
+  { who:'ai', text:'Today is Upper Body Push. Want to change anything before I send the workout?', extra:'<div style="margin-top:6px"><span class="chat-card-btn">Send as-is ✓</span><span class="chat-card-btn">Swap exercises</span><span class="chat-card-btn">Rest day</span></div>' },
+  { who:'client', text:'Send it!' },
+
+  /* 3. WORKOUT INTERFACE — structured card, not text */
+  { who:'ai', html:'<div style="font-size:.75rem;font-weight:500;margin-bottom:4px">Here\'s your workout 💪</div><div class="chat-card"><div class="chat-card-header"><svg viewBox="0 0 24 24"><path d="M20.57 14.86L22 13.43 20.57 12 17 15.57 8.43 7 12 3.43 10.57 2 9.14 3.43 7.71 2 5.57 4.14 4.14 2.71 2.71 4.14l1.43 1.43L2 7.71l1.43 1.43L2 10.57 3.43 12 7 8.43 15.57 17 12 20.57 13.43 22l1.43-1.43L16.29 22l2.14-2.14 1.43 1.43 1.43-1.43-1.43-1.43L22 16.29z"/></svg>Upper Body Push</div><div class="workout-item"><span class="ex-name">Bench Press</span><span class="ex-detail">4×8 @ 155lb</span></div><div class="workout-item"><span class="ex-name">OHP</span><span class="ex-detail">3×10 @ 85lb</span></div><div class="workout-item"><span class="ex-name">Incline DB Press</span><span class="ex-detail">3×12</span></div><div class="workout-item"><span class="ex-name">Lateral Raises</span><span class="ex-detail">4×15</span></div><div class="workout-item"><span class="ex-name">Tricep Pushdowns</span><span class="ex-detail">3×12</span></div><div style="font-size:.6rem;color:rgba(0,0,0,.4);margin-top:6px">Rest 90s between sets · Estimated: 55 min</div></div>' },
+
+  /* 4. NUTRITION CARD — structured meal plan */
+  { who:'client', text:'Done! What should I eat?' },
+  { who:'ai', html:'<div style="font-size:.75rem;font-weight:500;margin-bottom:4px">Post-workout meal ready ✓</div><div class="chat-card"><div class="chat-card-header"><svg viewBox="0 0 24 24"><path d="M8.1 13.34l2.83-2.83L3.91 3.5a4.008 4.008 0 000 5.66l4.19 4.18zm6.78-1.81c1.53.71 3.68.21 5.27-1.38 1.91-1.91 2.28-4.65.81-6.12-1.46-1.46-4.2-1.1-6.12.81-1.59 1.59-2.09 3.74-1.38 5.27L3.7 19.87l1.41 1.41L12 14.41l6.88 6.88 1.41-1.41L13.41 13l1.47-1.47z"/></svg>Meal Plan</div><div class="chat-card-row"><span class="label">Grilled chicken</span><span class="value">8oz</span></div><div class="chat-card-row"><span class="label">White rice</span><span class="value">1 cup</span></div><div class="chat-card-row"><span class="label">Steamed broccoli</span><span class="value">1 cup</span></div><div class="chat-card-row"><span class="label">Olive oil</span><span class="value">1 tbsp</span></div><div style="display:flex;justify-content:space-between;margin-top:8px;font-size:.6rem;font-weight:600"><span>52P</span><span>74C</span><span>18F</span><span>~650 cal</span></div></div><div style="margin-top:4px"><span class="chat-card-btn">📹 Video recipe</span><span class="chat-card-btn">🛒 Order groceries</span></div>' },
+
+  /* 5. GROCERY LIST — with checkboxes */
+  { who:'client', text:'Actually show me my grocery list for the week' },
+  { who:'ai', html:'<div style="font-size:.75rem;font-weight:500;margin-bottom:4px">Weekly groceries 🛒</div><div class="chat-card"><div class="chat-card-header"><svg viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1.003 1.003 0 0020 4H5.21l-.94-2H1z"/></svg>This Week</div><div class="grocery-item"><div class="grocery-check"></div>Chicken breast (3 lb)</div><div class="grocery-item"><div class="grocery-check"></div>White rice (2 lb)</div><div class="grocery-item"><div class="grocery-check"></div>Broccoli (2 heads)</div><div class="grocery-item"><div class="grocery-check"></div>Sweet potatoes (4)</div><div class="grocery-item"><div class="grocery-check"></div>Eggs (dozen)</div><div class="grocery-item"><div class="grocery-check"></div>Greek yogurt (32oz)</div><div class="grocery-item"><div class="grocery-check"></div>Olive oil</div><div class="grocery-item"><div class="grocery-check"></div>Bananas (6)</div></div><div style="margin-top:4px"><span class="chat-card-btn">🛒 Order on Amazon Fresh</span></div>' },
+
+  /* 6. FRIDGE SCAN — create meal from what you have */
+  { who:'client', text:'I only have eggs, spinach, and cheese in my fridge' },
+  { who:'ai', html:'<div style="font-size:.75rem;font-weight:500;margin-bottom:4px">Made you a meal from what you have 🍳</div><div class="chat-card"><div class="chat-card-header"><svg viewBox="0 0 24 24"><path d="M8.1 13.34l2.83-2.83L3.91 3.5a4.008 4.008 0 000 5.66l4.19 4.18zm6.78-1.81c1.53.71 3.68.21 5.27-1.38 1.91-1.91 2.28-4.65.81-6.12-1.46-1.46-4.2-1.1-6.12.81-1.59 1.59-2.09 3.74-1.38 5.27L3.7 19.87l1.41 1.41L12 14.41l6.88 6.88 1.41-1.41L13.41 13l1.47-1.47z"/></svg>Spinach & Cheese Omelette</div><div class="chat-card-row"><span class="label">3 eggs</span><span class="value">21P / 15F</span></div><div class="chat-card-row"><span class="label">Handful spinach</span><span class="value">1g P / 0F</span></div><div class="chat-card-row"><span class="label">1oz cheese</span><span class="value">7P / 9F</span></div><div style="font-size:.6rem;color:rgba(0,0,0,.4);margin-top:6px">Total: 29P / 2C / 24F · ~340 cal</div></div><div class="recipe-thumb"><div class="recipe-emoji">🍳</div>Tap for video recipe · 2:30</div>' },
+
+  /* 7. PROGRESS CHECK — proactive monthly photo request */
+  { who:'ai', text:'Hey! It\'s the 1st — time for your monthly progress photo 📸\n\nYou\'re down 11 lbs since we started. Let\'s see the difference.', extra:'<div class="chat-card" style="margin-top:6px"><div class="chat-card-header">Progress Tracker</div><div style="display:flex;justify-content:space-between;font-size:.65rem;margin-bottom:4px"><span>Goal: -22 lbs</span><span style="font-weight:700">50% there</span></div><div class="progress-bar-mini"><div class="progress-bar-fill" style="width:50%"></div></div></div>' },
 ];
 let si = 0, chatActive = false;
 
