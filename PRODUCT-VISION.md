@@ -1,12 +1,12 @@
-# JEN AI — Product Vision & Investor Context
+# Lyrox — Product Vision & Investor Context
 
-## What JEN Is
+## What Lyrox Is
 
-JEN is not a chatbot. JEN is an AI coaching platform that lives inside the messaging apps your clients already use. No app to download. No account to create. No new habit to form. The client texts a number, and JEN becomes their coach.
+Lyrox is not a chatbot. Lyrox is an AI coaching platform that lives inside the messaging apps your clients already use. No app to download. No account to create. No new habit to form. The client texts a number, and Lyrox becomes their coach.
 
 ## The Core Insight
 
-Fitness coaches are bottlenecked by time. One coach can handle 20-30 clients before quality drops, responses slow down, and clients churn. JEN removes that bottleneck entirely. The coach brings their brand and their clients. JEN does everything else.
+Fitness coaches are bottlenecked by time. One coach can handle 20-30 clients before quality drops, responses slow down, and clients churn. Lyrox removes that bottleneck entirely. The coach brings their brand and their clients. Lyrox does everything else.
 
 ---
 
@@ -14,21 +14,21 @@ Fitness coaches are bottlenecked by time. One coach can handle 20-30 clients bef
 
 ### Distribution: Meet Clients Where They Are
 
-JEN connects to clients through whatever platform they already use:
+Lyrox connects to clients through whatever platform they already use:
 
-**WhatsApp** — The coach gets a dedicated WhatsApp Business API number. Client texts that number. JEN responds instantly. Rich content (workouts, recipes, grocery lists) sends as link previews that open inside WhatsApp's in-app browser. The client never leaves the app.
+**WhatsApp** — The coach gets a dedicated WhatsApp Business API number. Client texts that number. Lyrox responds instantly. Rich content (workouts, recipes, grocery lists) sends as link previews that open inside WhatsApp's in-app browser. The client never leaves the app.
 
 **Telegram** — Same flow via Telegram Bot API. Client searches the bot name, starts chatting. Identical experience.
 
-**SMS** — For clients who don't use messaging apps. Powered by Twilio. JEN texts through a regular phone number. Links open in the phone's browser.
+**SMS** — For clients who don't use messaging apps. Powered by Twilio. Lyrox texts through a regular phone number. Links open in the phone's browser.
 
 **Email** — Beautiful HTML emails for workouts, meal plans, weekly summaries, progress reports. Rich content with links to the web interface for anything interactive.
 
-The client picks their preferred channel. JEN adapts. The coach doesn't manage any of this.
+The client picks their preferred channel. Lyrox adapts. The coach doesn't manage any of this.
 
 ### Rich Experiences: The Web Interface
 
-JEN's conversations are text-based, but the product experiences are visual and interactive. When JEN sends a workout, a recipe, or a progress report, it sends a link preview card (like pasting a URL in WhatsApp). The client taps it and the full interface opens inside their messaging app's built-in browser.
+Lyrox's conversations are text-based, but the product experiences are visual and interactive. When Lyrox sends a workout, a recipe, or a progress report, it sends a link preview card (like pasting a URL in WhatsApp). The client taps it and the full interface opens inside their messaging app's built-in browser.
 
 This means:
 - Workouts open in their own interface with video demonstrations
@@ -42,17 +42,17 @@ This means:
 ## Full Feature Set
 
 ### 1. Workout Programming
-- JEN creates personalized workout plans based on the client's goals, equipment, and history
+- Lyrox creates personalized workout plans based on the client's goals, equipment, and history
 - Each workout has video demonstrations for every exercise
 - The client accesses workouts through their own workout interface (via link preview in chat)
-- JEN asks before sending: "Upper body push today. Want to keep it or switch something?"
+- Lyrox asks before sending: "Upper body push today. Want to keep it or switch something?"
 - Adapts based on how the client feels, injuries, or schedule changes
 
 ### 2. Nutrition Planning
 - Complete meal plans with macros (protein, carbs, fat, calories)
 - Each meal has a video recipe the client can follow
 - Meals open in their own recipe interface with ingredients, steps, and video
-- JEN can create meals from what the user has in their fridge
+- Lyrox can create meals from what the user has in their fridge
 - Macro tracking and daily nutrition targets
 
 ### 3. Grocery Lists
@@ -62,7 +62,7 @@ This means:
 - Lists update automatically when the meal plan changes
 
 ### 4. Proactive Communication
-JEN doesn't wait for the client to reach out. JEN initiates:
+Lyrox doesn't wait for the client to reach out. Lyrox initiates:
 - **Activity reminders** — "you haven't moved in 2 days. your body is noticing."
 - **Workout confirmation** — "upper body push today. want to keep it or switch?"
 - **Check-ins** — monitors client activity and reaches out when engagement drops
@@ -72,7 +72,7 @@ JEN doesn't wait for the client to reach out. JEN initiates:
 
 ### 5. Form Analysis
 - Client sends a video of their exercise form
-- JEN analyzes the video and provides a form score (e.g., 7/10)
+- Lyrox analyzes the video and provides a form score (e.g., 7/10)
 - Specific corrections with visual feedback
 - Tracks form improvement over time
 
@@ -81,10 +81,10 @@ JEN doesn't wait for the client to reach out. JEN initiates:
 - Monthly progress photo comparisons
 - Visual progress dashboards
 - Goal tracking with projected completion dates
-- JEN sees how active the user is or isn't and adjusts approach accordingly
+- Lyrox sees how active the user is or isn't and adjusts approach accordingly
 
 ### 7. Adaptive Intelligence
-- JEN learns the coach's style and voice
+- Lyrox learns the coach's style and voice
 - Adapts communication to each individual client's personality
 - Adjusts workout intensity based on client feedback and performance
 - Modifies nutrition plans based on progress, preferences, and what's available
@@ -92,9 +92,9 @@ JEN doesn't wait for the client to reach out. JEN initiates:
 
 ---
 
-## JEN's Personality
+## Lyrox's Personality
 
-JEN is not an enthusiastic fitness coach. JEN is not a corporate chatbot. JEN is the cool friend that everybody admires. The one who's calm, knows their stuff, and makes you feel like you've got this without being annoying about it.
+Lyrox is not an enthusiastic fitness coach. Lyrox is not a corporate chatbot. Lyrox is the cool friend that everybody admires. The one who's calm, knows their stuff, and makes you feel like you've got this without being annoying about it.
 
 **Voice characteristics:**
 - Lowercase, casual, confident
@@ -129,7 +129,7 @@ JEN is not an enthusiastic fitness coach. JEN is not a corporate chatbot. JEN is
 
 ## The Business Model
 
-**For coaches:** $100/mo per coach (not per client). Unlimited clients. The coach was paying $400/mo for a human assistant that could handle 30 clients. JEN handles unlimited clients for $100/mo.
+**For coaches:** $100/mo per coach (not per client). Unlimited clients. The coach was paying $400/mo for a human assistant that could handle 30 clients. Lyrox handles unlimited clients for $100/mo.
 
 **Unit economics at scale:**
 | Coaches | Annual Revenue |
@@ -142,50 +142,96 @@ JEN is not an enthusiastic fitness coach. JEN is not a corporate chatbot. JEN is
 
 ## The Moat
 
-1. **Zero friction distribution** — No app download. No account creation. JEN lives in WhatsApp, Telegram, SMS, email. The client just texts.
-2. **Network effects** — Every coach interaction makes JEN smarter at coaching. Every client interaction improves personalization.
-3. **Switching cost** — JEN accumulates months of training data, nutrition history, progress photos, and personal preferences. Leaving means losing all of that context.
-4. **White-label stickiness** — JEN IS the coach's brand. Clients don't know it's AI. They think it's their coach.
+1. **Zero friction distribution** — No app download. No account creation. Lyrox lives in WhatsApp, Telegram, SMS, email. The client just texts.
+2. **Network effects** — Every coach interaction makes Lyrox smarter at coaching. Every client interaction improves personalization.
+3. **Switching cost** — Lyrox accumulates months of training data, nutrition history, progress photos, and personal preferences. Leaving means losing all of that context.
+4. **White-label stickiness** — Lyrox IS the coach's brand. Clients don't know it's AI. They think it's their coach.
 
 ---
 
 ## The Vision
 
-"Shopify had stores. Uber had drivers. Jen has coaches."
+"Shopify had stores. Uber had drivers. Lyrox has coaches."
 
-JEN is not a fitness app. JEN is infrastructure for the coaching economy. Every fitness coach in the world needs what JEN provides. The fitness coaching market is $14B and growing. JEN is the operating system coaches run their businesses on.
+Lyrox is not a fitness app. Lyrox is infrastructure for the coaching economy. Every fitness coach in the world needs what Lyrox provides. The fitness coaching market is $14B and growing. Lyrox is the operating system coaches run their businesses on.
 
 ---
 
 ## What People Dream Of — The Roadmap
 
-These are the things every person wishes their coach could do. Some JEN already does. The rest is the roadmap.
+These are the things every person wishes their coach could do. Some Lyrox already does. The rest is the roadmap.
 
 ### Already Built
 - **"Just tell me what to do"** — Wake up, everything is ready. Workout, food, grocery list. No decisions.
-- **"Know me without me explaining"** — JEN remembers everything. Bad knee, hated exercises, stressful days, travel schedule. Never forgets.
-- **"Catch me before I fall off"** — JEN notices when you stop engaging. Reaches out proactively, not with guilt but with an easy alternative.
-- **"Be available when I need you"** — 2 AM food anxiety. Sunday night meal prep. Right after a bad workout. JEN is there at that exact moment.
+- **"Know me without me explaining"** — Lyrox remembers everything. Bad knee, hated exercises, stressful days, travel schedule. Never forgets.
+- **"Catch me before I fall off"** — Lyrox notices when you stop engaging. Reaches out proactively, not with guilt but with an easy alternative.
+- **"Be available when I need you"** — 2 AM food anxiety. Sunday night meal prep. Right after a bad workout. Lyrox is there at that exact moment.
 - **"Don't make me feel stupid"** — Explains things like a friend, not a textbook. Never condescending.
 - **"Show me I'm making progress"** — Visual proof. Weight, measurements, photos, performance tracking. Monthly comparisons.
-- **"Create meals from what I have"** — Tell JEN what's in your fridge, get a meal with macros and a video recipe.
+- **"Create meals from what I have"** — Tell Lyrox what's in your fridge, get a meal with macros and a video recipe.
 
 ### Building Next
-- **"What can I eat at this restaurant?"** — Send JEN the menu (or just the restaurant name), JEN picks the best option for your macros.
-- **"I feel like garbage today"** — JEN adjusts the entire day automatically. Lighter workout. Comfort food that still hits macros. Check-in later.
-- **"My wedding is in 8 weeks"** — JEN builds an 8-week plan backward from any target date. Reverse-engineers the timeline.
-- **"I want to look like this"** — Send a reference photo. JEN estimates the body fat difference and builds a realistic timeline with milestones.
-- **Sleep tracking integration** — JEN reads your sleep data. Slept 4 hours? Workout intensity drops automatically. No questions asked.
-- **Wearable data (Apple Watch, Garmin, Whoop)** — Heart rate, steps, recovery score, stress levels. JEN adapts everything in real time based on your body's actual state.
-- **Location-aware coaching** — Traveling? JEN detects your location, sends hotel room workouts and nearby restaurant options that fit your macros.
-- **Period/cycle tracking** — JEN adjusts workout intensity and nutrition around hormonal cycles. No awkwardness, just smart adaptation.
-- **Sick day / kids sick / life happens** — JEN detects schedule disruption and automatically pivots. No-equipment home workout. Simpler meals. Zero guilt.
+- **"What can I eat at this restaurant?"** — Send Lyrox the menu (or just the restaurant name), Lyrox picks the best option for your macros.
+- **"I feel like garbage today"** — Lyrox adjusts the entire day automatically. Lighter workout. Comfort food that still hits macros. Check-in later.
+- **"My wedding is in 8 weeks"** — Lyrox builds an 8-week plan backward from any target date. Reverse-engineers the timeline.
+- **"I want to look like this"** — Send a reference photo. Lyrox estimates the body fat difference and builds a realistic timeline with milestones.
+- **Sleep tracking integration** — Lyrox reads your sleep data. Slept 4 hours? Workout intensity drops automatically. No questions asked.
+- **Wearable data (Apple Watch, Garmin, Whoop)** — Heart rate, steps, recovery score, stress levels. Lyrox adapts everything in real time based on your body's actual state.
+- **Location-aware coaching** — Traveling? Lyrox detects your location, sends hotel room workouts and nearby restaurant options that fit your macros.
+- **Period/cycle tracking** — Lyrox adjusts workout intensity and nutrition around hormonal cycles. No awkwardness, just smart adaptation.
+- **Sick day / kids sick / life happens** — Lyrox detects schedule disruption and automatically pivots. No-equipment home workout. Simpler meals. Zero guilt.
 
 ### The Dream (Future)
-- **Voice coaching** — JEN talks to you during workouts through your earbuds. Counts reps, cues form, adjusts rest periods in real time.
-- **Smart scale integration** — Step on the scale, data goes straight to JEN. Trends, not daily fluctuations.
-- **Social accountability** — Optional: JEN connects you with others on similar journeys. Not a social network. Just knowing someone else is grinding too.
-- **Coach dashboard** — The coach sees everything. Every client's progress, engagement, risk of churning. JEN flags who needs human attention.
+- **Voice coaching** — Lyrox talks to you during workouts through your earbuds. Counts reps, cues form, adjusts rest periods in real time.
+- **Smart scale integration** — Step on the scale, data goes straight to Lyrox. Trends, not daily fluctuations.
+- **Social accountability** — Optional: Lyrox connects you with others on similar journeys. Not a social network. Just knowing someone else is grinding too.
+- **Coach dashboard** — The coach sees everything. Every client's progress, engagement, risk of churning. Lyrox flags who needs human attention.
+
+---
+
+## Is Coaching About to Die?
+
+No. Coaching is about to split.
+
+Every coaching relationship has two parts: the **human part** (empathy, motivation, accountability, the feeling that someone believes in you) and the **execution part** (programming workouts, calculating macros, answering questions at 2 AM, sending reminders, tracking progress, adjusting plans).
+
+The human part is irreplaceable. No AI will ever replicate the feeling of your coach texting you after a bad day because they genuinely care. That's why clients pay. That's why they stay.
+
+The execution part is a bottleneck. It's repetitive, time-consuming, and it's the reason coaches cap out at 20-30 clients. It's the reason they burn out. It's the reason they quit.
+
+**Lyrox handles the execution.** All of it. 24/7. Instantly. Perfectly. The coach keeps the human part — the relationship, the brand, the trust. But now they can have that relationship with 100 clients instead of 25.
+
+### What This Actually Means
+
+Coaching isn't dying. It's becoming **scalable**.
+
+Before Lyrox, coaching was a job. You traded time for money. More clients meant more hours, worse quality, and eventually burnout. The ceiling was your calendar.
+
+After Lyrox, coaching is a **business**. The coach is the CEO. They set the vision, build their brand, acquire clients. Lyrox runs the operation. The ceiling is gone.
+
+This is the same pattern that played out in every industry that got automated at the execution layer:
+
+- **Shopify** didn't kill retail. It turned shopkeepers into e-commerce entrepreneurs.
+- **Uber** didn't kill driving. It turned car owners into business operators.
+- **Canva** didn't kill design. It turned everyone into a designer.
+
+Lyrox doesn't kill coaching. It turns coaches into business owners who happen to use AI as their operating system.
+
+### The Market Shift
+
+The fitness coaching market is $14B and growing. But the vast majority of coaches never scale past $5K/month because they physically can't handle more clients. They're selling their time, not their expertise.
+
+Lyrox unlocks the other 80% of that market — the coaches who have the knowledge and the brand but not the bandwidth. Give them Lyrox, and a $5K/month coach becomes a $20K/month business.
+
+### Why Now
+
+Three things converged:
+
+1. **AI is finally good enough.** Large language models can hold nuanced, personalized conversations that feel human. Two years ago this wasn't possible.
+2. **Messaging is universal.** WhatsApp has 2B users. Everyone already knows how to text. Zero friction.
+3. **Coaches are desperate.** The creator economy exploded. There are more fitness coaches than ever, and they're all drowning in the same operational bottleneck.
+
+The timing isn't early. The timing is now.
 
 ---
 

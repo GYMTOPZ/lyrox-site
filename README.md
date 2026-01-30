@@ -1,14 +1,14 @@
-# JEN AI — lyrox.ai
+# Lyrox — lyrox.ai
 
-Landing page for **JEN AI**, an AI-powered fitness coaching platform that handles client coaching 24/7 on WhatsApp, email, and SMS.
+Landing page for **Lyrox**, an AI-powered fitness coaching platform that handles client coaching 24/7 on WhatsApp, email, and SMS.
 
 **Live:** [lyrox.ai](https://lyrox.ai)
 
 ---
 
-## What is JEN AI?
+## What is Lyrox?
 
-JEN AI is a white-label AI coaching assistant for fitness coaches. It learns a coach's style and handles all client communication — workout programming, nutrition plans, form analysis, check-ins — across WhatsApp, email, and SMS. Coaches bring the clients, JEN does everything else.
+Lyrox is a white-label AI coaching assistant for fitness coaches. It learns a coach's style and handles all client communication — workout programming, nutrition plans, form analysis, check-ins — across WhatsApp, email, and SMS. Coaches bring the clients, Lyrox does everything else.
 
 ### Key Metrics
 - **$35K/mo** revenue
@@ -45,7 +45,7 @@ https://unpkg.com/split-type
 
 ## Design System
 
-Design inspired by [yolkk.com](https://www.yolkk.com) — adapted for JEN AI's brand and content.
+Design inspired by [yolkk.com](https://www.yolkk.com) — adapted for Lyrox's brand and content.
 
 ### Colors
 | Variable | Value | Usage |
@@ -77,7 +77,7 @@ Design inspired by [yolkk.com](https://www.yolkk.com) — adapted for JEN AI's b
 ## Page Sections
 
 ### 1. Page Transition Cover
-Black overlay with "JEN AI" text. Fades in, then slides up with `power3.inOut` easing on page load.
+Black overlay with "Lyrox" text. Fades in, then slides up with `power3.inOut` easing on page load.
 
 ### 2. Navbar
 - Fixed, 80px height, transparent
@@ -102,7 +102,7 @@ Black overlay with "JEN AI" text. Fades in, then slides up with `power3.inOut` e
 - **Dual rows:** Large heading (opacity .3) + smaller subheadings in reverse direction
 - Content duplicated via JS for seamless loop
 
-### 5. Chat Demo — "This is how JEN coaches"
+### 5. Chat Demo — "This is how Lyrox coaches"
 - iPhone mockup with WhatsApp-style chat interface
 - Auto-plays coaching conversation on scroll (IntersectionObserver trigger)
 - 6-message scripted conversation with typing indicators
@@ -110,7 +110,7 @@ Black overlay with "JEN AI" text. Fades in, then slides up with `power3.inOut` e
 - Right column: 3 stat cards (24/7, <3s, $100/mo) with character-split reveal
 
 ### 6. Before / After — "The Transformation"
-- Split grid: "Without JEN" (red accent) vs "With JEN" (mint accent)
+- Split grid: "Without Lyrox" (red accent) vs "With Lyrox" (mint accent)
 - SVG icons with colored borders
 - Center tagline with word-by-word reveal
 - 3 stat cards with animated counters (scroll-triggered)
@@ -127,7 +127,7 @@ Black overlay with "JEN AI" text. Fades in, then slides up with `power3.inOut` e
 
 ### 9. Vision — "The Platform Play"
 - Apple-style large text with word-by-word clip-path reveal
-- "Shopify had stores. Uber had drivers. JEN AI has coaches."
+- "Shopify had stores. Uber had drivers. Lyrox has coaches."
 - Scaling grid: 10 coaches → $840K, 40 → $3.36M, 100 → $8.4M
 
 ### 10. Footer
