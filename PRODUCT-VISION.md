@@ -113,6 +113,46 @@ Lyrox is not an enthusiastic fitness coach. Lyrox is not a corporate chatbot. Ly
 - "hey it's the 1st. you know the drill."
 - "good question. let me pull up your profile."
 
+### Demo Conversation — "3 Months In"
+
+The landing page chat demo shows a real relationship, not a first interaction. This is what Lyrox looks like when it already knows someone — their sleep, their knee injury, their taste, their goals. The conversation flows through a single day:
+
+**1. Morning — Lyrox initiates with context**
+> "morning. you slept 5 hours last night so i made today's workout lighter. your knee has been feeling better so i added goblet squats back in."
+> [Link Preview: Lower Body (Light) — 4 exercises · video demos · 40 min · adjusted for recovery → lyrox.ai/workout]
+
+**2. Real life — dinner at a restaurant**
+> Client: "going out to dinner tonight at nobu. what should i order"
+> "get the black cod miso. 38P, 12C, 22F. skip the rice, get the edamame side instead. that keeps you under your macros and you still enjoy it."
+
+**3. Bad day — Lyrox adapts everything**
+> Client: "honestly i feel like crap today"
+> "yeah 5 hours of sleep will do that. skip the gym, go for a 20 min walk instead. i adjusted your meals for today too, a little more carbs to keep your energy up."
+> [Link Preview: Today's Adjusted Meals — 3 meals · higher carbs · comfort food that still works → lyrox.ai/meals]
+
+**4. Fridge situation — makes a meal from what's available**
+> Client: "only have eggs and some leftover chicken"
+> "that's enough. made you something quick."
+> [Link Preview: Chicken Egg Scramble — 41P · 3C · 18F · 340 cal · video recipe 1:20 → lyrox.ai/meal]
+
+**5. Proactive groceries with ordering**
+> "by the way you're running low on groceries. here's this week's list, you can order straight from there."
+> [Link Preview: Weekly Groceries — 9 items · order on amazon · estimated $47 → lyrox.ai/groceries]
+
+**6. Progress reveal — Lyrox brings it up because it's time**
+> "hey it's been 3 months. look at this."
+> [Link Preview: Your 3-Month Progress — down 11 lbs · squat 95 to 155 · waist down 2 inches → lyrox.ai/progress]
+> Client: "wow i didn't even realize"
+> "that's the point. you just showed up and it happened. keep going, you're halfway there."
+
+**Why this conversation works:**
+- Lyrox initiates, not the client. It's proactive, not reactive.
+- It knows context without being told (sleep data, knee history, grocery levels).
+- It adapts the entire day when the client feels bad — not just one thing.
+- Rich content (workouts, meals, groceries, progress) shows as link preview cards that open in full interfaces, not walls of text in chat.
+- The personality is a cool friend, not an enthusiastic coach. Lowercase, no emoji, direct.
+- The white-label demo shows "Coach Emilio" — clients think they're talking to their coach, not to Lyrox.
+
 ---
 
 ## Key Metrics (Current)
