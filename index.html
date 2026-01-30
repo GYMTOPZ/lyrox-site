@@ -767,93 +767,194 @@ a[stagger-link] [stagger-link-text]{
 ::-webkit-scrollbar-thumb:hover{background:rgba(255,255,253,.15)}
 
 /* ═══════════════════════════════════════════════════════
-   CINEMATIC LAYER — Film grain, vignette, atmosphere
+   DALÍ LAYER — Surrealist depth, morphing forms, dream logic
    ═══════════════════════════════════════════════════════ */
 
-/* Film grain overlay — photographic texture */
+/* Film grain — oil painting texture */
 body::before{
   content:'';position:fixed;inset:0;z-index:9998;pointer-events:none;
-  opacity:.035;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity:.04;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.65' numOctaves='6' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   background-repeat:repeat;
-  background-size:128px 128px;
-  mix-blend-mode:overlay;
+  background-size:200px 200px;
+  mix-blend-mode:soft-light;
 }
 
-/* Vignette — cinematic edge darkening */
+/* Deep vignette — oil painting framing */
 body::after{
   content:'';position:fixed;inset:0;z-index:9997;pointer-events:none;
-  background:radial-gradient(ellipse at center,transparent 45%,rgba(0,0,0,.35) 100%);
+  background:radial-gradient(ellipse at 50% 40%,transparent 30%,rgba(0,0,0,.5) 100%);
 }
 
-/* Atmospheric fog between sections */
-.section-fog{
-  position:absolute;bottom:-60px;left:0;right:0;height:120px;z-index:3;pointer-events:none;
-  background:linear-gradient(to top,rgba(20,20,20,0),rgba(20,20,20,.6) 40%,rgba(20,20,20,0));
-  filter:blur(20px);
+/* ── MORPHING BLOBS — Dalí's liquid organic forms ── */
+.dali-blob{
+  position:absolute;pointer-events:none;z-index:0;
+  filter:blur(80px);opacity:0;
+  animation:blobFadeIn 4s ease forwards;
+}
+@keyframes blobFadeIn{to{opacity:1}}
+
+.dali-blob.b1{
+  width:600px;height:600px;top:-10%;left:-10%;
+  background:radial-gradient(ellipse at 30% 40%,rgba(200,240,0,.12),rgba(46,79,94,.08),transparent 70%);
+  border-radius:30% 70% 70% 30% / 30% 30% 70% 70%;
+  animation:blobFadeIn 4s ease forwards, morphBlob1 20s ease-in-out infinite;
+}
+.dali-blob.b2{
+  width:500px;height:500px;bottom:-5%;right:-5%;
+  background:radial-gradient(ellipse at 60% 50%,rgba(46,79,94,.15),rgba(200,240,0,.05),transparent 70%);
+  border-radius:70% 30% 30% 70% / 60% 40% 60% 40%;
+  animation:blobFadeIn 4s ease 1s forwards, morphBlob2 25s ease-in-out infinite;
+}
+.dali-blob.b3{
+  width:400px;height:400px;top:40%;right:20%;
+  background:radial-gradient(ellipse,rgba(249,170,239,.06),rgba(70,115,210,.04),transparent 70%);
+  border-radius:60% 40% 50% 50% / 40% 60% 40% 60%;
+  animation:blobFadeIn 4s ease 2s forwards, morphBlob3 30s ease-in-out infinite;
 }
 
-/* Light ray — volumetric god ray from top */
-.light-ray{
-  position:absolute;top:-20%;left:50%;
-  width:1px;height:140%;
-  background:linear-gradient(to bottom,rgba(200,240,0,.04),transparent 60%);
-  transform:translateX(-50%) rotate(-15deg);
-  filter:blur(60px);
-  z-index:1;pointer-events:none;
+@keyframes morphBlob1{
+  0%{border-radius:30% 70% 70% 30%/30% 30% 70% 70%;transform:translate(0,0) scale(1)}
+  25%{border-radius:58% 42% 34% 66%/63% 68% 32% 37%;transform:translate(40px,-30px) scale(1.05)}
+  50%{border-radius:50% 50% 62% 38%/38% 62% 38% 62%;transform:translate(-20px,40px) scale(.95)}
+  75%{border-radius:38% 62% 45% 55%/55% 45% 55% 45%;transform:translate(30px,20px) scale(1.08)}
+  100%{border-radius:30% 70% 70% 30%/30% 30% 70% 70%;transform:translate(0,0) scale(1)}
 }
-.light-ray.r2{
-  left:30%;transform:translateX(-50%) rotate(-25deg);
-  background:linear-gradient(to bottom,rgba(46,79,94,.06),transparent 50%);
-  filter:blur(80px);width:2px;
+@keyframes morphBlob2{
+  0%{border-radius:70% 30% 30% 70%/60% 40% 60% 40%;transform:translate(0,0) rotate(0deg)}
+  33%{border-radius:40% 60% 70% 30%/50% 50% 50% 50%;transform:translate(-50px,30px) rotate(5deg)}
+  66%{border-radius:55% 45% 35% 65%/65% 35% 65% 35%;transform:translate(30px,-40px) rotate(-3deg)}
+  100%{border-radius:70% 30% 30% 70%/60% 40% 60% 40%;transform:translate(0,0) rotate(0deg)}
 }
-.light-ray.r3{
-  left:70%;transform:translateX(-50%) rotate(10deg);
-  background:linear-gradient(to bottom,rgba(200,240,0,.03),transparent 45%);
-  filter:blur(100px);width:3px;
+@keyframes morphBlob3{
+  0%{border-radius:60% 40% 50% 50%/40% 60% 40% 60%;transform:scale(1) rotate(0deg)}
+  50%{border-radius:40% 60% 60% 40%/60% 40% 60% 40%;transform:scale(1.1) rotate(8deg)}
+  100%{border-radius:60% 40% 50% 50%/40% 60% 40% 60%;transform:scale(1) rotate(0deg)}
 }
 
-/* Ambient glow pools — scattered environmental light */
+/* ── FLOATING ANIMATION — objects drifting in space ── */
+@keyframes float{
+  0%{transform:translateY(0px) rotate(0deg)}
+  33%{transform:translateY(-12px) rotate(.5deg)}
+  66%{transform:translateY(6px) rotate(-.3deg)}
+  100%{transform:translateY(0px) rotate(0deg)}
+}
+@keyframes floatSlow{
+  0%{transform:translateY(0px)}
+  50%{transform:translateY(-8px)}
+  100%{transform:translateY(0px)}
+}
+
+/* Phone floats like a Dalí object suspended in dreamspace */
+.phone{animation:float 8s ease-in-out infinite}
+.phone:hover{animation-play-state:paused}
+
+/* Step icons breathe — alive, organic */
+.step-icon{animation:floatSlow 6s ease-in-out infinite}
+.step-card:nth-child(2) .step-icon{animation-delay:-2s}
+.step-card:nth-child(3) .step-icon{animation-delay:-4s}
+
+/* ── INFINITE HORIZON — Dalí's desert perspective ── */
+.dali-horizon{
+  position:absolute;bottom:0;left:0;right:0;height:40%;
+  background:linear-gradient(to top,rgba(200,240,0,.015),transparent);
+  pointer-events:none;z-index:0;
+}
+.dali-horizon::before{
+  content:'';position:absolute;bottom:0;left:5%;right:5%;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(200,240,0,.08),transparent);
+  box-shadow:0 0 40px rgba(200,240,0,.04),0 0 80px rgba(200,240,0,.02);
+}
+.dali-horizon::after{
+  content:'';position:absolute;bottom:30%;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent 10%,rgba(255,255,253,.02) 50%,transparent 90%);
+}
+
+/* ── PERSPECTIVE GRID — infinite plane fading to vanishing point ── */
+.perspective-grid{
+  position:absolute;bottom:0;left:0;right:0;height:50%;
+  pointer-events:none;z-index:0;
+  perspective:800px;overflow:hidden;
+}
+.perspective-grid-inner{
+  position:absolute;bottom:0;left:-50%;width:200%;height:100%;
+  transform:rotateX(75deg);transform-origin:bottom center;
+  background-image:
+    linear-gradient(rgba(255,255,253,.02) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,253,.02) 1px,transparent 1px);
+  background-size:80px 80px;
+  mask-image:linear-gradient(to top,rgba(0,0,0,.4),transparent 80%);
+  -webkit-mask-image:linear-gradient(to top,rgba(0,0,0,.4),transparent 80%);
+}
+
+/* ── MELTING BORDER — Dalí's signature drip on accent elements ── */
+.dali-drip{
+  position:relative;
+}
+.dali-drip::after{
+  content:'';position:absolute;bottom:-20px;left:50%;
+  width:3px;height:20px;
+  background:linear-gradient(to bottom,var(--accent),transparent);
+  border-radius:0 0 50% 50%;
+  opacity:.3;
+  animation:drip 4s ease-in-out infinite;
+  transform:translateX(-50%);
+}
+@keyframes drip{
+  0%{height:20px;opacity:.3}
+  50%{height:35px;opacity:.15}
+  100%{height:20px;opacity:.3}
+}
+
+/* ── WARPED REFLECTIONS — impossible mirror beneath objects ── */
+.reflection-surface{position:relative}
+.reflection-surface::after{
+  content:'';position:absolute;bottom:-60px;left:5%;right:5%;height:60px;
+  background:linear-gradient(to bottom,rgba(200,240,0,.04),transparent);
+  filter:blur(25px);border-radius:50%;
+  pointer-events:none;
+  transform:scaleY(-1) scaleX(.9);
+  opacity:.5;
+}
+
+/* ── SURREAL SHADOWS — long dramatic shadows like Dalí's desert ── */
+.stat-card,.data-cell,.scale-cell,.transform-side{
+  position:relative;
+}
+.stat-card::after,.data-cell::after,.scale-cell::after{
+  content:'';position:absolute;bottom:-8px;left:10%;right:10%;height:8px;
+  background:radial-gradient(ellipse at center,rgba(0,0,0,.3),transparent 70%);
+  pointer-events:none;filter:blur(4px);
+}
+
+/* ── ATMOSPHERIC DEPTH ── */
+.section-black::after,.section-dark::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:200px;
+  background:linear-gradient(to top,rgba(20,20,20,.6),transparent);
+  pointer-events:none;z-index:1;
+}
+.section-dark::after{background:linear-gradient(to top,rgba(22,33,42,.6),transparent)}
+
+/* Ambient glow pools */
 .ambient-glow{
   position:absolute;border-radius:50%;pointer-events:none;z-index:0;
   filter:blur(100px);opacity:.06;
 }
 
-/* Depth haze on scroll sections — atmospheric perspective */
-.section-black::after,.section-dark::after{
-  content:'';position:absolute;bottom:0;left:0;right:0;height:200px;
-  background:linear-gradient(to top,rgba(20,20,20,.8),transparent);
-  pointer-events:none;z-index:1;
-}
-.section-dark::after{
-  background:linear-gradient(to top,rgba(22,33,42,.8),transparent);
-}
+/* ── TEXT DEPTH — dimensional, almost carved ── */
+.heading-h2{text-shadow:0 2px 4px rgba(0,0,0,.5),0 0 60px rgba(200,240,0,.04)}
+.stat-value,.data-val{text-shadow:0 0 40px rgba(200,240,0,.08),0 2px 4px rgba(0,0,0,.5)}
+.sc-rev{text-shadow:0 0 30px rgba(200,240,0,.12),0 2px 3px rgba(0,0,0,.4)}
+.heading-h2,.heading-h3,.heading-h4{letter-spacing:-.02em}
 
-/* Reflective floor effect under cards */
-.reflection-surface{
-  position:relative;
+/* ── LIVING ACCENT PULSE — the color breathes ── */
+@keyframes accentPulse{
+  0%{opacity:1}
+  50%{opacity:.85}
+  100%{opacity:1}
 }
-.reflection-surface::after{
-  content:'';position:absolute;bottom:-40px;left:10%;right:10%;height:40px;
-  background:linear-gradient(to bottom,rgba(200,240,0,.03),transparent);
-  filter:blur(20px);border-radius:50%;
-  pointer-events:none;
-}
-
-/* Enhanced heading depth — dimensional text */
-.heading-h2{
-  text-shadow:0 1px 2px rgba(0,0,0,.4),0 0 40px rgba(200,240,0,.03);
-}
-
-/* Stat value glow — numbers feel alive */
-.stat-value,.data-val{
-  text-shadow:0 0 30px rgba(200,240,0,.06),0 1px 3px rgba(0,0,0,.4);
-}
-
-/* Accent color elements get environmental glow */
-.sc-rev{
-  text-shadow:0 0 20px rgba(200,240,0,.1),0 1px 2px rgba(0,0,0,.3);
-}
+.chat-bar-status{animation:accentPulse 3s ease-in-out infinite}
+.chat-avatar{animation:accentPulse 4s ease-in-out infinite}
 </style>
 </head>
 <body>
@@ -909,14 +1010,16 @@ body::after{
     <div class="color-overlay c3"></div>
   </div>
 
-  <!-- Volumetric light rays -->
-  <div class="light-ray"></div>
-  <div class="light-ray r2"></div>
-  <div class="light-ray r3"></div>
+  <!-- Dalí morphing blobs -->
+  <div class="dali-blob b1"></div>
+  <div class="dali-blob b2"></div>
+  <div class="dali-blob b3"></div>
 
-  <!-- Ambient glow pools -->
-  <div class="ambient-glow" style="width:500px;height:500px;background:var(--green);bottom:0;left:-10%"></div>
-  <div class="ambient-glow" style="width:400px;height:400px;background:var(--accent);top:20%;right:-5%"></div>
+  <!-- Infinite perspective grid — Dalí's desert floor -->
+  <div class="perspective-grid"><div class="perspective-grid-inner"></div></div>
+
+  <!-- Horizon line -->
+  <div class="dali-horizon"></div>
 
   <div class="container-large padding-global hero-content">
     <div class="hero-layout">
@@ -1147,8 +1250,10 @@ body::after{
      DATA WALL
      ═══════════════════════════════════════════════════════ -->
 <section class="section-black padding-section" id="data">
-  <div class="ambient-glow" style="width:600px;height:600px;background:var(--accent);top:-10%;left:50%;transform:translateX(-50%)"></div>
-  <div class="container-large padding-global">
+  <div class="dali-blob b1" style="width:400px;height:400px;top:-20%;left:20%"></div>
+  <div class="dali-blob b2" style="width:350px;height:350px;bottom:-15%;right:15%"></div>
+  <div class="perspective-grid"><div class="perspective-grid-inner"></div></div>
+  <div class="container-large padding-global" style="position:relative;z-index:2">
     <div class="data-grid" id="dataGrid">
       <div class="data-cell" anm-scroll-text anm-distance="40%">
         <div class="data-val"><span class="counter" data-prefix="$" data-to="35" data-suffix="K">$0K</span></div>
@@ -1650,6 +1755,80 @@ document.querySelectorAll('.section-dark').forEach(section => {
   );
 });
 
+
+/* ═══════════════════════════════════════
+   DALÍ SCROLL EFFECTS — Surreal depth on scroll
+   ═══════════════════════════════════════ */
+
+/* Bento items tilt subtly in 3D as they scroll through viewport */
+document.querySelectorAll('.bento-item').forEach(item => {
+  gsap.fromTo(item,
+    { rotateX: 3, rotateY: -2, scale: .97, transformPerspective: 1000 },
+    {
+      rotateX: 0, rotateY: 0, scale: 1, transformPerspective: 1000,
+      scrollTrigger: { trigger: item, start: 'top 85%', end: 'top 30%', scrub: true }
+    }
+  );
+});
+
+/* Data cells rise from the void — staggered depth entrance */
+document.querySelectorAll('.data-cell').forEach((cell, i) => {
+  gsap.fromTo(cell,
+    { rotateX: 8, y: 40, scale: .9, transformPerspective: 800, opacity: 0 },
+    {
+      rotateX: 0, y: 0, scale: 1, opacity: 1,
+      scrollTrigger: { trigger: cell, start: 'top 90%', end: 'top 50%', scrub: true }
+    }
+  );
+});
+
+/* Vision text — dramatic scale from massive to readable */
+const visionText = document.getElementById('visionText');
+if (visionText) {
+  gsap.fromTo(visionText,
+    { scale: 1.3, opacity: 0, y: 60 },
+    {
+      scale: 1, opacity: 1, y: 0,
+      scrollTrigger: { trigger: visionText, start: 'top 80%', end: 'top 30%', scrub: true }
+    }
+  );
+}
+
+/* Stat cards float up from deep perspective */
+document.querySelectorAll('.stat-card').forEach(card => {
+  gsap.fromTo(card,
+    { rotateX: 5, y: 30, transformPerspective: 800 },
+    {
+      rotateX: 0, y: 0,
+      scrollTrigger: { trigger: card, start: 'top 90%', end: 'top 50%', scrub: true }
+    }
+  );
+});
+
+/* Scale cells emerge with rotation — surreal entrance */
+document.querySelectorAll('.scale-cell').forEach((cell, i) => {
+  gsap.fromTo(cell,
+    { rotateY: i === 0 ? -5 : i === 2 ? 5 : 0, rotateX: 4, scale: .92, transformPerspective: 800 },
+    {
+      rotateY: 0, rotateX: 0, scale: 1,
+      scrollTrigger: { trigger: cell, start: 'top 90%', end: 'top 50%', scrub: true }
+    }
+  );
+});
+
+/* Transform sides — opposing tilt creating surreal mirror effect */
+document.querySelectorAll('.transform-side.before').forEach(el => {
+  gsap.fromTo(el,
+    { rotateY: -3, x: -20, transformPerspective: 800 },
+    { rotateY: 0, x: 0, scrollTrigger: { trigger: el, start: 'top 85%', end: 'top 40%', scrub: true } }
+  );
+});
+document.querySelectorAll('.transform-side.after').forEach(el => {
+  gsap.fromTo(el,
+    { rotateY: 3, x: 20, transformPerspective: 800 },
+    { rotateY: 0, x: 0, scrollTrigger: { trigger: el, start: 'top 85%', end: 'top 40%', scrub: true } }
+  );
+});
 
 /* Refresh ScrollTrigger on resize */
 window.addEventListener('resize', () => ScrollTrigger.refresh());
