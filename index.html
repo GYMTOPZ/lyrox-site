@@ -1824,12 +1824,16 @@ document.querySelectorAll('.stat-grid, #dataGrid').forEach(el => {
 const chatBox = document.getElementById('chatMessages');
 const typingDots = document.getElementById('typingDots');
 const chatScript = [
-  { who:'client', text:'Just finished leg day but my knees hurt' },
-  { who:'ai', text:'Was it during squats or lunges? Sharp pain or dull ache?' },
-  { who:'client', text:'Squats. Dull ache on the inside of both knees' },
-  { who:'ai', text:"Sounds like VMO strain from knee caving.\n\n→ Ice 15 min tonight\n→ Swap to goblet squats tomorrow\n→ Add banded clamshells to warm-up\n\nSend me a video next session." },
+  { who:'client', text:'Hey Jen, what\'s my workout today?' },
+  { who:'ai', text:'Upper Body Push day 💪\n\n1. Bench Press — 4×8 @ 155lb\n2. OHP — 3×10 @ 85lb\n3. Incline DB Press — 3×12\n4. Lateral Raises — 4×15\n5. Tricep Pushdowns — 3×12\n\nRest 90s between sets. Let\'s go.' },
+  { who:'client', text:'Done! Also I\'m starving, what should I eat?' },
+  { who:'ai', text:'Post-workout meal (~650 cal):\n\n→ 8oz grilled chicken\n→ 1 cup white rice\n→ Steamed broccoli\n→ 1 tbsp olive oil\n\nHits your macros: 52P / 74C / 18F ✓' },
+  { who:'client', text:'My knees been hurting on squats btw' },
+  { who:'ai', text:'Sounds like VMO strain from knee caving.\n\n→ Ice 15 min tonight\n→ Swap to goblet squats tomorrow\n→ Add banded clamshells to warm-up\n\nSend me a video next session.' },
   { who:'client', html:'<div class="video-thumb"><div class="play-icon"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>Squat form check · 0:12</div>' },
-  { who:'ai', text:'Form score: 7/10', extra:'<div class="form-badge">↳ Knees caving reps 4–6. Widen stance 2 inches.</div>' }
+  { who:'ai', text:'Form score: 7/10', extra:'<div class="form-badge">↳ Knees caving reps 4–6. Widen stance 2 inches.</div>' },
+  { who:'client', text:'Quick check-in: down 3 lbs this week 🎉' },
+  { who:'ai', text:'3 lbs in one week — solid progress 🔥\n\nYou\'re 11 lbs from your goal.\nAt this rate → ~4 weeks out.\n\nKeep protein at 180g, sleep 7+ hrs.\nSee you tomorrow.' }
 ];
 let si = 0, chatActive = false;
 
