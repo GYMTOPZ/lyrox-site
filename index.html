@@ -47,6 +47,10 @@ body *{color:inherit}
    ═══════════════════════════════════════════════════════ */
 body{
   background-color:var(--black);
+  background-image:
+    radial-gradient(ellipse at 20% 0%,rgba(46,79,94,.08) 0%,transparent 50%),
+    radial-gradient(ellipse at 80% 100%,rgba(200,240,0,.03) 0%,transparent 40%),
+    radial-gradient(ellipse at 50% 50%,rgba(22,33,42,.5) 0%,transparent 70%);
   color:var(--white);
   font-family:'Plus Jakarta Sans',sans-serif;
   font-size:1.25rem;
@@ -338,10 +342,11 @@ a[stagger-link] [stagger-link-text]{
   filter:blur(120px);opacity:0;
   animation:fadeOverlay 3s ease forwards;
 }
-.color-overlay.c1{width:600px;height:600px;background:var(--green);top:10%;left:20%;animation-delay:.5s;animation:fadeOverlay 3s ease forwards, orbitSlow 30s linear infinite}
-.color-overlay.c2{width:500px;height:500px;background:var(--accent);top:40%;right:10%;animation-delay:1s;animation:fadeOverlay 3s ease 1s forwards, orbitMed 25s linear infinite reverse}
-.color-overlay.c3{width:400px;height:400px;background:#4a8fa8;bottom:10%;left:40%;animation-delay:1.5s;animation:fadeOverlay 3s ease 1.5s forwards, orbitFast 20s linear infinite}
+.color-overlay.c1{width:800px;height:800px;background:radial-gradient(circle,var(--green),rgba(46,79,94,.3));top:5%;left:15%;animation:fadeOverlayDeep 4s ease forwards, orbitSlow 30s linear infinite}
+.color-overlay.c2{width:600px;height:600px;background:radial-gradient(circle,var(--accent),rgba(200,240,0,.2));top:35%;right:5%;animation:fadeOverlayDeep 4s ease 1s forwards, orbitMed 25s linear infinite reverse}
+.color-overlay.c3{width:700px;height:700px;background:radial-gradient(circle,#4a8fa8,rgba(74,143,168,.2));bottom:5%;left:35%;animation:fadeOverlayDeep 4s ease 1.5s forwards, orbitFast 20s linear infinite}
 @keyframes fadeOverlay{to{opacity:.12}}
+@keyframes fadeOverlayDeep{to{opacity:.18}}
 @keyframes orbitSlow{from{transform:translate(0,0)}25%{transform:translate(80px,-60px)}50%{transform:translate(-40px,80px)}75%{transform:translate(60px,40px)}to{transform:translate(0,0)}}
 @keyframes orbitMed{from{transform:translate(0,0)}25%{transform:translate(-60px,50px)}50%{transform:translate(70px,-70px)}75%{transform:translate(-50px,-30px)}to{transform:translate(0,0)}}
 @keyframes orbitFast{from{transform:translate(0,0)}25%{transform:translate(50px,60px)}50%{transform:translate(-80px,-40px)}75%{transform:translate(40px,-60px)}to{transform:translate(0,0)}}
@@ -366,6 +371,7 @@ a[stagger-link] [stagger-link-text]{
   font-family:'Archivo',sans-serif;
   font-weight:400;line-height:1.3em;
   opacity:.3;white-space:nowrap;
+  text-shadow:0 2px 4px rgba(0,0,0,.3);
 }
 .marquee-heading.large{font-size:clamp(2.5rem,5vw,4.5rem)}
 .marquee-heading.small{font-size:clamp(1.25rem,2.5vw,2rem);font-weight:500}
@@ -498,6 +504,7 @@ a[stagger-link] [stagger-link-text]{
 .phone-screen{
   background:#000;border-radius:34px;padding:16px 14px 14px;
   min-height:480px;display:flex;flex-direction:column;
+  box-shadow:inset 0 0 30px rgba(0,0,0,.5),inset 0 0 80px rgba(200,240,0,.02);
 }
 .chat-bar{display:flex;align-items:center;gap:10px;padding-bottom:12px;border-bottom:1px solid rgba(255,255,253,.05);margin-bottom:12px}
 .chat-avatar{
@@ -548,8 +555,16 @@ a[stagger-link] [stagger-link-text]{
 /* ═══════════════════════════════════════════════════════
    SECTIONS
    ═══════════════════════════════════════════════════════ */
-.section-black{background-color:var(--black);color:var(--white);position:relative;overflow:hidden}
-.section-dark{background-color:var(--green-dark);color:var(--white);position:relative;overflow:hidden}
+.section-black{
+  background-color:var(--black);
+  background-image:radial-gradient(ellipse at 50% 0%,rgba(46,79,94,.04) 0%,transparent 60%);
+  color:var(--white);position:relative;overflow:hidden;
+}
+.section-dark{
+  background-color:var(--green-dark);
+  background-image:radial-gradient(ellipse at 50% 100%,rgba(200,240,0,.02) 0%,transparent 50%),radial-gradient(ellipse at 0% 0%,rgba(46,79,94,.1) 0%,transparent 40%);
+  color:var(--white);position:relative;overflow:hidden;
+}
 
 /* ═══════════════════════════════════════════════════════
    STATS / METRICS
@@ -750,6 +765,95 @@ a[stagger-link] [stagger-link-text]{
 ::-webkit-scrollbar-track{background:transparent}
 ::-webkit-scrollbar-thumb{background:rgba(255,255,253,.08);border-radius:3px}
 ::-webkit-scrollbar-thumb:hover{background:rgba(255,255,253,.15)}
+
+/* ═══════════════════════════════════════════════════════
+   CINEMATIC LAYER — Film grain, vignette, atmosphere
+   ═══════════════════════════════════════════════════════ */
+
+/* Film grain overlay — photographic texture */
+body::before{
+  content:'';position:fixed;inset:0;z-index:9998;pointer-events:none;
+  opacity:.035;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat:repeat;
+  background-size:128px 128px;
+  mix-blend-mode:overlay;
+}
+
+/* Vignette — cinematic edge darkening */
+body::after{
+  content:'';position:fixed;inset:0;z-index:9997;pointer-events:none;
+  background:radial-gradient(ellipse at center,transparent 45%,rgba(0,0,0,.35) 100%);
+}
+
+/* Atmospheric fog between sections */
+.section-fog{
+  position:absolute;bottom:-60px;left:0;right:0;height:120px;z-index:3;pointer-events:none;
+  background:linear-gradient(to top,rgba(20,20,20,0),rgba(20,20,20,.6) 40%,rgba(20,20,20,0));
+  filter:blur(20px);
+}
+
+/* Light ray — volumetric god ray from top */
+.light-ray{
+  position:absolute;top:-20%;left:50%;
+  width:1px;height:140%;
+  background:linear-gradient(to bottom,rgba(200,240,0,.04),transparent 60%);
+  transform:translateX(-50%) rotate(-15deg);
+  filter:blur(60px);
+  z-index:1;pointer-events:none;
+}
+.light-ray.r2{
+  left:30%;transform:translateX(-50%) rotate(-25deg);
+  background:linear-gradient(to bottom,rgba(46,79,94,.06),transparent 50%);
+  filter:blur(80px);width:2px;
+}
+.light-ray.r3{
+  left:70%;transform:translateX(-50%) rotate(10deg);
+  background:linear-gradient(to bottom,rgba(200,240,0,.03),transparent 45%);
+  filter:blur(100px);width:3px;
+}
+
+/* Ambient glow pools — scattered environmental light */
+.ambient-glow{
+  position:absolute;border-radius:50%;pointer-events:none;z-index:0;
+  filter:blur(100px);opacity:.06;
+}
+
+/* Depth haze on scroll sections — atmospheric perspective */
+.section-black::after,.section-dark::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:200px;
+  background:linear-gradient(to top,rgba(20,20,20,.8),transparent);
+  pointer-events:none;z-index:1;
+}
+.section-dark::after{
+  background:linear-gradient(to top,rgba(22,33,42,.8),transparent);
+}
+
+/* Reflective floor effect under cards */
+.reflection-surface{
+  position:relative;
+}
+.reflection-surface::after{
+  content:'';position:absolute;bottom:-40px;left:10%;right:10%;height:40px;
+  background:linear-gradient(to bottom,rgba(200,240,0,.03),transparent);
+  filter:blur(20px);border-radius:50%;
+  pointer-events:none;
+}
+
+/* Enhanced heading depth — dimensional text */
+.heading-h2{
+  text-shadow:0 1px 2px rgba(0,0,0,.4),0 0 40px rgba(200,240,0,.03);
+}
+
+/* Stat value glow — numbers feel alive */
+.stat-value,.data-val{
+  text-shadow:0 0 30px rgba(200,240,0,.06),0 1px 3px rgba(0,0,0,.4);
+}
+
+/* Accent color elements get environmental glow */
+.sc-rev{
+  text-shadow:0 0 20px rgba(200,240,0,.1),0 1px 2px rgba(0,0,0,.3);
+}
 </style>
 </head>
 <body>
@@ -804,6 +908,15 @@ a[stagger-link] [stagger-link-text]{
     <div class="color-overlay c2"></div>
     <div class="color-overlay c3"></div>
   </div>
+
+  <!-- Volumetric light rays -->
+  <div class="light-ray"></div>
+  <div class="light-ray r2"></div>
+  <div class="light-ray r3"></div>
+
+  <!-- Ambient glow pools -->
+  <div class="ambient-glow" style="width:500px;height:500px;background:var(--green);bottom:0;left:-10%"></div>
+  <div class="ambient-glow" style="width:400px;height:400px;background:var(--accent);top:20%;right:-5%"></div>
 
   <div class="container-large padding-global hero-content">
     <div class="hero-layout">
@@ -890,7 +1003,7 @@ a[stagger-link] [stagger-link-text]{
             <p class="text-x-small text-weight-semibold" style="letter-spacing:2.5px;text-transform:uppercase;color:var(--grey-dark);margin-bottom:1.5rem">Live Demo</p>
             <h2 class="heading-h2" anm-scroll-text anm-split="words" anm-distance="50%" style="color:var(--white);margin-bottom:1rem">This is how JEN coaches.</h2>
             <p class="text-regular" anm-scroll-text anm-delay="0.2" style="color:var(--grey-dark);margin-bottom:2rem;max-width:420px">Real conversation. Real-time AI responses. Your clients get expert-level coaching — every message, every time.</p>
-            <div style="display:flex;justify-content:center">
+            <div style="display:flex;justify-content:center" class="reflection-surface">
               <div class="phone">
                 <div class="phone-notch"></div>
                 <div class="phone-screen">
@@ -1034,6 +1147,7 @@ a[stagger-link] [stagger-link-text]{
      DATA WALL
      ═══════════════════════════════════════════════════════ -->
 <section class="section-black padding-section" id="data">
+  <div class="ambient-glow" style="width:600px;height:600px;background:var(--accent);top:-10%;left:50%;transform:translateX(-50%)"></div>
   <div class="container-large padding-global">
     <div class="data-grid" id="dataGrid">
       <div class="data-cell" anm-scroll-text anm-distance="40%">
