@@ -1358,6 +1358,147 @@ body:hover .god-rays{opacity:1}
 .dali-blob.b1{transform:translateZ(0)}
 .dali-blob.b2{transform:translateZ(0)}
 .dali-blob.b3{transform:translateZ(0)}
+
+/* ══════════════════════════════════════════════════════════
+   HYPER-REALISM III — Cinematic light, atmospheric depth, material truth
+   ══════════════════════════════════════════════════════════ */
+
+/* ── DYNAMIC MOUSE SHADOW — shadow direction follows cursor ── */
+.mouse-shadow-target{
+  transition:box-shadow .4s cubic-bezier(.16,1,.3,1),text-shadow .4s;
+}
+
+/* ── CINEMATIC LIGHT LEAKS — warm/cool bleeds at frame edges ── */
+.light-leak{
+  position:fixed;pointer-events:none;z-index:9993;
+  opacity:0;mix-blend-mode:screen;
+}
+.light-leak.ll-warm{
+  top:-20%;right:-10%;width:60vw;height:60vh;
+  background:radial-gradient(ellipse at 70% 30%,rgba(200,240,0,.02),rgba(255,200,100,.01),transparent 60%);
+  animation:leakDrift1 30s ease-in-out infinite;
+}
+.light-leak.ll-cool{
+  bottom:-15%;left:-10%;width:50vw;height:50vh;
+  background:radial-gradient(ellipse at 30% 70%,rgba(70,115,210,.015),rgba(100,200,255,.01),transparent 60%);
+  animation:leakDrift2 25s ease-in-out infinite;
+}
+body:hover .light-leak{opacity:1;transition:opacity 2s}
+@keyframes leakDrift1{
+  0%{transform:translate(0,0) scale(1)}
+  33%{transform:translate(-5vw,3vh) scale(1.1)}
+  66%{transform:translate(3vw,-2vh) scale(.95)}
+  100%{transform:translate(0,0) scale(1)}
+}
+@keyframes leakDrift2{
+  0%{transform:translate(0,0) scale(1)}
+  50%{transform:translate(4vw,-3vh) scale(1.08)}
+  100%{transform:translate(0,0) scale(1)}
+}
+
+/* ── ATMOSPHERIC PERSPECTIVE — distant elements desaturate and fade ── */
+.section-footer .footer-grid{
+  filter:saturate(.85);
+}
+.section-footer .footer-bottom{
+  filter:saturate(.7) brightness(.8);
+}
+
+/* ── VOLUMETRIC FOG — misty transition between sections ── */
+.fog-layer{
+  position:absolute;left:0;right:0;height:200px;pointer-events:none;z-index:3;
+}
+.fog-layer.fog-top{
+  top:-100px;
+  background:radial-gradient(ellipse at 50% 100%,rgba(20,20,20,.8),transparent 70%);
+}
+.fog-layer.fog-bottom{
+  bottom:-100px;
+  background:radial-gradient(ellipse at 50% 0%,rgba(20,20,20,.6),transparent 70%);
+}
+
+/* ── MATERIAL NOISE — subtle texture on flat surfaces ── */
+.stat-card::before,.data-cell::before,.scale-cell::before,.step-card::before{
+  background-image:
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 64 64' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.8' numOctaves='4' type='fractalNoise'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.015'/%3E%3C/svg%3E"),
+    linear-gradient(90deg,transparent,rgba(255,255,253,.06),transparent);
+  background-size:64px 64px,100% 1px;
+  background-repeat:repeat,no-repeat;
+  background-position:0 0,0 0;
+}
+
+/* ── REALISTIC GLASS STACK — layered depth on phone ── */
+.phone::before{
+  content:'';position:absolute;inset:3px;border-radius:42px;pointer-events:none;z-index:1;
+  border:1px solid rgba(255,255,253,.03);
+  box-shadow:inset 0 0 20px rgba(0,0,0,.3);
+}
+
+/* ── TILT REFLECTION on cards — glossy surface catch ── */
+.stat-card:hover::before,.data-cell:hover::before{
+  background:linear-gradient(165deg,rgba(255,255,253,.1),transparent 40%,transparent);
+}
+
+/* ── SCROLL COLOR GRADE — warm highlights shift to cool shadows ── */
+.color-grade{
+  position:fixed;inset:0;pointer-events:none;z-index:9992;
+  mix-blend-mode:color;
+  opacity:0;transition:opacity .5s;
+}
+body:hover .color-grade{opacity:.03}
+
+/* ── MICRO ANIMATION — subtle constant life ── */
+@keyframes microFloat{
+  0%{transform:translateY(0)}
+  50%{transform:translateY(-3px)}
+  100%{transform:translateY(0)}
+}
+.nav-logo-text span{
+  display:inline-block;
+  animation:microFloat 6s ease-in-out infinite;
+}
+.footer-icon{
+  transition:color .2s,transform .3s cubic-bezier(.16,1,.3,1);
+}
+.footer-icon:hover{
+  transform:translateY(-2px) scale(1.1);
+}
+
+/* ── SECTION DEPTH LAYERS — each section sits on a different plane ── */
+.section-black{
+  transform-style:preserve-3d;
+}
+.section-dark{
+  transform-style:preserve-3d;
+}
+
+/* ── LIVING CURSOR — cursor interaction changes surface appearance ── */
+.bento-item:hover .chat-card{
+  box-shadow:0 0 15px rgba(200,240,0,.06);
+}
+
+/* ── PHOTOGRAPHIC CONTRAST CURVE — S-curve on the entire page ── */
+html{
+  image-rendering:optimizeQuality;
+}
+
+/* ── DEPTH SHADOW LAYERS — multi-layer shadows for physical depth ── */
+.phone{
+  filter:drop-shadow(0 20px 40px rgba(0,0,0,.4)) drop-shadow(0 5px 10px rgba(0,0,0,.3));
+}
+
+/* ── EDGE GLOW on active elements ── */
+.step-card.active{
+  box-shadow:0 4px 8px rgba(0,0,0,.2),0 16px 48px rgba(0,0,0,.3),0 0 1px rgba(200,240,0,.3);
+}
+
+/* ── CONTACT LIGHT — CTA section has its own atmosphere ── */
+.footer-cta .heading-h2{
+  text-shadow:0 2px 8px rgba(0,0,0,.6),0 0 80px rgba(200,240,0,.06);
+}
+.footer-cta .yolkk-button{
+  box-shadow:0 0 0 1px rgba(255,255,253,.1),0 4px 16px rgba(0,0,0,.3),0 0 60px rgba(200,240,0,.04);
+}
 </style>
 </head>
 <body>
@@ -1370,6 +1511,13 @@ body:hover .god-rays{opacity:1}
 
 <!-- Floating dust particles -->
 <canvas class="particle-canvas" id="particleCanvas"></canvas>
+
+<!-- Cinematic light leaks -->
+<div class="light-leak ll-warm"></div>
+<div class="light-leak ll-cool"></div>
+
+<!-- Scroll color grade -->
+<div class="color-grade" style="background:linear-gradient(180deg,rgba(255,220,150,.5) 0%,transparent 30%,transparent 70%,rgba(100,150,255,.3) 100%)"></div>
 
 <!-- ═══════════════════════════════════════════════════════
      TRANSITION COVER — Page load animation
@@ -2353,6 +2501,41 @@ if (phone) {
     y: -30,
     scrollTrigger: { trigger: '#demo', start: 'top bottom', end: 'bottom top', scrub: true }
   });
+}
+
+/* ═══════════════════════════════════════
+   DYNAMIC MOUSE SHADOWS — shadows shift with cursor position
+   ═══════════════════════════════════════ */
+(function mouseShadows() {
+  const cards = document.querySelectorAll('.bento-item,.stat-card,.data-cell,.step-card,.scale-cell,.transform-side');
+  let msx = 0.5, msy = 0.5;
+  document.addEventListener('mousemove', e => {
+    msx = e.clientX / window.innerWidth;
+    msy = e.clientY / window.innerHeight;
+  }, { passive: true });
+
+  function updateShadows() {
+    const ox = (msx - 0.5) * -12;
+    const oy = (msy - 0.5) * -8;
+    cards.forEach(card => {
+      const rect = card.getBoundingClientRect();
+      if (rect.top > window.innerHeight + 100 || rect.bottom < -100) return;
+      card.style.boxShadow = `${ox}px ${oy + 8}px 24px rgba(0,0,0,.25), ${ox * .5}px ${oy * .5 + 16}px 48px rgba(0,0,0,.15), inset 0 1px 0 rgba(255,255,253,.04)`;
+    });
+    requestAnimationFrame(updateShadows);
+  }
+  if (window.innerWidth > 767) updateShadows();
+})();
+
+/* ═══════════════════════════════════════
+   SCROLL ATMOSPHERE — sections shift in color temperature
+   ═══════════════════════════════════════ */
+const colorGrade = document.querySelector('.color-grade');
+if (colorGrade) {
+  window.addEventListener('scroll', () => {
+    const progress = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+    colorGrade.style.opacity = 0.02 + progress * 0.02;
+  }, { passive: true });
 }
 
 /* Refresh ScrollTrigger on resize */
