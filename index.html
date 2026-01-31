@@ -13,7 +13,7 @@
    RESET
    ═══════════════════════════════════════════════════════ */
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:100px}
 body{margin:0}
 a{background-color:transparent;color:inherit;text-decoration:none}
 img{border:0;max-width:100%;display:block}
@@ -162,7 +162,7 @@ body{
 }
 .navbar.scrolled{
   background-color:rgba(20,20,20,.85);
-  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
   border-bottom:1px solid rgba(255,255,253,.04);
   box-shadow:0 1px 2px rgba(0,0,0,.2),0 4px 16px rgba(0,0,0,.15);
 }
@@ -277,8 +277,8 @@ a[stagger-link] [stagger-link-text]{
    BLUR-BENTO — Yolkk's glassmorphism cards
    ═══════════════════════════════════════════════════════ */
 .blur-bento{
-  -webkit-backdrop-filter:blur(15px);
-  backdrop-filter:blur(15px);
+  -webkit-backdrop-filter:blur(4px);
+  backdrop-filter:blur(4px);
   background-color:rgba(255,255,253,.05);
   border:1px solid rgba(255,255,253,.08);
   border-top-color:rgba(255,255,253,.15);
@@ -415,8 +415,8 @@ a[stagger-link] [stagger-link-text]{
 .yolkk-button{
   z-index:11;
   border:2px solid var(--white);
-  -webkit-backdrop-filter:blur(12px);
-  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(4px);
+  backdrop-filter:blur(4px);
   background-color:rgba(120,120,120,.2);
   border-radius:100rem;
   justify-content:space-between;align-items:center;
@@ -1305,16 +1305,12 @@ body:hover .god-rays{opacity:1}
 }
 
 /* ── PARALLAX MICRO LAYERS — depth through motion ── */
-.dali-blob{will-change:transform}
-.perspective-grid{will-change:transform}
+.dali-blob{}
+.perspective-grid{}
 
 /* ── LIQUID GLASS — hover distortion on bento cards ── */
 .bento-item{
-  backdrop-filter:blur(0px);
-  transition:transform .6s cubic-bezier(.16,1,.3,1),box-shadow .6s cubic-bezier(.16,1,.3,1),backdrop-filter .6s;
-}
-.bento-item:hover{
-  backdrop-filter:blur(2px);
+  transition:transform .6s cubic-bezier(.16,1,.3,1),box-shadow .6s cubic-bezier(.16,1,.3,1);
 }
 
 /* ── SCROLL-RESPONSIVE SHADOWS — shadows deepen as you scroll ── */
@@ -1763,8 +1759,8 @@ html{
               <p class="text-small" anm-scroll-text anm-delay="0.1" style="color:var(--grey-dark);margin-top:.75rem">Clients wait hours for a human reply. Lyrox responds instantly.</p>
             </div>
             <div class="bento-item" style="background:var(--black);flex:1;display:flex;flex-direction:column;justify-content:center;padding:2.5rem">
-              <div class="stat-value" anm-scroll-text anm-split="chars" anm-distance="100%" style="font-family:Archivo,sans-serif;font-size:clamp(2.5rem,5vw,4rem);font-weight:700;letter-spacing:-2px;line-height:1;color:var(--accent)">$100<span style="font-size:.35em;color:var(--grey-dark)">/mo</span></div>
-              <p class="text-small" anm-scroll-text anm-delay="0.1" style="color:var(--grey-dark);margin-top:.75rem">Not $400. Not a human salary. Unlimited clients.</p>
+              <div class="stat-value" anm-scroll-text anm-split="chars" anm-distance="100%" style="font-family:Archivo,sans-serif;font-size:clamp(2.5rem,5vw,4rem);font-weight:700;letter-spacing:-2px;line-height:1;color:var(--accent)">Pennies</div>
+              <p class="text-small" anm-scroll-text anm-delay="0.1" style="color:var(--grey-dark);margin-top:.75rem">Coaches spend thousands on staff. Lyrox costs pennies per client — unlimited scale.</p>
             </div>
           </div>
         </div>
@@ -1819,8 +1815,8 @@ html{
 
         <div class="stat-grid">
           <div class="stat-card" style="text-align:center" anm-scroll-text anm-distance="40%">
-            <div class="stat-value"><span style="text-decoration:line-through;color:var(--grey-dark);font-size:.6em;font-weight:400;margin-right:8px">70%</span><span class="counter" data-to="30" data-suffix="%">0%</span></div>
-            <div class="stat-label" style="text-transform:uppercase;letter-spacing:1.5px;font-size:.7rem">Churn Rate</div>
+            <div class="stat-value" style="font-size:clamp(1.8rem,3vw,2.8rem)">Dramatically<br>Reduced</div>
+            <div class="stat-label" style="text-transform:uppercase;letter-spacing:1.5px;font-size:.7rem">Client Churn</div>
           </div>
           <div class="stat-card" style="text-align:center" anm-scroll-text anm-delay="0.1" anm-distance="40%">
             <div class="stat-value"><span class="counter" data-to="24" data-suffix="/7">0/7</span></div>
@@ -1895,9 +1891,8 @@ html{
     </div>
     <div class="data-grid" id="dataGrid">
       <div class="data-cell" anm-scroll-text anm-distance="40%">
-        <div class="data-val"><span class="counter-decimal" data-to="3.1" data-prefix="$" data-suffix="M">$0M</span></div>
-        <div class="data-lbl">Platform Income /mo</div>
-        <div class="data-sub">$37M / year</div>
+        <div class="data-val"><span class="counter" data-to="37" data-prefix="$" data-suffix="M">$0M</span></div>
+        <div class="data-lbl">Platform Income /yr</div>
       </div>
       <div class="data-cell" anm-scroll-text anm-delay="0.05" anm-distance="40%">
         <div class="data-val"><span class="counter" data-to="150" data-suffix="K">0K</span></div>
@@ -1908,7 +1903,7 @@ html{
         <div class="data-lbl">Margins</div>
       </div>
       <div class="data-cell" anm-scroll-text anm-delay="0.15" anm-distance="40%">
-        <div class="data-val"><span class="counter" data-prefix="$" data-to="0">$0</span></div>
+        <div class="data-val" style="font-size:clamp(1.5rem,3vw,2.5rem)">Minimal</div>
         <div class="data-lbl">CAC</div>
       </div>
       <div class="data-cell" anm-scroll-text anm-delay="0.2" anm-distance="40%">
@@ -2036,16 +2031,7 @@ gsap.registerPlugin(ScrollTrigger);
 /* ═══════════════════════════════════════
    LENIS SMOOTH SCROLL — Yolkk exact
    ═══════════════════════════════════════ */
-const lenis = new Lenis({
-  lerp: 0.1,
-  wheelMultiplier: 0.7,
-  gestureOrientation: 'vertical',
-  normalizeWheel: false,
-  smoothTouch: false,
-});
-// Connect Lenis to GSAP ScrollTrigger
-lenis.on('scroll', ScrollTrigger.update);
-gsap.ticker.add((time) => { lenis.raf(time * 1000); });
+/* Lenis removed for performance — native scroll is faster */
 gsap.ticker.lagSmoothing(0);
 
 /* ═══════════════════════════════════════
@@ -2068,101 +2054,43 @@ gsap.ticker.lagSmoothing(0);
    NAV SCROLL
    ═══════════════════════════════════════ */
 const navbar = document.getElementById('navbar');
+let lastScrollY = 0, navTicking = false;
 window.addEventListener('scroll', () => {
-  navbar.classList.toggle('scrolled', window.scrollY > 60);
+  lastScrollY = window.scrollY;
+  if (!navTicking) { navTicking = true; requestAnimationFrame(() => { navbar.classList.toggle('scrolled', lastScrollY > 60); navTicking = false; }); }
 }, {passive:true});
 
 /* Smooth anchor scroll via Lenis */
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
     const target = document.querySelector(a.getAttribute('href'));
-    if (target) { e.preventDefault(); lenis.scrollTo(target, { offset: -80 }); }
+    if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
   });
 });
 
 /* ═══════════════════════════════════════
    MOUSE HOVER GRID
    ═══════════════════════════════════════ */
-function buildHoverGrid(id) {
-  const el = document.getElementById(id);
-  if (!el) return;
-  for (let i = 0; i < 100; i++) {
-    const box = document.createElement('div');
-    box.className = 'box blur';
-    el.appendChild(box);
-  }
-}
-buildHoverGrid('hoverGrid');
-buildHoverGrid('hoverGridFooter');
+/* Hover grids removed for performance */
 
 /* ═══════════════════════════════════════
    anm-scroll-text — Yolkk's text reveal system
    Uses GSAP + ScrollTrigger + SplitType
    ═══════════════════════════════════════ */
+/* Lightweight text reveal — no SplitType, no clipPath, just fade+slide */
 (function textReveal() {
   const elements = document.querySelectorAll('[anm-scroll-text]');
-  const topClipPath = 'polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)';
-  const fullClipPath = 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)';
-
   elements.forEach(element => {
-    const distanceAttribute = element.getAttribute('anm-distance') || '50%';
-    const splitAttribute = element.getAttribute('anm-split');
-    const charsStaggerAttribute = element.getAttribute('anm-chars-stagger');
-    const wordsStaggerAttribute = element.getAttribute('anm-words-stagger');
-    const durationAttribute = element.getAttribute('anm-duration') || 1;
-    const delayAttribute = element.getAttribute('anm-delay');
-    const easeAttribute = element.getAttribute('anm-ease');
-
-    // Check if element is already in viewport (hero)
+    const delay = parseFloat(element.getAttribute('anm-delay') || 0);
     const rect = element.getBoundingClientRect();
     const isInView = rect.top < window.innerHeight && rect.bottom > 0;
 
-    const tl = gsap.timeline({
-      defaults: { duration: parseFloat(durationAttribute), ease: easeAttribute || 'expo.out' },
-    });
-
-    if (isInView) {
-      // Hero elements: play after page transition (1.2s delay)
-      tl.delay(1.2 + (delayAttribute ? parseFloat(delayAttribute) : 0));
-    } else {
-      // Scroll-triggered elements
-      const startTrigger = window.innerWidth < 992 ? '15% bottom' : '35% bottom';
-      ScrollTrigger.create({
-        animation: tl,
-        trigger: element,
-        start: startTrigger,
-        toggleActions: 'play none none reset',
-      });
-    }
-
-    if (splitAttribute) {
-      const splitTypes = splitAttribute.split(',').map(type => type.trim());
-      const splitText = new SplitType(element, { types: splitTypes });
-
-      splitTypes.forEach(type => {
-        const splitElements = splitText[type] || [];
-        let stagger = type === 'chars' ? 0.01 : 0.1;
-        if (type === 'chars' && charsStaggerAttribute) stagger = parseFloat(charsStaggerAttribute);
-        else if (type === 'words' && wordsStaggerAttribute) stagger = parseFloat(wordsStaggerAttribute);
-
-        let yPosition = /[a-z%]+$/i.test(distanceAttribute) ? distanceAttribute : parseFloat(distanceAttribute);
-
-        tl.fromTo(
-          splitElements.length ? splitElements : [element],
-          { clipPath: topClipPath, y: yPosition, opacity: 0, rotate: 0.001 },
-          { clipPath: fullClipPath, y: 0, opacity: 1, rotate: 0, stagger, delay: isInView ? 0 : (delayAttribute ? parseFloat(delayAttribute) : 0) },
-          0
-        );
-      });
-    } else {
-      let yVal = /[a-z%]+$/i.test(distanceAttribute) ? distanceAttribute : parseFloat(distanceAttribute);
-      tl.fromTo(
-        element,
-        { y: yVal, clipPath: topClipPath, opacity: 0, rotate: 0.001 },
-        { y: 0, clipPath: fullClipPath, opacity: 1, rotate: 0, delay: isInView ? 0 : (delayAttribute ? parseFloat(delayAttribute) : 0) },
-        0
-      );
-    }
+    gsap.fromTo(element,
+      { opacity: 0, y: 20 },
+      { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out', delay: isInView ? 1.2 + delay : delay,
+        scrollTrigger: isInView ? undefined : { trigger: element, start: 'top 90%', toggleActions: 'play none none none' }
+      }
+    );
   });
 })();
 
@@ -2222,7 +2150,7 @@ document.querySelectorAll('[data-marquee-scroll-direction-target]').forEach(marq
       trigger: marquee,
       start: '0% 100%',
       end: '100% 0%',
-      scrub: 0
+      scrub: 2
     }
   }).fromTo(marqueeScroll,
     { x: `${direction === -1 ? scrollSpeed : -scrollSpeed}vw` },
@@ -2396,16 +2324,7 @@ function userSend() {
 /* ═══════════════════════════════════════
    STAGGER LINK INIT
    ═══════════════════════════════════════ */
-document.querySelectorAll('[stagger-link-text]').forEach(el => {
-  const text = el.textContent;
-  el.innerHTML = '';
-  [...text].forEach((char, i) => {
-    const span = document.createElement('span');
-    span.textContent = char === ' ' ? '\u00A0' : char;
-    span.style.transitionDelay = `${i * 0.01}s`;
-    el.appendChild(span);
-  });
-});
+/* Stagger link text removed for performance */
 
 /* ═══════════════════════════════════════
    LOGO TICKER — Yolkk slot-machine effect
@@ -2456,228 +2375,67 @@ document.querySelectorAll('[stagger-link-text]').forEach(el => {
 /* ═══════════════════════════════════════
    MOUSE SPOTLIGHT — follows cursor for real-time illumination
    ═══════════════════════════════════════ */
+/* Mouse light — direct update on mousemove only (no rAF loop) */
 const mouseLight = document.getElementById('mouseLight');
 if (mouseLight) {
-  let mx = 0, my = 0, cx = 0, cy = 0;
-  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; }, { passive: true });
-  function animateLight() {
-    cx += (mx - cx) * 0.08;
-    cy += (my - cy) * 0.08;
-    mouseLight.style.left = cx + 'px';
-    mouseLight.style.top = cy + 'px';
-    requestAnimationFrame(animateLight);
-  }
-  animateLight();
+  document.addEventListener('mousemove', e => {
+    mouseLight.style.left = e.clientX + 'px';
+    mouseLight.style.top = e.clientY + 'px';
+  }, { passive: true });
 }
 
 /* Footer year */
 document.getElementById('year').textContent = new Date().getFullYear();
 
 /* ═══════════════════════════════════════
-   SECTION CLIP-PATH WIPES — Yolkk style
+   SCROLL REVEAL — lightweight fade+slide (no 3D, no clip-path)
    ═══════════════════════════════════════ */
-document.querySelectorAll('.section-dark').forEach(section => {
-  gsap.fromTo(section,
-    { clipPath: 'polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)' },
-    {
-      clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
-      scrollTrigger: {
-        trigger: section,
-        start: 'top bottom',
-        end: 'top 40%',
-        scrub: true,
-      }
+const revealSelectors = '.bento-item,.data-cell,.stat-card,.scale-cell,.transform-side,.section-dark';
+document.querySelectorAll(revealSelectors).forEach(el => {
+  gsap.fromTo(el,
+    { opacity: 0, y: 30 },
+    { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out',
+      scrollTrigger: { trigger: el, start: 'top 90%', toggleActions: 'play none none none' }
     }
   );
 });
 
-
-/* ═══════════════════════════════════════
-   DALÍ SCROLL EFFECTS — Surreal depth on scroll
-   ═══════════════════════════════════════ */
-
-/* Bento items tilt subtly in 3D as they scroll through viewport */
-document.querySelectorAll('.bento-item').forEach(item => {
-  gsap.fromTo(item,
-    { rotateX: 3, rotateY: -2, scale: .97, transformPerspective: 1000 },
-    {
-      rotateX: 0, rotateY: 0, scale: 1, transformPerspective: 1000,
-      scrollTrigger: { trigger: item, start: 'top 85%', end: 'top 30%', scrub: true }
-    }
-  );
-});
-
-/* Data cells rise from the void — staggered depth entrance */
-document.querySelectorAll('.data-cell').forEach((cell, i) => {
-  gsap.fromTo(cell,
-    { rotateX: 8, y: 40, scale: .9, transformPerspective: 800, opacity: 0 },
-    {
-      rotateX: 0, y: 0, scale: 1, opacity: 1,
-      scrollTrigger: { trigger: cell, start: 'top 90%', end: 'top 50%', scrub: true }
-    }
-  );
-});
-
-/* Vision text — dramatic scale from massive to readable */
+/* Vision text */
 const visionText = document.getElementById('visionText');
 if (visionText) {
   gsap.fromTo(visionText,
-    { scale: 1.3, opacity: 0, y: 60 },
-    {
-      scale: 1, opacity: 1, y: 0,
-      scrollTrigger: { trigger: visionText, start: 'top 80%', end: 'top 30%', scrub: true }
+    { opacity: 0, y: 40 },
+    { opacity: 1, y: 0, duration: 1, ease: 'power2.out',
+      scrollTrigger: { trigger: visionText, start: 'top 80%', toggleActions: 'play none none none' }
     }
   );
 }
 
-/* Stat cards float up from deep perspective */
-document.querySelectorAll('.stat-card').forEach(card => {
-  gsap.fromTo(card,
-    { rotateX: 5, y: 30, transformPerspective: 800 },
-    {
-      rotateX: 0, y: 0,
-      scrollTrigger: { trigger: card, start: 'top 90%', end: 'top 50%', scrub: true }
-    }
-  );
-});
+/* Particles removed for performance */
 
-/* Scale cells emerge with rotation — surreal entrance */
-document.querySelectorAll('.scale-cell').forEach((cell, i) => {
-  gsap.fromTo(cell,
-    { rotateY: i === 0 ? -5 : i === 2 ? 5 : 0, rotateX: 4, scale: .92, transformPerspective: 800 },
-    {
-      rotateY: 0, rotateX: 0, scale: 1,
-      scrollTrigger: { trigger: cell, start: 'top 90%', end: 'top 50%', scrub: true }
-    }
-  );
-});
-
-/* Transform sides — opposing tilt creating surreal mirror effect */
-document.querySelectorAll('.transform-side.before').forEach(el => {
-  gsap.fromTo(el,
-    { rotateY: -3, x: -20, transformPerspective: 800 },
-    { rotateY: 0, x: 0, scrollTrigger: { trigger: el, start: 'top 85%', end: 'top 40%', scrub: true } }
-  );
-});
-document.querySelectorAll('.transform-side.after').forEach(el => {
-  gsap.fromTo(el,
-    { rotateY: 3, x: 20, transformPerspective: 800 },
-    { rotateY: 0, x: 0, scrollTrigger: { trigger: el, start: 'top 85%', end: 'top 40%', scrub: true } }
-  );
-});
-
-/* ═══════════════════════════════════════
-   FLOATING DUST PARTICLES — cinematic atmosphere
-   ═══════════════════════════════════════ */
-(function particles() {
-  const canvas = document.getElementById('particleCanvas');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  let W, H;
-  function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
-  resize();
-  window.addEventListener('resize', resize);
-
-  const pts = [];
-  const count = 60;
-  for (let i = 0; i < count; i++) {
-    pts.push({
-      x: Math.random() * W,
-      y: Math.random() * H,
-      r: Math.random() * 1.5 + 0.3,
-      dx: (Math.random() - 0.5) * 0.15,
-      dy: (Math.random() - 0.5) * 0.1 - 0.05,
-      o: Math.random() * 0.3 + 0.05,
-      phase: Math.random() * Math.PI * 2
-    });
-  }
-
-  function draw() {
-    ctx.clearRect(0, 0, W, H);
-    const t = Date.now() * 0.001;
-    for (const p of pts) {
-      p.x += p.dx + Math.sin(t + p.phase) * 0.05;
-      p.y += p.dy;
-      const flicker = 0.7 + 0.3 * Math.sin(t * 2 + p.phase);
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(255,255,253,${p.o * flicker})`;
-      ctx.fill();
-      // Wrap around
-      if (p.x < -5) p.x = W + 5;
-      if (p.x > W + 5) p.x = -5;
-      if (p.y < -5) p.y = H + 5;
-      if (p.y > H + 5) p.y = -5;
-    }
-    requestAnimationFrame(draw);
-  }
-  draw();
-})();
-
-/* ═══════════════════════════════════════
-   PARALLAX DEPTH — blobs and grids move at different scroll speeds
-   ═══════════════════════════════════════ */
-document.querySelectorAll('.dali-blob.b1').forEach(el => {
-  gsap.to(el, { y: -120, scrollTrigger: { trigger: el.parentElement, start: 'top bottom', end: 'bottom top', scrub: true } });
-});
-document.querySelectorAll('.dali-blob.b2').forEach(el => {
-  gsap.to(el, { y: 80, scrollTrigger: { trigger: el.parentElement, start: 'top bottom', end: 'bottom top', scrub: true } });
-});
-document.querySelectorAll('.dali-blob.b3').forEach(el => {
-  gsap.to(el, { y: -60, scrollTrigger: { trigger: el.parentElement, start: 'top bottom', end: 'bottom top', scrub: true } });
-});
-
-/* Perspective grids parallax — slower scroll creates infinite depth */
-document.querySelectorAll('.perspective-grid').forEach(el => {
-  gsap.to(el, { y: -40, scrollTrigger: { trigger: el.parentElement, start: 'top bottom', end: 'bottom top', scrub: true } });
-});
-
-/* Phone parallax — floats against the scroll */
-const phone = document.querySelector('.phone');
-if (phone) {
-  gsap.to(phone, {
-    y: -30,
-    scrollTrigger: { trigger: '#demo', start: 'top bottom', end: 'bottom top', scrub: true }
-  });
-}
+/* Parallax removed for performance — static positioning */
 
 /* ═══════════════════════════════════════
    DYNAMIC MOUSE SHADOWS — shadows shift with cursor position
    ═══════════════════════════════════════ */
-(function mouseShadows() {
-  const cards = document.querySelectorAll('.bento-item,.stat-card,.data-cell,.step-card,.scale-cell,.transform-side');
-  let msx = 0.5, msy = 0.5;
-  document.addEventListener('mousemove', e => {
-    msx = e.clientX / window.innerWidth;
-    msy = e.clientY / window.innerHeight;
-  }, { passive: true });
-
-  function updateShadows() {
-    const ox = (msx - 0.5) * -12;
-    const oy = (msy - 0.5) * -8;
-    cards.forEach(card => {
-      const rect = card.getBoundingClientRect();
-      if (rect.top > window.innerHeight + 100 || rect.bottom < -100) return;
-      card.style.boxShadow = `${ox}px ${oy + 8}px 24px rgba(0,0,0,.25), ${ox * .5}px ${oy * .5 + 16}px 48px rgba(0,0,0,.15), inset 0 1px 0 rgba(255,255,253,.04)`;
-    });
-    requestAnimationFrame(updateShadows);
-  }
-  if (window.innerWidth > 767) updateShadows();
-})();
+/* Mouse shadows removed for performance — using CSS box-shadow instead */
 
 /* ═══════════════════════════════════════
    SCROLL ATMOSPHERE — sections shift in color temperature
    ═══════════════════════════════════════ */
 const colorGrade = document.querySelector('.color-grade');
 if (colorGrade) {
+  let cgTicking = false;
   window.addEventListener('scroll', () => {
-    const progress = window.scrollY / (document.body.scrollHeight - window.innerHeight);
-    colorGrade.style.opacity = 0.02 + progress * 0.02;
+    if (!cgTicking) { cgTicking = true; requestAnimationFrame(() => {
+      colorGrade.style.opacity = 0.02 + (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 0.02;
+      cgTicking = false;
+    }); }
   }, { passive: true });
 }
 
 /* Refresh ScrollTrigger on resize */
-window.addEventListener('resize', () => ScrollTrigger.refresh());
+let resizeTimer; window.addEventListener('resize', () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(() => ScrollTrigger.refresh(), 250); });
 </script>
 </body>
 </html>
